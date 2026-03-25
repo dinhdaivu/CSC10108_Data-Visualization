@@ -17,7 +17,7 @@ except AttributeError:
     # Dành cho các phiên bản Python cũ hơn 3.7
     pass
 
-today = datetime.now().strftime('%d-%m-%Y') 
+today = datetime.now().strftime('%m-%d-%Y') 
 target_path = os.path.join('data', today)  # Đảm bảo folder này đã tồn tại (ví dụ: 14-02-2026)
 input_file = os.path.join(target_path, 'products.json')
 output_file = os.path.join(target_path, 'reviews.json')

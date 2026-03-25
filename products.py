@@ -128,7 +128,7 @@ def main():
     # 4. Xuat du lieu song song
     if all_data:
         # A. Tạo đường dẫn thư mục
-        today = datetime.now().strftime('%d-%m-%Y')
+        today = datetime.now().strftime('%m-%d-%Y')
         target_path = os.path.join('data', today)
         
         if not os.path.exists(target_path):
