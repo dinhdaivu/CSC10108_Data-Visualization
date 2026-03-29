@@ -1,0 +1,12 @@
+﻿skill,skill_category,advanced_demand_count,total_demand_count,advanced_demand_pct
+NLP,ML,6905,20414,33.8
+GCP,Cloud,6865,20552,33.4
+AWS,Cloud,6850,20638,33.2
+Scikit-learn,ML,6816,20511,33.2
+Azure,Cloud,6797,20517,33.1
+TensorFlow,ML,6797,20552,33.1
+SQL,Programming,6797,20322,33.4
+Computer Vision,ML,6741,20313,33.2
+PyTorch,ML,6728,20185,33.3
+R,Programming,6723,20205,33.3
+Python,Programming,6674,20396,32.7

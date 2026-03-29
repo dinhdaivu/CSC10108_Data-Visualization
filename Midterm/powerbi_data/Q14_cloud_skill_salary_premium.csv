@@ -1,0 +1,37 @@
+﻿has_advanced_cloud,experience_level,job_title,avg_salary_usd,max_salary_usd,job_count
+Has Advanced Cloud Skill,Entry,AI Researcher,68392.0,78503.0,50
+Has Advanced Cloud Skill,Entry,Applied Scientist,67273.0,77653.0,39
+Has Advanced Cloud Skill,Entry,Data Analyst,67716.0,76960.0,37
+Has Advanced Cloud Skill,Entry,Data Scientist,68281.0,79225.0,34
+Has Advanced Cloud Skill,Entry,MLOps Engineer,67618.0,78478.0,50
+Has Advanced Cloud Skill,Entry,Machine Learning Engineer,67271.0,77671.0,36
+Has Advanced Cloud Skill,Mid,AI Researcher,108113.0,118108.0,41
+Has Advanced Cloud Skill,Mid,Applied Scientist,106645.0,116808.0,41
+Has Advanced Cloud Skill,Mid,Data Analyst,107643.0,116808.0,38
+Has Advanced Cloud Skill,Mid,Data Scientist,106912.0,116141.0,35
+Has Advanced Cloud Skill,Mid,MLOps Engineer,107629.0,117314.0,48
+Has Advanced Cloud Skill,Mid,Machine Learning Engineer,107311.0,117994.0,34
+Has Advanced Cloud Skill,Senior,AI Researcher,156729.0,166577.0,45
+Has Advanced Cloud Skill,Senior,Applied Scientist,157400.0,167295.0,37
+Has Advanced Cloud Skill,Senior,Data Analyst,157111.0,166046.0,45
+Has Advanced Cloud Skill,Senior,Data Scientist,158336.0,168809.0,41
+Has Advanced Cloud Skill,Senior,MLOps Engineer,156415.0,166220.0,40
+Has Advanced Cloud Skill,Senior,Machine Learning Engineer,158160.0,168428.0,44
+No Advanced Cloud Skill,Entry,AI Researcher,67581.0,77550.0,2710
+No Advanced Cloud Skill,Entry,Applied Scientist,67327.0,77182.0,2690
+No Advanced Cloud Skill,Entry,Data Analyst,67468.0,77436.0,2698
+No Advanced Cloud Skill,Entry,Data Scientist,67520.0,77434.0,2793
+No Advanced Cloud Skill,Entry,MLOps Engineer,67426.0,77299.0,2800
+No Advanced Cloud Skill,Entry,Machine Learning Engineer,67491.0,77581.0,2691
+No Advanced Cloud Skill,Mid,AI Researcher,107558.0,117591.0,2893
+No Advanced Cloud Skill,Mid,Applied Scientist,107480.0,117438.0,2685
+No Advanced Cloud Skill,Mid,Data Analyst,107518.0,117528.0,2669
+No Advanced Cloud Skill,Mid,Data Scientist,107620.0,117747.0,2753
+No Advanced Cloud Skill,Mid,MLOps Engineer,107367.0,117347.0,2772
+No Advanced Cloud Skill,Mid,Machine Learning Engineer,107508.0,117562.0,2686
+No Advanced Cloud Skill,Senior,AI Researcher,157425.0,167456.0,2676
+No Advanced Cloud Skill,Senior,Applied Scientist,157425.0,167451.0,2806
+No Advanced Cloud Skill,Senior,Data Analyst,157604.0,167700.0,2773
+No Advanced Cloud Skill,Senior,Data Scientist,157556.0,167582.0,2754
+No Advanced Cloud Skill,Senior,MLOps Engineer,157572.0,167596.0,2729
+No Advanced Cloud Skill,Senior,Machine Learning Engineer,157368.0,167209.0,2687

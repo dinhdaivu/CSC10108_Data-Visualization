@@ -1,0 +1,37 @@
+﻿role_category,job_title,country,avg_salary_usd,min_salary_usd,max_salary_usd,job_count
+Analytics,AI Researcher,Australia,68087.0,58117.0,78057.0,467
+Analytics,AI Researcher,Canada,67339.0,57533.0,77145.0,469
+Analytics,AI Researcher,Germany,67319.0,57395.0,77244.0,469
+Analytics,AI Researcher,India,67813.0,57485.0,78141.0,477
+Analytics,AI Researcher,UK,67554.0,57418.0,77690.0,431
+Analytics,AI Researcher,USA,67452.0,57795.0,77108.0,447
+Analytics,Applied Scientist,Australia,67268.0,57810.0,76725.0,420
+Analytics,Applied Scientist,Canada,67469.0,57307.0,77630.0,500
+Analytics,Applied Scientist,Germany,67175.0,57410.0,76940.0,452
+Analytics,Applied Scientist,India,67421.0,57284.0,77558.0,480
+Analytics,Applied Scientist,UK,67246.0,57379.0,77113.0,451
+Analytics,Applied Scientist,USA,67357.0,57659.0,77054.0,426
+Analytics,Data Analyst,Australia,67480.0,57477.0,77484.0,446
+Analytics,Data Analyst,Canada,67468.0,57396.0,77540.0,477
+Analytics,Data Analyst,Germany,67473.0,57470.0,77475.0,449
+Analytics,Data Analyst,India,67812.0,57713.0,77911.0,451
+Analytics,Data Analyst,UK,67107.0,57494.0,76721.0,450
+Analytics,Data Analyst,USA,67486.0,57532.0,77440.0,462
+Analytics,Data Scientist,Australia,67566.0,57664.0,77468.0,490
+Analytics,Data Scientist,Canada,67624.0,57671.0,77577.0,469
+Analytics,Data Scientist,Germany,67685.0,57648.0,77722.0,468
+Analytics,Data Scientist,India,67504.0,57762.0,77246.0,479
+Analytics,Data Scientist,UK,67325.0,57598.0,77052.0,481
+Analytics,Data Scientist,USA,67470.0,57240.0,77699.0,440
+Engineering,MLOps Engineer,Australia,67350.0,57396.0,77304.0,437
+Engineering,MLOps Engineer,Canada,67210.0,57421.0,76999.0,451
+Engineering,MLOps Engineer,Germany,67278.0,57765.0,76791.0,482
+Engineering,MLOps Engineer,India,67641.0,57716.0,77566.0,516
+Engineering,MLOps Engineer,UK,67650.0,57196.0,78104.0,502
+Engineering,MLOps Engineer,USA,67399.0,57728.0,77069.0,462
+Engineering,Machine Learning Engineer,Australia,67824.0,57796.0,77853.0,429
+Engineering,Machine Learning Engineer,Canada,67567.0,57427.0,77707.0,432
+Engineering,Machine Learning Engineer,Germany,67654.0,57370.0,77938.0,458
+Engineering,Machine Learning Engineer,India,67502.0,57187.0,77817.0,456
+Engineering,Machine Learning Engineer,UK,67175.0,57333.0,77018.0,473
+Engineering,Machine Learning Engineer,USA,67250.0,57280.0,77220.0,479

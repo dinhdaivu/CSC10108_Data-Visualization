@@ -1,0 +1,38 @@
+﻿value,category
+Entry,Experience
+Mid,Experience
+Senior,Experience
+Data Analyst,Job Title
+Data Scientist,Job Title
+Machine Learning Engineer,Job Title
+AI Researcher,Job Title
+Applied Scientist,Job Title
+MLOps Engineer,Job Title
+Startup,Company Type
+MNC,Company Type
+Research Lab,Company Type
+Small,Company Size
+Medium,Company Size
+Large,Company Size
+Remote,Work Type
+Hybrid,Work Type
+Onsite,Work Type
+Tech,Industry
+Finance,Industry
+Healthcare,Industry
+Education,Industry
+Retail,Industry
+USA,Country
+India,Country
+UK,Country
+Germany,Country
+Canada,Country
+Australia,Country
+Programming,Skill Category
+ML,Skill Category
+Cloud,Skill Category
+Basic,Skill Level
+Intermediate,Skill Level
+Advanced,Skill Level
+Analytics,Role Category
+Engineering,Role Category

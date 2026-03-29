@@ -1,0 +1,55 @@
+﻿location_group,job_title,experience_level,avg_salary_usd,min_salary_usd,max_salary_usd,job_count
+Hybrid,Data Scientist,Senior,157781.0,147571.0,167992.0,937
+Hybrid,Data Analyst,Senior,157636.0,147501.0,167771.0,981
+Onsite (City),Data Analyst,Senior,157621.0,147638.0,167605.0,906
+Remote,MLOps Engineer,Senior,157598.0,147480.0,167716.0,936
+Hybrid,MLOps Engineer,Senior,157569.0,147487.0,167651.0,953
+Remote,Data Analyst,Senior,157531.0,147422.0,167640.0,931
+Onsite (City),MLOps Engineer,Senior,157493.0,147639.0,167346.0,880
+Hybrid,Applied Scientist,Senior,157477.0,147460.0,167494.0,999
+Onsite (City),Data Scientist,Senior,157469.0,147472.0,167465.0,905
+Remote,AI Researcher,Senior,157454.0,147550.0,167357.0,882
+Remote,Data Scientist,Senior,157450.0,147556.0,167343.0,953
+Remote,Machine Learning Engineer,Senior,157445.0,147662.0,167228.0,873
+Hybrid,Machine Learning Engineer,Senior,157443.0,147586.0,167300.0,926
+Remote,Applied Scientist,Senior,157405.0,147191.0,167619.0,923
+Hybrid,AI Researcher,Senior,157403.0,147295.0,167511.0,916
+Onsite (City),Applied Scientist,Senior,157387.0,147545.0,167230.0,921
+Onsite (City),AI Researcher,Senior,157387.0,147322.0,167452.0,923
+Onsite (City),Machine Learning Engineer,Senior,157257.0,147357.0,167158.0,932
+Remote,Data Scientist,Mid,107714.0,97530.0,117898.0,991
+Hybrid,AI Researcher,Mid,107690.0,97558.0,117822.0,984
+Onsite (City),Applied Scientist,Mid,107655.0,97559.0,117751.0,868
+Onsite (City),Data Analyst,Mid,107631.0,97568.0,117693.0,896
+Onsite (City),Machine Learning Engineer,Mid,107604.0,97311.0,117897.0,898
+Remote,Machine Learning Engineer,Mid,107597.0,97532.0,117662.0,841
+Hybrid,Data Scientist,Mid,107589.0,97486.0,117692.0,906
+Remote,AI Researcher,Mid,107522.0,97564.0,117480.0,939
+Onsite (City),Data Scientist,Mid,107520.0,97470.0,117570.0,891
+Hybrid,Data Analyst,Mid,107497.0,97426.0,117569.0,906
+Onsite (City),MLOps Engineer,Mid,107492.0,97574.0,117410.0,916
+Onsite (City),AI Researcher,Mid,107485.0,97479.0,117491.0,1011
+Remote,MLOps Engineer,Mid,107477.0,97252.0,117703.0,933
+Remote,Data Analyst,Mid,107432.0,97569.0,117294.0,905
+Hybrid,Applied Scientist,Mid,107422.0,97490.0,117353.0,945
+Remote,Applied Scientist,Mid,107338.0,97477.0,117199.0,913
+Hybrid,Machine Learning Engineer,Mid,107336.0,97488.0,117183.0,981
+Hybrid,MLOps Engineer,Mid,107155.0,97367.0,116943.0,971
+Onsite (City),AI Researcher,Entry,67657.0,57652.0,77663.0,952
+Hybrid,MLOps Engineer,Entry,67657.0,57503.0,77811.0,961
+Hybrid,AI Researcher,Entry,67634.0,57585.0,77683.0,918
+Onsite (City),Data Analyst,Entry,67609.0,57592.0,77627.0,909
+Onsite (City),Data Scientist,Entry,67592.0,57604.0,77581.0,954
+Hybrid,Machine Learning Engineer,Entry,67556.0,57388.0,77725.0,948
+Onsite (City),Machine Learning Engineer,Entry,67550.0,57476.0,77624.0,931
+Remote,Data Scientist,Entry,67538.0,57520.0,77557.0,942
+Remote,Data Analyst,Entry,67512.0,57460.0,77563.0,907
+Remote,Applied Scientist,Entry,67496.0,57275.0,77717.0,926
+Remote,AI Researcher,Entry,67491.0,57636.0,77346.0,890
+Hybrid,Data Scientist,Entry,67455.0,57684.0,77226.0,931
+Onsite (City),MLOps Engineer,Entry,67403.0,57664.0,77141.0,944
+Remote,Machine Learning Engineer,Entry,67343.0,57308.0,77377.0,848
+Hybrid,Data Analyst,Entry,67295.0,57486.0,77103.0,919
+Hybrid,Applied Scientist,Entry,67264.0,57377.0,77150.0,902
+Remote,MLOps Engineer,Entry,67225.0,57451.0,76998.0,945
+Onsite (City),Applied Scientist,Entry,67215.0,57747.0,76683.0,901

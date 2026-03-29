@@ -1,0 +1,37 @@
+﻿job_title,country,entry_avg_salary_usd,mid_avg_salary_usd,cost_2_juniors_usd,mid_to_entry_ratio,cost_verdict
+AI Researcher,Australia,68087.0,107712.0,136174.0,2.0,Mid is cheaper
+AI Researcher,Canada,67339.0,107536.0,134678.0,2.0,Mid is cheaper
+AI Researcher,Germany,67319.0,107469.0,134639.0,2.0,Mid is cheaper
+AI Researcher,India,67813.0,107469.0,135627.0,2.0,Mid is cheaper
+AI Researcher,UK,67554.0,107520.0,135108.0,2.0,Mid is cheaper
+AI Researcher,USA,67452.0,107681.0,134903.0,2.0,Mid is cheaper
+Applied Scientist,Australia,67268.0,107189.0,134535.0,2.0,Mid is cheaper
+Applied Scientist,Canada,67469.0,107795.0,134937.0,2.0,Mid is cheaper
+Applied Scientist,Germany,67175.0,107644.0,134350.0,2.0,Mid is cheaper
+Applied Scientist,India,67421.0,107531.0,134842.0,2.0,Mid is cheaper
+Applied Scientist,UK,67246.0,107183.0,134493.0,2.0,Mid is cheaper
+Applied Scientist,USA,67357.0,107468.0,134713.0,2.0,Mid is cheaper
+Data Analyst,Australia,67480.0,107449.0,134961.0,2.0,Mid is cheaper
+Data Analyst,Canada,67468.0,107610.0,134936.0,2.0,Mid is cheaper
+Data Analyst,Germany,67473.0,107402.0,134945.0,2.0,Mid is cheaper
+Data Analyst,India,67812.0,107370.0,135624.0,2.0,Mid is cheaper
+Data Analyst,UK,67107.0,107687.0,134215.0,2.0,Mid is cheaper
+Data Analyst,USA,67486.0,107592.0,134972.0,2.0,Mid is cheaper
+Data Scientist,Australia,67566.0,107904.0,135132.0,2.0,Mid is cheaper
+Data Scientist,Canada,67624.0,107757.0,135248.0,2.0,Mid is cheaper
+Data Scientist,Germany,67685.0,107685.0,135371.0,2.0,Mid is cheaper
+Data Scientist,India,67504.0,107350.0,135008.0,2.0,Mid is cheaper
+Data Scientist,UK,67325.0,107369.0,134650.0,2.0,Mid is cheaper
+Data Scientist,USA,67470.0,107634.0,134939.0,2.0,Mid is cheaper
+MLOps Engineer,Australia,67350.0,107477.0,134701.0,2.0,Mid is cheaper
+MLOps Engineer,Canada,67210.0,107472.0,134421.0,2.0,Mid is cheaper
+MLOps Engineer,Germany,67278.0,107148.0,134557.0,2.0,Mid is cheaper
+MLOps Engineer,India,67641.0,107258.0,135282.0,2.0,Mid is cheaper
+MLOps Engineer,UK,67650.0,107585.0,135300.0,2.0,Mid is cheaper
+MLOps Engineer,USA,67399.0,107262.0,134797.0,2.0,Mid is cheaper
+Machine Learning Engineer,Australia,67824.0,107330.0,135649.0,2.0,Mid is cheaper
+Machine Learning Engineer,Canada,67567.0,107646.0,135134.0,2.0,Mid is cheaper
+Machine Learning Engineer,Germany,67654.0,107439.0,135308.0,2.0,Mid is cheaper
+Machine Learning Engineer,India,67502.0,107696.0,135005.0,2.0,Mid is cheaper
+Machine Learning Engineer,UK,67175.0,107382.0,134351.0,2.0,Mid is cheaper
+Machine Learning Engineer,USA,67250.0,107543.0,134499.0,2.0,Mid is cheaper

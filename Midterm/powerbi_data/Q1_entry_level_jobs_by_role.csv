@@ -1,0 +1,127 @@
+﻿job_title,country,posted_year,job_count,avg_salary_usd,min_salary_usd,max_salary_usd
+Data Analyst,Australia,2020,56,67286.0,56917.0,77655.0
+Data Analyst,Australia,2021,49,67205.0,57962.0,76448.0
+Data Analyst,Australia,2022,53,67619.0,57668.0,77570.0
+Data Analyst,Australia,2023,83,67732.0,57246.0,78218.0
+Data Analyst,Australia,2024,75,68155.0,58052.0,78259.0
+Data Analyst,Australia,2025,53,66125.0,57516.0,74734.0
+Data Analyst,Australia,2026,77,67706.0,57105.0,78306.0
+Data Analyst,Canada,2020,65,66887.0,56983.0,76790.0
+Data Analyst,Canada,2021,74,67534.0,57153.0,77914.0
+Data Analyst,Canada,2022,65,67702.0,57762.0,77642.0
+Data Analyst,Canada,2023,60,67874.0,57496.0,78252.0
+Data Analyst,Canada,2024,80,67501.0,57830.0,77173.0
+Data Analyst,Canada,2025,67,67848.0,57086.0,78611.0
+Data Analyst,Canada,2026,66,66943.0,57413.0,76472.0
+Data Analyst,Germany,2020,74,67365.0,57517.0,77212.0
+Data Analyst,Germany,2021,62,67733.0,57400.0,78066.0
+Data Analyst,Germany,2022,58,67959.0,57731.0,78187.0
+Data Analyst,Germany,2023,58,68226.0,57883.0,78569.0
+Data Analyst,Germany,2024,75,67270.0,57362.0,77179.0
+Data Analyst,Germany,2025,65,66618.0,57151.0,76085.0
+Data Analyst,Germany,2026,57,67308.0,57305.0,77311.0
+Data Analyst,India,2020,53,67120.0,57496.0,76743.0
+Data Analyst,India,2021,68,67988.0,57814.0,78161.0
+Data Analyst,India,2022,74,68117.0,57607.0,78628.0
+Data Analyst,India,2023,63,67556.0,57283.0,77829.0
+Data Analyst,India,2024,69,68032.0,57847.0,78216.0
+Data Analyst,India,2025,59,67855.0,57347.0,78363.0
+Data Analyst,India,2026,65,67821.0,58509.0,77134.0
+Data Analyst,UK,2020,72,67457.0,57064.0,77850.0
+Data Analyst,UK,2021,70,67496.0,57859.0,77133.0
+Data Analyst,UK,2022,65,67095.0,57311.0,76880.0
+Data Analyst,UK,2023,49,66870.0,58699.0,75041.0
+Data Analyst,UK,2024,57,66502.0,57470.0,75534.0
+Data Analyst,UK,2025,65,66589.0,56515.0,76662.0
+Data Analyst,UK,2026,72,67500.0,57818.0,77182.0
+Data Analyst,USA,2020,67,68127.0,58060.0,78194.0
+Data Analyst,USA,2021,68,67637.0,57050.0,78224.0
+Data Analyst,USA,2022,76,67473.0,58032.0,76914.0
+Data Analyst,USA,2023,62,67824.0,57350.0,78298.0
+Data Analyst,USA,2024,54,66979.0,57437.0,76520.0
+Data Analyst,USA,2025,67,66796.0,57163.0,76429.0
+Data Analyst,USA,2026,68,67491.0,57536.0,77447.0
+Data Scientist,Australia,2020,73,67429.0,58033.0,76825.0
+Data Scientist,Australia,2021,63,67891.0,56888.0,78895.0
+Data Scientist,Australia,2022,68,66511.0,57036.0,75987.0
+Data Scientist,Australia,2023,60,67242.0,57314.0,77169.0
+Data Scientist,Australia,2024,72,67327.0,57723.0,76930.0
+Data Scientist,Australia,2025,83,68622.0,58292.0,78952.0
+Data Scientist,Australia,2026,71,67710.0,58078.0,77343.0
+Data Scientist,Canada,2020,68,67795.0,57768.0,77823.0
+Data Scientist,Canada,2021,64,67319.0,57210.0,77428.0
+Data Scientist,Canada,2022,68,66974.0,56905.0,77042.0
+Data Scientist,Canada,2023,60,68874.0,57873.0,79874.0
+Data Scientist,Canada,2024,74,67426.0,57595.0,77258.0
+Data Scientist,Canada,2025,68,66995.0,58495.0,75495.0
+Data Scientist,Canada,2026,67,68140.0,57859.0,78422.0
+Data Scientist,Germany,2020,67,67571.0,56851.0,78292.0
+Data Scientist,Germany,2021,68,67621.0,58270.0,76971.0
+Data Scientist,Germany,2022,60,67999.0,57343.0,78654.0
+Data Scientist,Germany,2023,64,68258.0,56233.0,80282.0
+Data Scientist,Germany,2024,78,67826.0,58213.0,77440.0
+Data Scientist,Germany,2025,72,67263.0,58031.0,76495.0
+Data Scientist,Germany,2026,59,67280.0,58472.0,76088.0
+Data Scientist,India,2020,69,67547.0,57720.0,77375.0
+Data Scientist,India,2021,71,67763.0,57462.0,78064.0
+Data Scientist,India,2022,69,67213.0,57892.0,76534.0
+Data Scientist,India,2023,69,67646.0,57662.0,77630.0
+Data Scientist,India,2024,68,67436.0,57521.0,77352.0
+Data Scientist,India,2025,75,67409.0,57563.0,77255.0
+Data Scientist,India,2026,58,67517.0,58686.0,76348.0
+Data Scientist,UK,2020,74,67422.0,58097.0,76748.0
+Data Scientist,UK,2021,68,67014.0,56740.0,77288.0
+Data Scientist,UK,2022,68,67250.0,57642.0,76858.0
+Data Scientist,UK,2023,65,67941.0,57759.0,78123.0
+Data Scientist,UK,2024,67,67007.0,58159.0,75855.0
+Data Scientist,UK,2025,69,67222.0,57567.0,76877.0
+Data Scientist,UK,2026,70,67432.0,57206.0,77657.0
+Data Scientist,USA,2020,59,66804.0,57761.0,75846.0
+Data Scientist,USA,2021,66,66877.0,56763.0,76990.0
+Data Scientist,USA,2022,75,68778.0,57651.0,79905.0
+Data Scientist,USA,2023,58,67132.0,57293.0,76971.0
+Data Scientist,USA,2024,57,67201.0,57022.0,77379.0
+Data Scientist,USA,2025,58,68005.0,57036.0,78975.0
+Data Scientist,USA,2026,67,67234.0,57109.0,77358.0
+Machine Learning Engineer,Australia,2020,48,67456.0,56855.0,78057.0
+Machine Learning Engineer,Australia,2021,66,67331.0,58541.0,76121.0
+Machine Learning Engineer,Australia,2022,57,68061.0,57825.0,78297.0
+Machine Learning Engineer,Australia,2023,50,68851.0,58065.0,79637.0
+Machine Learning Engineer,Australia,2024,79,67238.0,57680.0,76796.0
+Machine Learning Engineer,Australia,2025,67,67935.0,57752.0,78118.0
+Machine Learning Engineer,Australia,2026,62,68217.0,57680.0,78754.0
+Machine Learning Engineer,Canada,2020,71,67477.0,57927.0,77028.0
+Machine Learning Engineer,Canada,2021,63,67217.0,57414.0,77020.0
+Machine Learning Engineer,Canada,2022,63,67743.0,57793.0,77692.0
+Machine Learning Engineer,Canada,2023,49,67629.0,57178.0,78080.0
+Machine Learning Engineer,Canada,2024,64,67469.0,56813.0,78126.0
+Machine Learning Engineer,Canada,2025,56,67938.0,57747.0,78129.0
+Machine Learning Engineer,Canada,2026,66,67564.0,57061.0,78067.0
+Machine Learning Engineer,Germany,2020,69,66846.0,57146.0,76547.0
+Machine Learning Engineer,Germany,2021,50,67454.0,57653.0,77255.0
+Machine Learning Engineer,Germany,2022,63,68271.0,56980.0,79562.0
+Machine Learning Engineer,Germany,2023,62,67937.0,58251.0,77623.0
+Machine Learning Engineer,Germany,2024,76,67659.0,57300.0,78019.0
+Machine Learning Engineer,Germany,2025,78,67955.0,57109.0,78801.0
+Machine Learning Engineer,Germany,2026,60,67411.0,57320.0,77503.0
+Machine Learning Engineer,India,2020,63,67562.0,57704.0,77421.0
+Machine Learning Engineer,India,2021,58,67820.0,57094.0,78546.0
+Machine Learning Engineer,India,2022,66,67182.0,56167.0,78198.0
+Machine Learning Engineer,India,2023,68,67790.0,57546.0,78035.0
+Machine Learning Engineer,India,2024,70,67162.0,57414.0,76911.0
+Machine Learning Engineer,India,2025,61,67797.0,57211.0,78383.0
+Machine Learning Engineer,India,2026,70,67291.0,57167.0,77414.0
+Machine Learning Engineer,UK,2020,67,67446.0,57510.0,77381.0
+Machine Learning Engineer,UK,2021,80,66794.0,56917.0,76672.0
+Machine Learning Engineer,UK,2022,59,67230.0,57453.0,77007.0
+Machine Learning Engineer,UK,2023,65,67104.0,56327.0,77882.0
+Machine Learning Engineer,UK,2024,69,66901.0,57733.0,76068.0
+Machine Learning Engineer,UK,2025,64,67832.0,58293.0,77371.0
+Machine Learning Engineer,UK,2026,69,67039.0,57195.0,76883.0
+Machine Learning Engineer,USA,2020,72,67250.0,57368.0,77132.0
+Machine Learning Engineer,USA,2021,72,67001.0,57072.0,76931.0
+Machine Learning Engineer,USA,2022,71,67235.0,56985.0,77486.0
+Machine Learning Engineer,USA,2023,69,66828.0,56822.0,76833.0
+Machine Learning Engineer,USA,2024,62,66903.0,57523.0,76283.0
+Machine Learning Engineer,USA,2025,70,67706.0,57768.0,77644.0
+Machine Learning Engineer,USA,2026,63,67844.0,57467.0,78221.0
