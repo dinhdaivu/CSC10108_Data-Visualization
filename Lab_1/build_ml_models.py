@@ -25,7 +25,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
-START_DATE = date(2026, 2, 19)
+BASELINE_DATE = date(2026, 2, 19)
+ANALYSIS_START_DATE = date(2026, 2, 20)
 END_DATE = date(2026, 3, 20)
 RANDOM_STATE = 42
 
@@ -126,6 +127,14 @@ def clean_sales_data(raw_df: pd.DataFrame) -> pd.DataFrame:
         df[col] = df[col].fillna(0)
 
     return df
+
+
+def filter_analysis_window(df: pd.DataFrame, analysis_start_date: date, end_date: date) -> pd.DataFrame:
+    analysis_df = df[
+        (df["snapshot_date"].dt.date >= analysis_start_date)
+        & (df["snapshot_date"].dt.date <= end_date)
+    ].copy()
+    return analysis_df
 
 
 def build_preprocessor(numeric_features: List[str], categorical_features: List[str]) -> ColumnTransformer:
@@ -447,8 +456,10 @@ def main() -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print("Loading and preparing sales data...")
-    raw_df = load_sales_data(sales_root, START_DATE, END_DATE)
+    raw_df = load_sales_data(sales_root, BASELINE_DATE, END_DATE)
     sales_df = clean_sales_data(raw_df)
+    # The 2026-02-19 snapshot is only a baseline for deriving daily sales values.
+    sales_df = filter_analysis_window(sales_df, ANALYSIS_START_DATE, END_DATE)
 
     # Save cleaned base table for Power BI
     sales_df.to_csv(output_dir / "daily_sales_cleaned.csv", index=False)
@@ -463,7 +474,8 @@ def main() -> None:
 
     summary = {
         "date_range": {
-            "start": START_DATE.isoformat(),
+            "baseline_start": BASELINE_DATE.isoformat(),
+            "analysis_start": ANALYSIS_START_DATE.isoformat(),
             "end": END_DATE.isoformat(),
         },
         "evaluation_split": {

@@ -8,17 +8,17 @@
 
 ### 3.1.1. Dataset Context
 
-The project is based on a self-collected dataset of Nike products on Lazada. The sales dataset covers the period from **February 19, 2026** to **March 20, 2026**, corresponding to **30 consecutive daily snapshots**. Across the full observation window, the dataset contains **19,150 product-day records**, representing **686 unique products** and **20 unique categories**. On average, each daily snapshot contains **638.33 records**, with the smallest daily snapshot containing **590 records** and the largest containing **668 records**.
+The project is based on a self-collected dataset of Nike products on Lazada. The sales dataset covers the period from **February 19, 2026** to **March 20, 2026**, corresponding to **30 consecutive daily snapshots**. The snapshot on **February 19, 2026** is used as the **baseline** for calculating day-to-day sales, so analyses that rely on `daily_units_sold` and `daily_revenue` are conducted from **February 20, 2026** to **March 20, 2026**. Across the full observation window, the dataset contains **19,150 product-day records**, representing **686 unique products** and **20 unique categories**. On average, each daily snapshot contains **638.33 records**, with the smallest daily snapshot containing **590 records** and the largest containing **668 records**.
 
 The final snapshot on **March 20, 2026** contains **590 products** across **15 categories**. In this snapshot, **580 products** are marked as in stock and **10 products** are marked as out of stock. The selling price ranges from **309,000 VND** to **5,279,000 VND**, while the total cumulative units sold recorded in that snapshot is **26,068 units**.
 
-The review dataset is stored separately and contains **7,605 reviews** for **585 products**. Review timestamps range from **September 13, 2024** to **March 14, 2026**. As a result, review-based analysis can provide useful information about customer feedback patterns, but it should not be interpreted as perfectly aligned with the 30-day sales window.
+The review dataset is stored separately and contains **7,605 reviews** for **585 products**. Review timestamps range from **September 13, 2024** to **March 14, 2026**. As a result, review-based analysis can provide useful information about customer feedback patterns, but it should not be interpreted as perfectly aligned with the **February 20, 2026 to March 20, 2026** sales-analysis window.
 
 ### 3.1.2. Overall Group Analysis Problem
 
 Based on the collected dataset, the group defines the common analytical problem as follows:
 
-**The group’s common analytical problem is to examine how product category, pricing, discount policy, stock status, ratings, and customer review behavior influence the sales performance of Nike products on Lazada, based on data collected from February 20, 2026 to March 20, 2026.**
+**The group's common analytical problem is to examine how product category, pricing, discount policy, stock status, ratings, and customer review behavior influence the sales performance of Nike products on Lazada, based on data collected from February 20, 2026 to March 20, 2026.**
 
 This analytical problem is appropriate for the project for three reasons. First, it is directly derived from the variables available in the self-collected dataset. Second, it allows the group to combine descriptive analysis, comparison across categories, and relationship analysis through visualization. Third, it provides a clear framework for integrating the optional Machine Learning component as a supporting method rather than treating it as a separate topic.
 
@@ -32,23 +32,23 @@ This theme focuses on category-level sales dynamics throughout the observation p
 
 **Objective 1.1**
 
-Analyze daily revenue and daily units sold by product category from **February 19, 2026** to **March 20, 2026** in order to identify the **three categories with the highest total revenue** during the study period.
+Analyze daily revenue and daily units sold by product category from **February 20, 2026** to **March 20, 2026** in order to identify the **three categories with the highest total revenue** during the study period.
 
 - `Specific`: Category-level sales performance over time
 - `Measurable`: Uses `daily_revenue`, `daily_units_sold`, and top-three ranking
 - `Achievable`: Required fields are available in the daily snapshots
 - `Relevant`: Identifies the main revenue-generating categories in the dataset
-- `Time-bound`: Limited to `19-02-2026` to `20-03-2026`
+- `Time-bound`: Limited to `20-02-2026` to `20-03-2026`, with `19-02-2026` used as the baseline snapshot
 
 **Objective 1.2**
 
-Measure day-to-day revenue variability by category from **February 19, 2026** to **March 20, 2026** in order to identify the **three most volatile categories** and the **three most stable categories** during the observation period.
+Measure day-to-day revenue variability by category from **February 20, 2026** to **March 20, 2026** in order to identify the **three most volatile categories** and the **three most stable categories** during the observation period.
 
 - `Specific`: Category-level revenue stability
 - `Measurable`: Uses standard deviation or coefficient of variation of `daily_revenue`
 - `Achievable`: Can be computed from daily category-level aggregates
 - `Relevant`: Helps identify categories with stable or unstable sales patterns
-- `Time-bound`: Limited to the same 30-day period
+- `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`
 
 #### Theme 2. Pricing and Discount Strategy
 
@@ -56,23 +56,23 @@ This theme focuses on the relationship between pricing, discount level, and sale
 
 **Objective 2.1**
 
-Quantify the relationship between discount rate and sales performance for Nike products from **February 19, 2026** to **March 20, 2026** in order to determine the **discount ranges associated with stronger revenue and higher daily units sold**.
+Quantify the relationship between discount rate and sales performance for Nike products from **February 20, 2026** to **March 20, 2026** in order to determine the **discount ranges associated with stronger revenue and higher daily units sold**.
 
 - `Specific`: Discount effectiveness in relation to sales outcomes
 - `Measurable`: Uses discount rate, `daily_units_sold`, and `daily_revenue`
 - `Achievable`: `selling_price` and `original_price` support direct discount-rate calculation
 - `Relevant`: Helps evaluate how discount policy relates to product performance
-- `Time-bound`: Evaluated within the 30-day study window
+- `Time-bound`: Evaluated within the analytical window from `20-02-2026` to `20-03-2026`
 
 **Objective 2.2**
 
-Compare revenue contribution and stability across predefined price bands from **February 19, 2026** to **March 20, 2026** in order to identify the **price segment with the best balance between scale and consistency**.
+Compare revenue contribution and stability across predefined price bands from **February 20, 2026** to **March 20, 2026** in order to identify the **price segment with the best balance between scale and consistency**.
 
 - `Specific`: Price-segment comparison
 - `Measurable`: Uses total `daily_revenue`, average `daily_units_sold`, and variation measures by band
 - `Achievable`: Price bands can be created from the existing price variables
 - `Relevant`: Supports interpretation of pricing structure and sales performance
-- `Time-bound`: Limited to the same study period
+- `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`
 
 #### Theme 3. Customer Ratings and Review Signals
 
@@ -90,7 +90,7 @@ Analyze the relationship among `rating_score`, `review_count`, and `cumulative_u
 
 **Objective 3.2**
 
-Analyze review rating distribution and review-time patterns in the collected review dataset in order to identify **dominant sentiment patterns** and **longer-term customer feedback trends**, while explicitly separating these review patterns from the 30-day sales-window analysis.
+Analyze review rating distribution and review-time patterns in the collected review dataset in order to identify **dominant sentiment patterns** and **longer-term customer feedback trends**, while explicitly separating these review patterns from the main sales-analysis window that runs from **February 20, 2026** to **March 20, 2026**.
 
 - `Specific`: Rating distribution and temporal review patterns
 - `Measurable`: Uses review `rating`, review frequency over time, and review-period summaries
@@ -104,17 +104,17 @@ This theme focuses on stock availability and the structure of the product portfo
 
 **Objective 4.1**
 
-Track in-stock ratio and product listing count by category from **February 19, 2026** to **March 20, 2026** in order to identify categories with the **highest stockout pressure** and estimate potential sales opportunity loss.
+Track in-stock ratio and product listing count by category from **February 20, 2026** to **March 20, 2026** in order to identify categories with the **highest stockout pressure** and estimate potential sales opportunity loss.
 
 - `Specific`: Stock availability and listing dynamics by category
 - `Measurable`: Uses in-stock counts, out-of-stock counts, in-stock ratio, and category-level sales
 - `Achievable`: Variables are directly available in the daily snapshots
 - `Relevant`: Stock availability may affect sales performance and product visibility
-- `Time-bound`: Limited to the 30-day period
+- `Time-bound`: Limited to the analytical period from `20-02-2026` to `20-03-2026`
 
 **Objective 4.2**
 
-Measure revenue concentration from top products in the **March 20, 2026** snapshot and over the full observation period in order to determine whether sales are diversified or highly dependent on a relatively small number of products.
+Measure revenue concentration from top products in the **March 20, 2026** snapshot and over the full analytical period in order to determine whether sales are diversified or highly dependent on a relatively small number of products.
 
 - `Specific`: Product concentration and portfolio risk
 - `Measurable`: Uses top-product revenue share and concentration indicators
@@ -128,13 +128,13 @@ This theme uses Machine Learning as a supporting analytical method to strengthen
 
 **Objective 5.1**
 
-Develop and compare interpretable regression models for `daily_units_sold` at the product-day level using category, selling price, discount rate, stock status, rating score, review count, cumulative sales, and time-related features from **February 19, 2026** to **March 20, 2026**, in order to estimate short-term sales performance, assess whether the selected model performs better than a baseline benchmark, and rank the relative influence of the main sales drivers through model interpretation.
+Develop and compare interpretable regression models for `daily_units_sold` at the product-day level using category, selling price, discount rate, stock status, rating score, review count, cumulative sales, and time-related features from **February 20, 2026** to **March 20, 2026**, in order to estimate short-term sales performance, assess whether the selected model performs better than a baseline benchmark, and rank the relative influence of the main sales drivers through model interpretation.
 
 - `Specific`: Interpretable regression analysis of short-term sales drivers
 - `Measurable`: Uses `MAE`, `RMSE`, and `R^2`, together with feature-ranking outputs such as coefficients or permutation importance
 - `Achievable`: The required variables are available in the cleaned sales dataset and can be modeled with baseline, linear, and tree-based methods
 - `Relevant`: Directly supports the common analytical problem by quantifying which observed product factors are most strongly associated with better sales performance
-- `Time-bound`: Model trained on earlier dates and evaluated on later dates within the same 30-day dataset period
+- `Time-bound`: Model trained on earlier dates and evaluated on later dates within the same analytical period from `20-02-2026` to `20-03-2026`, while `19-02-2026` is retained only as the baseline snapshot
 
 **Objective 5.2**
 
@@ -144,15 +144,15 @@ Develop a product segmentation model using clustering techniques on variables su
 - `Measurable`: Uses cluster quality indicators such as silhouette score and interprets segment profiles through average feature values
 - `Achievable`: Product-level aggregated features can be constructed directly from the existing sales dataset
 - `Relevant`: Supports the common analytical problem by revealing meaningful groups of products with stronger or weaker performance characteristics
-- `Time-bound`: Built from the full dataset collected between February 19, 2026 and March 20, 2026
+- `Time-bound`: Built from the analytical dataset spanning **February 20, 2026** to **March 20, 2026**, with **February 19, 2026** retained only as the baseline snapshot
 
 ### 3.1.4. Why These Objectives Match the Project Requirements
 
-These objectives are consistent with the project requirements because they are built directly from the team’s self-collected data, follow the SMART principle, and can be supported through charts, descriptive statistics, and evidence-based conclusions. In addition, the Machine Learning theme remains aligned with the common analytical problem and serves as a meaningful optional extension rather than replacing the required visualization-based analysis.
+These objectives are consistent with the project requirements because they are built directly from the team's self-collected data, follow the SMART principle, and can be supported through charts, descriptive statistics, and evidence-based conclusions. In addition, the Machine Learning theme remains aligned with the common analytical problem and serves as a meaningful optional extension rather than replacing the required visualization-based analysis.
 
 ### 3.1.5. Note for Final Report Integration
 
-In the final report, the placeholders `Member 1` to `Member 5` should be replaced with the actual names of the group members. The exact time scope, **February 19, 2026** to **March 20, 2026**, should be kept unchanged to preserve consistency between the narrative, the analysis, and the collected dataset.
+In the final report, the placeholders `Member 1` to `Member 5` should be replaced with the actual names of the group members. The report should clearly distinguish between the **full collected snapshot range** (**February 19, 2026** to **March 20, 2026**) and the **analytical window** (**February 20, 2026** to **March 20, 2026**), because **February 19, 2026** serves only as the baseline snapshot for deriving daily sales values.
 
 ---
 
@@ -160,7 +160,7 @@ In the final report, the placeholders `Member 1` to `Member 5` should be replace
 
 ### 3.3.1. Overview of the Collected Dataset
 
-The data analysis section is based on the same self-collected Lazada dataset described above. The sales data captures product-level information across 30 daily snapshots, while the review data provides additional customer feedback context. Together, these sources support several levels of analysis, including overall dataset description, comparison across categories, relationship analysis among variables, and optional predictive modeling.
+The data analysis section is based on the same self-collected Lazada dataset described above. The sales data captures product-level information across **30 daily snapshots**, with the **February 19, 2026** snapshot used as a baseline and the main analysis conducted on the period from **February 20, 2026** to **March 20, 2026**. The review data provides additional customer feedback context. Together, these sources support several levels of analysis, including overall dataset description, comparison across categories, relationship analysis among variables, and optional predictive modeling.
 
 At the descriptive level, the dataset is sufficiently structured for analysis. Numeric variables such as price, cumulative units sold, daily units sold, daily revenue, rating score, and review count can be used for distributional and relational analysis. Categorical variables such as category, stock status, and warehouse location can be used to compare product groups and identify structural differences across the product portfolio.
 
@@ -181,7 +181,7 @@ This approach is consistent with the requirements of the lab, which emphasize co
 
 This theme examines how sales performance changes across categories and across time. The main variables are `snapshot_date`, `category`, `daily_units_sold`, and `daily_revenue`. Line charts are suitable for showing temporal trends, stacked bar charts are useful for comparing category-level revenue contribution, and heatmaps can help visualize category behavior across dates.
 
-For **Objective 1.1**, the analysis should identify the categories with the strongest revenue contribution over the full observation period. For **Objective 1.2**, the analysis should compare day-to-day revenue variation across categories in order to distinguish stable categories from volatile ones.
+For **Objective 1.1**, the analysis should identify the categories with the strongest revenue contribution over the full analytical period. For **Objective 1.2**, the analysis should compare day-to-day revenue variation across categories in order to distinguish stable categories from volatile ones.
 
 Suggested figures:
 
@@ -191,7 +191,7 @@ Suggested figures:
 
 Suggested interpretation sentence:
 
-> Based on the category-level revenue trend and revenue variability charts, the analysis shows that [insert top categories] generated the highest total revenue, while [insert volatile categories] displayed the largest day-to-day fluctuations during the 30-day observation period.
+> Based on the category-level revenue trend and revenue variability charts, the analysis shows that [insert top categories] generated the highest total revenue, while [insert volatile categories] displayed the largest day-to-day fluctuations during the analytical period from February 20, 2026 to March 20, 2026.
 
 #### Theme 2. Pricing and Discount Strategy
 
@@ -213,7 +213,7 @@ Suggested interpretation sentence:
 
 This theme examines whether customer evaluation signals are associated with stronger product performance. The main variables are `rating_score`, `review_count`, `cumulative_units_sold`, `rating`, and `review_time`. Scatter plots with trendlines can be used to study the relationship between ratings, review count, and sales, while histograms and time-series review charts can be used to describe the distribution and timing of customer feedback.
 
-For **Objective 3.1**, the analysis should examine whether higher rating scores and higher review counts are associated with stronger cumulative sales in the final snapshot. For **Objective 3.2**, the analysis should describe broader sentiment patterns in the review dataset and clearly note that review timing extends beyond the 30-day sales period.
+For **Objective 3.1**, the analysis should examine whether higher rating scores and higher review counts are associated with stronger cumulative sales in the final snapshot. For **Objective 3.2**, the analysis should describe broader sentiment patterns in the review dataset and clearly note that review timing extends beyond the main sales-analysis period from **February 20, 2026** to **March 20, 2026**.
 
 The review data is heavily concentrated in positive feedback, with **7,003 five-star reviews** out of **7,605 total reviews**. The lower ratings are much less common, including **340 one-star reviews**, **36 two-star reviews**, **84 three-star reviews**, and **142 four-star reviews**.
 
@@ -273,7 +273,7 @@ The final analytical summary should synthesize the findings from all themes in o
 
 Suggested closing paragraph:
 
-> In summary, the analysis of Nike products on Lazada during the period from February 19, 2026 to March 20, 2026 provides a structured view of category performance, pricing behavior, customer feedback, and product availability. By combining descriptive visualization with objective-based interpretation, the group is able to identify the main observable patterns in the collected dataset and use them to address the overall analytical problem in a data-driven manner.
+> In summary, the analysis of Nike products on Lazada during the analytical period from **February 20, 2026** to **March 20, 2026**, using **February 19, 2026** as the baseline snapshot, provides a structured view of category performance, pricing behavior, customer feedback, and product availability. By combining descriptive visualization with objective-based interpretation, the group is able to identify the main observable patterns in the collected dataset and use them to address the overall analytical problem in a data-driven manner.
 
 ### 3.3.5. Final Editing Note
 
