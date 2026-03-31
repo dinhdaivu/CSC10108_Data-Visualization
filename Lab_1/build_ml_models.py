@@ -3,7 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import datetime, date
 import json
-from typing import Dict, List, Tuple
+from typing import Any, Dict, List, Tuple, cast
+import unicodedata
 
 import joblib
 import numpy as np
@@ -46,6 +47,25 @@ COLUMN_MAP = {
     "so_luong_ban_trong_ngay": "daily_units_sold",
     "doanh_thu_ngay": "daily_revenue",
 }
+
+
+def normalize_text(value: object) -> str:
+    if pd.isna(cast(Any, value)):
+        return ""
+
+    text = str(value).strip().lower()
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    return " ".join(text.split())
+
+
+def infer_stock_flag(stock_status: object) -> int:
+    normalized = normalize_text(stock_status)
+    if "het hang" in normalized:
+        return 0
+    if "con hang" in normalized:
+        return 1
+    return 0
 
 
 def parse_folder_date(folder_name: str) -> date | None:
@@ -104,8 +124,8 @@ def clean_sales_data(raw_df: pd.DataFrame) -> pd.DataFrame:
     for col in numeric_cols:
         df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    for col in ["product_id", "product_name", "category", "warehouse_location", "stock_status", "brand_name"]:
-        df[col] = df[col].astype(str).str.strip()
+    for col in ["product_id", "product_name", "category", "warehouse_location", "stock_status", "brand_name", "product_url"]:
+        df[col] = df[col].fillna("").astype(str).str.strip()
 
     df["snapshot_date"] = pd.to_datetime(df["snapshot_date"], errors="coerce")
     df = df.dropna(subset=["snapshot_date"])
@@ -118,7 +138,7 @@ def clean_sales_data(raw_df: pd.DataFrame) -> pd.DataFrame:
     )
     df["discount_rate"] = df["discount_rate"].clip(lower=0.0, upper=1.0)
 
-    df["is_in_stock"] = df["stock_status"].str.contains("Còn", case=False, na=False).astype(int)
+    df["is_in_stock"] = df["stock_status"].apply(infer_stock_flag).astype(int)
     df["day_of_week"] = df["snapshot_date"].dt.dayofweek
     df["is_weekend"] = (df["day_of_week"] >= 5).astype(int)
 
@@ -265,14 +285,16 @@ def evaluate_regression_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd.D
         fitted_pipelines[name] = pipeline
 
     metrics_df = pd.DataFrame(metrics).sort_values(by="mae", ascending=True).reset_index(drop=True)
-    best_model_name = metrics_df.loc[0, "model"]
+    best_model_name = str(metrics_df.loc[0, "model"])
     best_pipeline = fitted_pipelines[best_model_name]
 
-    metrics_df.to_csv(output_dir / "regression_metrics.csv", index=False)
+    metrics_df.to_csv(output_dir / "regression_metrics.csv", index=False, encoding="utf-8-sig")
     joblib.dump(best_pipeline, output_dir / "best_regression_model.joblib")
 
     # Model-agnostic importance on the held-out time-based test set.
-    perm = permutation_importance(
+    perm = cast(
+        Any,
+        permutation_importance(
         best_pipeline,
         X_test,
         y_test,
@@ -280,6 +302,7 @@ def evaluate_regression_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd.D
         random_state=RANDOM_STATE,
         scoring="neg_mean_absolute_error",
         n_jobs=1,
+        ),
     )
     permutation_df = pd.DataFrame(
         {
@@ -288,7 +311,7 @@ def evaluate_regression_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd.D
             "importance_std": perm.importances_std,
         }
     ).sort_values("importance_mean", ascending=False)
-    permutation_df.to_csv(output_dir / "regression_permutation_importance.csv", index=False)
+    permutation_df.to_csv(output_dir / "regression_permutation_importance.csv", index=False, encoding="utf-8-sig")
 
     return metrics_df, best_pipeline, best_model_name, permutation_df
 
@@ -339,6 +362,9 @@ def build_product_segmentation_frame(df: pd.DataFrame) -> pd.DataFrame:
 def evaluate_segmentation_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd.DataFrame, Dict[str, object], int, pd.DataFrame, pd.DataFrame]:
     seg_df = build_product_segmentation_frame(df)
 
+    if len(seg_df) < 3:
+        raise ValueError("At least three products are required to build a clustering-based segmentation model.")
+
     feature_cols = [
         "selling_price",
         "discount_rate",
@@ -366,6 +392,8 @@ def evaluate_segmentation_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd
     best_model = None
 
     max_k = min(6, len(model_df) - 1)
+    if max_k < 3:
+        raise ValueError("Not enough products are available to evaluate clustering models with k >= 3.")
     for k in range(3, max_k + 1):
         model = KMeans(n_clusters=k, random_state=RANDOM_STATE, n_init=20)
         labels = model.fit_predict(X_scaled)
@@ -419,10 +447,10 @@ def evaluate_segmentation_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd
     )
 
     metrics_df = pd.DataFrame(metrics).sort_values(by="silhouette_score", ascending=False).reset_index(drop=True)
-    metrics_df.to_csv(output_dir / "segmentation_metrics.csv", index=False)
-    centers.to_csv(output_dir / "segment_centers.csv", index=False)
-    model_df.to_csv(output_dir / "product_segments.csv", index=False)
-    segment_profiles.to_csv(output_dir / "segment_profiles.csv", index=False)
+    metrics_df.to_csv(output_dir / "segmentation_metrics.csv", index=False, encoding="utf-8-sig")
+    centers.to_csv(output_dir / "segment_centers.csv", index=False, encoding="utf-8-sig")
+    model_df.to_csv(output_dir / "product_segments.csv", index=False, encoding="utf-8-sig")
+    segment_profiles.to_csv(output_dir / "segment_profiles.csv", index=False, encoding="utf-8-sig")
     joblib.dump({"model": best_model, "scaler": scaler, "feature_cols": feature_cols}, output_dir / "best_segmentation_model.joblib")
 
     return metrics_df, {"model": best_model, "scaler": scaler, "feature_cols": feature_cols}, best_k, model_df, segment_profiles
@@ -431,22 +459,32 @@ def evaluate_segmentation_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd
 def export_feature_importance(
     pipeline: Pipeline,
     output_file: Path,
-) -> None:
+) -> bool:
     model = pipeline.named_steps["model"]
     preprocessor: ColumnTransformer = pipeline.named_steps["preprocess"]
-
-    if not hasattr(model, "feature_importances_"):
-        return
-
     feature_names = preprocessor.get_feature_names_out()
-    importance_df = pd.DataFrame(
-        {
-            "feature": feature_names,
-            "importance": model.feature_importances_,
-        }
-    ).sort_values("importance", ascending=False)
 
-    importance_df.to_csv(output_file, index=False)
+    if hasattr(model, "feature_importances_"):
+        importance_df = pd.DataFrame(
+            {
+                "feature": feature_names,
+                "importance": model.feature_importances_,
+            }
+        ).sort_values("importance", ascending=False)
+    elif hasattr(model, "coef_"):
+        coefficients = np.ravel(model.coef_)
+        importance_df = pd.DataFrame(
+            {
+                "feature": feature_names,
+                "coefficient": coefficients,
+                "importance": np.abs(coefficients),
+            }
+        ).sort_values("importance", ascending=False)
+    else:
+        return False
+
+    importance_df.to_csv(output_file, index=False, encoding="utf-8-sig")
+    return True
 
 
 def main() -> None:
@@ -462,7 +500,7 @@ def main() -> None:
     sales_df = filter_analysis_window(sales_df, ANALYSIS_START_DATE, END_DATE)
 
     # Save cleaned base table for Power BI
-    sales_df.to_csv(output_dir / "daily_sales_cleaned.csv", index=False)
+    sales_df.to_csv(output_dir / "daily_sales_cleaned.csv", index=False, encoding="utf-8-sig")
 
     print("Training regression models...")
     reg_metrics, best_reg_pipeline, best_reg_name, reg_perm_importance = evaluate_regression_models(sales_df, output_dir)
@@ -470,7 +508,10 @@ def main() -> None:
     print("Building product segmentation model...")
     seg_metrics, best_seg_model, best_k, segmented_products, segment_profiles = evaluate_segmentation_models(sales_df, output_dir)
 
-    export_feature_importance(best_reg_pipeline, output_dir / "regression_feature_importance.csv")
+    feature_importance_exported = export_feature_importance(
+        best_reg_pipeline,
+        output_dir / "regression_feature_importance.csv",
+    )
 
     summary = {
         "date_range": {
@@ -494,6 +535,7 @@ def main() -> None:
         },
         "regression_explanation": {
             "permutation_features_exported": int(len(reg_perm_importance)),
+            "model_feature_importance_exported": bool(feature_importance_exported),
         },
         "segmentation": {
             "best_n_clusters": int(best_k),

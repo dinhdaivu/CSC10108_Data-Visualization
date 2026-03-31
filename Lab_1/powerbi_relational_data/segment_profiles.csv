@@ -1,4 +1,4 @@
-segment_id,product_count,dominant_category,avg_selling_price,avg_discount_rate,avg_rating_score,avg_review_count,avg_cumulative_units_sold,avg_daily_units_sold,avg_daily_revenue,avg_total_period_revenue,avg_stock_availability_rate,avg_sales_volatility
+﻿segment_id,product_count,dominant_category,avg_selling_price,avg_discount_rate,avg_rating_score,avg_review_count,avg_cumulative_units_sold,avg_daily_units_sold,avg_daily_revenue,avg_total_period_revenue,avg_stock_availability_rate,avg_sales_volatility
 1,6,Giày tập huấn luyện nam,1785833.3333333333,0.0034049240440020955,4.698444276030483,16.666666666666668,76.16666666666667,38.083333333333336,63234833.333333336,126469666.66666667,1.0,53.62226423997985
 2,46,"Tất, Găng tay thể thao và đồ bảo hộ",1404543.4782608696,0.0004599251855031581,4.792104906478166,48.391304347826086,230.41304347826087,0.44536705312567376,451729.8164590144,11772000.0,0.9134754412115732,1.1329816712750753
 0,641,Giày chạy bộ nam,2069068.6427457097,0.0023040013846231063,4.808791346372025,7.282371294851794,31.28393135725429,0.2595235367021159,425382.4641018931,6791120.124804992,0.9931630734086212,0.5873420859513965

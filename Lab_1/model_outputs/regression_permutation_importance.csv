@@ -1,4 +1,4 @@
-feature,importance_mean,importance_std
+﻿feature,importance_mean,importance_std
 selling_price,0.11642391918209585,0.0024454307979533993
 original_price,0.1054394411673188,0.002309829702231382
 cumulative_units_sold,0.02319462475853925,0.0008124256563806813

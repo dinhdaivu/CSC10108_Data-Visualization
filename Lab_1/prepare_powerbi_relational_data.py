@@ -174,6 +174,7 @@ def build_fact_review(review_df: pd.DataFrame, valid_product_ids: set[str]) -> p
 def copy_ml_outputs(source_dir: Path, target_dir: Path) -> None:
     files_to_copy = [
         "regression_metrics.csv",
+        "regression_feature_importance.csv",
         "regression_permutation_importance.csv",
         "segmentation_metrics.csv",
         "product_segments.csv",

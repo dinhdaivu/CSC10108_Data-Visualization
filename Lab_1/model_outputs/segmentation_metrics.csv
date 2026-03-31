@@ -1,4 +1,4 @@
-model,n_clusters,silhouette_score,inertia
+﻿model,n_clusters,silhouette_score,inertia
 kmeans,3,0.5142575413875239,4178.872783394176
 kmeans,5,0.4395325415105228,2995.797487486091
 kmeans,4,0.43223968821588193,3492.5441145111163

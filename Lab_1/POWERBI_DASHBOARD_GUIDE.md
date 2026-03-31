@@ -59,6 +59,7 @@ Core relational tables:
 
 Machine Learning support tables:
 - `powerbi_relational_data/regression_metrics.csv`
+- `powerbi_relational_data/regression_feature_importance.csv`
 - `powerbi_relational_data/regression_permutation_importance.csv`
 - `powerbi_relational_data/segmentation_metrics.csv`
 - `powerbi_relational_data/product_segments.csv`
@@ -239,6 +240,7 @@ This is better than using one flattened file because:
 
 Use the same types as previously:
 - `regression_metrics.csv`: text and numeric evaluation metrics
+- `regression_feature_importance.csv`: transformed feature names with model-based importance values
 - `regression_permutation_importance.csv`: feature text and decimal values
 - `segmentation_metrics.csv`: text, whole number, and decimal values
 - `product_segments.csv`: product-level mixed text and numeric fields

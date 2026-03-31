@@ -19,7 +19,8 @@
     "segmentation": "kmeans_3_clusters"
   },
   "regression_explanation": {
-    "permutation_features_exported": 12
+    "permutation_features_exported": 12,
+    "model_feature_importance_exported": true
   },
   "segmentation": {
     "best_n_clusters": 3,
