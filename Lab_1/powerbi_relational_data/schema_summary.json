@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "dim_shop": 1,
+    "dim_category": 21,
+    "dim_product": 693,
+    "dim_date": 533,
+    "fact_product_snapshot": 18487,
+    "fact_review": 7605
+  },
+  "relationships": [
+    {
+      "from": "dim_shop.shop_id",
+      "to": "dim_product.shop_id",
+      "type": "one-to-many"
+    },
+    {
+      "from": "dim_category.category_id",
+      "to": "dim_product.category_id",
+      "type": "one-to-many"
+    },
+    {
+      "from": "dim_product.product_id",
+      "to": "fact_product_snapshot.product_id",
+      "type": "one-to-many"
+    },
+    {
+      "from": "dim_product.product_id",
+      "to": "fact_review.product_id",
+      "type": "one-to-many"
+    },
+    {
+      "from": "dim_date.date_key",
+      "to": "fact_product_snapshot.date_key",
+      "type": "one-to-many"
+    },
+    {
+      "from": "dim_date.date_key",
+      "to": "fact_review.date_key",
+      "type": "one-to-many"
+    }
+  ]
+}

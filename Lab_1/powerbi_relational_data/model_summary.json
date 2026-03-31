@@ -1,0 +1,29 @@
+{
+  "date_range": {
+    "baseline_start": "2026-02-19",
+    "analysis_start": "2026-02-20",
+    "end": "2026-03-20"
+  },
+  "evaluation_split": {
+    "type": "time_based",
+    "train_fraction_by_unique_dates": 0.8,
+    "test_fraction_by_unique_dates": 0.2
+  },
+  "dataset": {
+    "rows": 18487,
+    "unique_products": 693,
+    "unique_categories": 21
+  },
+  "best_models": {
+    "regression": "linear_regression",
+    "segmentation": "kmeans_3_clusters"
+  },
+  "regression_explanation": {
+    "permutation_features_exported": 12
+  },
+  "segmentation": {
+    "best_n_clusters": 3,
+    "products_segmented": 693,
+    "segments_exported": 3
+  }
+}
