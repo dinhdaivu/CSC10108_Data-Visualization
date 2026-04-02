@@ -19,7 +19,7 @@ except:
 
 # --- HAM 1: MO SELENIUM LAY COOKIE ---
 def get_session_manual(url="https://www.lazada.vn/nike-flagship-store/?q=All-Products&from=wangpu&langFlag=vi&pageTypeId=2"):
-    print("\n[SYSTEM] 🟢 Đang khởi động Chrome...")
+    print("\n[SYSTEM] Đang khởi động Chrome...")
     options = Options()
     options.add_argument("--start-maximized")
     options.add_argument("--disable-blink-features=AutomationControlled")
@@ -28,10 +28,10 @@ def get_session_manual(url="https://www.lazada.vn/nike-flagship-store/?q=All-Pro
     try:
         driver.get(url)
         print("\n" + "="*70)
-        print("🛑 CHẾ ĐỘ THỦ CÔNG:")
-        print("👉 1. Giải Captcha nếu có.")
-        print("👉 2. Đăng nhập tài khoản Lazada nếu cần.")
-        print("✅ Sau khi hoàn thành, nhấn [ENTER] để tiếp tục.")
+        print("CHẾ ĐỘ THỦ CÔNG:")
+        print("1. Giải Captcha nếu có.")
+        print("2. Đăng nhập tài khoản Lazada nếu cần.")
+        print("Sau khi hoàn thành, nhấn [ENTER] để tiếp tục.")
         print("="*70 + "\n")
         input(">>> Nhấn [ENTER] để bắt đầu crawling...")
         
@@ -40,7 +40,7 @@ def get_session_manual(url="https://www.lazada.vn/nike-flagship-store/?q=All-Pro
         driver.quit()
         return cookies, ua
     except Exception as e:
-        print(f"❌ Lỗi Selenium: {e}")
+        print(f"Lỗi Selenium: {e}")
         driver.quit()
         return None, None
 
@@ -80,7 +80,7 @@ def main():
     cookies, ua = get_session_manual()
     if not cookies: return
 
-    print("\n[2] 🔍 Đang quét danh sách danh mục...")
+    print("\n[2] Đang quét danh sách danh mục...")
     api_cat = "https://www.lazada.vn/nike-flagship-store/?ajax=true&from=wangpu&langFlag=vi&page=1&pageTypeId=2&q=All-Products"
     headers = {'User-Agent': str(ua), 'Referer': 'https://www.lazada.vn/', 'X-Requested-With': 'XMLHttpRequest'}
     
@@ -93,7 +93,7 @@ def main():
                 cat_list = f.get('options', [])
                 break
     except:
-        print("❌ Không lấy được danh mục sản phẩm.")
+        print("Không lấy được danh mục sản phẩm.")
         return
 
     all_data = []
@@ -102,7 +102,7 @@ def main():
     for cat in cat_list:
         cat_name = cat.get('title')
         cat_val = cat.get('value')
-        print(f"\n🚀 CRAWLING: {cat_name.upper()}")
+        print(f"\nCRAWLING: {cat_name.upper()}")
         
         page = 1
         while True:
@@ -133,7 +133,7 @@ def main():
         
         if not os.path.exists(target_path):
             os.makedirs(target_path)
-            print(f"📂 Đã tạo thư mục mới: {target_path}")
+            print(f"Đã tạo thư mục mới: {target_path}")
 
         df = pd.DataFrame(all_data)
         
@@ -146,14 +146,14 @@ def main():
         df.to_json(json_path, orient='records', force_ascii=False, indent=4)
         
         print("\n" + "="*50)
-        print(f"✅ HOÀN THÀNH!")
-        print(f"📊 Tổng số sản phẩm thu thập được: {len(df)}")
-        print(f"📁 Dữ liệu được lưu tại thư mục: {target_path}")
-        print(f"   📄 {csv_path}")
-        print(f"   📄 {json_path}")
+        print(f"HOÀN THÀNH!")
+        print(f"Tổng số sản phẩm thu thập được: {len(df)}")
+        print(f"Dữ liệu được lưu tại thư mục: {target_path}")
+        print(f"   {csv_path}")
+        print(f"   {json_path}")
         print("="*50)
     else:
-        print("\n❌ Không có dữ liệu.")
+        print("\n Không có dữ liệu.")
 
 
 if __name__ == "__main__":

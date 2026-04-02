@@ -24,7 +24,7 @@ output_file = os.path.join(target_path, 'reviews.json')
 
 # --- HÀM 1: MỞ TRÌNH DUYỆT ĐỂ BẠN GIẢI CAPTCHA/LẤY TOKEN ---
 def get_session_manual():
-    print(f"\n[SYSTEM] 🟢 Đang kích hoạt chế độ xác thực thủ công...")
+    print(f"\n[SYSTEM] Đang kích hoạt chế độ xác thực thủ công...")
     options = Options()
     options.add_argument("--start-maximized")
  
@@ -34,10 +34,10 @@ def get_session_manual():
     driver.get("https://www.lazada.vn/products/i3133030071.html") 
     
     print("\n" + "="*70)
-    print("🚀 HÀNH ĐỘNG CẦN THIẾT:")
-    print("👉 1. Giải Captcha nếu có")
-    print("👉 2. Đăng nhập tài khoản Lazada nếu cần")
-    print("👉 3. Sau khi trang hiện ra nhận xét, nhấn [ENTER].")
+    print("HÀNH ĐỘNG CẦN THIẾT:")
+    print("1. Giải Captcha nếu có")
+    print("2. Đăng nhập tài khoản Lazada nếu cần")
+    print("3. Sau khi trang hiện ra nhận xét, nhấn [ENTER].")
     print("="*70 + "\n")
     input(">>> Nhấn [ENTER] để tiếp tục cào dữ liệu...")
     
@@ -47,7 +47,7 @@ def get_session_manual():
     
     driver.quit()
     if not token:
-        print("❌ Cảnh báo: Không lấy được Token!")
+        print("Cảnh báo: Không lấy được Token!")
     return token, cookies, ua
 
 # --- HÀM 2: TÍNH TOÁN CHỮ KÝ MD5 (SIGN) ---
@@ -94,8 +94,7 @@ def fetch_item_reviews(item_id, token, cookies, ua):
                         'id_sp': item_id,
                         'rating': rev.get('rating'),
                         'comment': content.strip(),
-                        'time': rev.get('reviewTime'),
-                        'sku': rev.get('skuInfo')
+                        'time': rev.get('reviewTime')
                     })
                 
                 # Cập nhật số trang từ lần gọi đầu tiên
@@ -117,7 +116,7 @@ def fetch_item_reviews(item_id, token, cookies, ua):
 # --- HÀM CHÍNH: QUẢN LÝ VÒNG LẶP CÁC SẢN PHẨM ---
 def main():
     if not os.path.exists(input_file):
-        print(f"❌ Không thấy file {input_file}")
+        print(f"Không thấy file {input_file}")
         return
 
     # A. Tải dữ liệu cũ để chạy tiếp (Checkpoint)
@@ -127,7 +126,7 @@ def main():
         with open(output_file, 'r', encoding='utf-8') as f:
             all_final_data = json.load(f)
             crawled_ids = {str(r['id_sp']) for r in all_final_data}
-        print(f"📦 Đã tìm thấy dữ liệu cũ. Bỏ qua {len(crawled_ids)} sản phẩm đã hoàn thành.")
+        print(f" Đã tìm thấy dữ liệu cũ. Bỏ qua {len(crawled_ids)} sản phẩm đã hoàn thành.")
 
     # B. Lọc danh sách sản phẩm chưa cào
     with open(input_file, 'r', encoding='utf-8') as f:
@@ -135,7 +134,7 @@ def main():
         remaining_products = [p for p in all_products if str(p['id']) not in crawled_ids]
 
     if not remaining_products:
-        print("✅ Hoàn thành 100% danh sách sản phẩm!")
+        print("Hoàn thành 100% danh sách sản phẩm!")
         return
 
     # C. Lấy Token lần đầu
@@ -147,7 +146,7 @@ def main():
         pid = str(p.get('id'))
         pname = p.get('ten_san_pham', 'N/A')[:35]
         
-        print(f"🚀 [{idx+1}/{len(remaining_products)}] Đang quét: {pid}")
+        print(f" [{idx+1}/{len(remaining_products)}] Đang quét: {pid}")
         
         item_reviews, status = fetch_item_reviews(pid, token, cookies, ua)
         
@@ -157,24 +156,24 @@ def main():
                 # Lưu JSON ngay lập tức
                 with open(output_file, 'w', encoding='utf-8') as f:
                     json.dump(all_final_data, f, ensure_ascii=False, indent=4)
-                print(f"   ✅ Lấy xong: {len(item_reviews)} reviews.")
+                print(f"   Lấy xong: {len(item_reviews)} reviews.")
             else:
-                print(f"   ⚪ Sản phẩm không có nhận xét.")
+                print(f"   Sản phẩm không có nhận xét.")
             
             idx += 1 # Chuyển sang sản phẩm tiếp theo
             time.sleep(0.1)
             
         elif status == "BLOCK_CAPTCHA":
-            print(f"\n⚠️ CẢNH BÁO: Lazada đã phát hiện Bot (FAIL_SYS_USER_VALIDATE)!")
-            print("🔄 Hãy giải Captcha trên trình duyệt sắp mở ra...")
+            print(f"\nCẢNH BÁO: Lazada đã phát hiện Bot (FAIL_SYS_USER_VALIDATE)!")
+            print("Hãy giải Captcha trên trình duyệt sắp mở ra...")
             token, cookies, ua = get_session_manual()
             # Không tăng idx để vòng lặp chạy lại đúng ID vừa bị lỗi
             
         else:
-            print(f"   ❌ Lỗi kết nối ({status}). Thử lại sau 5 giây...")
+            print(f"   Lỗi kết nối ({status}). Thử lại sau 5 giây...")
             time.sleep(5)
 
-    print(f"\n🎉 HOÀN THÀNH! Tổng cộng lấy được {len(all_final_data)} nhận xét.")
+    print(f"\nHOÀN THÀNH! Tổng cộng lấy được {len(all_final_data)} nhận xét.")
 
 if __name__ == "__main__":
     main()
