@@ -32,7 +32,7 @@ This theme focuses on category-level sales dynamics throughout the observation p
 
 **Objective 1.1**
 
-Analyze daily revenue and daily units sold by product category from **February 20, 2026** to **March 20, 2026** in order to identify the **three categories with the highest total revenue** during the study period.
+Analyze daily revenue and daily units sold by product category from **February 20, 2026** to **March 20, 2026** in order to identify the **three categories with the highest total revenue** during th  e study period.
 
 - `Specific`: Category-level sales performance over time
 - `Measurable`: Uses `daily_revenue`, `daily_units_sold`, and top-three ranking

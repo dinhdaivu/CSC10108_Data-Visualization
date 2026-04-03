@@ -65,9 +65,14 @@ Machine Learning support tables:
 - `powerbi_relational_data/product_segments.csv`
 - `powerbi_relational_data/segment_profiles.csv`
 - `powerbi_relational_data/segment_centers.csv`
-- `powerbi_relational_data/model_summary.json`
+- `powerbi_relational_data/model_summary.csv`
 
 Schema reference:
+- `powerbi_relational_data/schema_entities.csv`
+- `powerbi_relational_data/schema_relationships.csv`
+
+Optional JSON reference files:
+- `powerbi_relational_data/model_summary.json`
 - `powerbi_relational_data/schema_summary.json`
 
 ## 5. Recommended entity relationship design
@@ -238,16 +243,239 @@ This is better than using one flattened file because:
 
 ### ML output tables
 
-Use the same types as previously:
-- `regression_metrics.csv`: text and numeric evaluation metrics
-- `regression_feature_importance.csv`: transformed feature names with model-based importance values
-- `regression_permutation_importance.csv`: feature text and decimal values
-- `segmentation_metrics.csv`: text, whole number, and decimal values
-- `product_segments.csv`: product-level mixed text and numeric fields
-- `segment_profiles.csv`: segment-level summary
-- `segment_centers.csv`: segment-center numeric values
+### `regression_metrics.csv`
 
-## 11. Core DAX measures
+- `model`: Text
+- `mae`: Decimal Number
+- `rmse`: Decimal Number
+- `r2`: Decimal Number
+- `train_start_date`: Date
+- `train_end_date`: Date
+- `test_start_date`: Date
+- `test_end_date`: Date
+
+### `regression_feature_importance.csv`
+
+- `feature`: Text
+- `coefficient`: Decimal Number
+- `importance`: Decimal Number
+
+Note:
+- if the exported model does not have coefficients, this table may instead contain only `feature` and `importance`
+
+### `regression_permutation_importance.csv`
+
+- `feature`: Text
+- `importance_mean`: Decimal Number
+- `importance_std`: Decimal Number
+
+### `segmentation_metrics.csv`
+
+- `model`: Text
+- `n_clusters`: Whole Number
+- `silhouette_score`: Decimal Number
+- `inertia`: Decimal Number
+
+### `product_segments.csv`
+
+- `product_id`: Text
+- `product_name`: Text
+- `category`: Text
+- `warehouse_location`: Text
+- `stock_status`: Text
+- `selling_price`: Decimal Number or Fixed Decimal Number
+- `original_price`: Decimal Number or Fixed Decimal Number
+- `discount_rate`: Decimal Number
+- `rating_score`: Decimal Number
+- `review_count`: Whole Number
+- `cumulative_units_sold`: Whole Number
+- `latest_snapshot_date`: Date
+- `avg_daily_units_sold`: Decimal Number
+- `avg_daily_revenue`: Decimal Number or Fixed Decimal Number
+- `total_period_revenue`: Decimal Number or Fixed Decimal Number
+- `avg_discount_rate`: Decimal Number
+- `avg_rating_score`: Decimal Number
+- `avg_review_count`: Decimal Number
+- `stock_availability_rate`: Decimal Number
+- `observation_days`: Whole Number
+- `sales_volatility`: Decimal Number
+- `segment_id`: Whole Number
+
+### `segment_profiles.csv`
+
+- `segment_id`: Whole Number
+- `product_count`: Whole Number
+- `dominant_category`: Text
+- `avg_selling_price`: Decimal Number or Fixed Decimal Number
+- `avg_discount_rate`: Decimal Number
+- `avg_rating_score`: Decimal Number
+- `avg_review_count`: Decimal Number
+- `avg_cumulative_units_sold`: Decimal Number
+- `avg_daily_units_sold`: Decimal Number
+- `avg_daily_revenue`: Decimal Number or Fixed Decimal Number
+- `avg_total_period_revenue`: Decimal Number or Fixed Decimal Number
+- `avg_stock_availability_rate`: Decimal Number
+- `avg_sales_volatility`: Decimal Number
+
+### `segment_centers.csv`
+
+- `segment_id`: Whole Number
+- `selling_price`: Decimal Number or Fixed Decimal Number
+- `discount_rate`: Decimal Number
+- `rating_score`: Decimal Number
+- `review_count`: Decimal Number
+- `cumulative_units_sold`: Decimal Number
+- `avg_daily_units_sold`: Decimal Number
+- `avg_daily_revenue`: Decimal Number or Fixed Decimal Number
+- `total_period_revenue`: Decimal Number or Fixed Decimal Number
+- `stock_availability_rate`: Decimal Number
+- `sales_volatility`: Decimal Number
+
+### `model_summary.csv`
+
+Recommended types:
+- `date_range_baseline_start`: Date
+- `date_range_analysis_start`: Date
+- `date_range_end`: Date
+- `evaluation_split_type`: Text
+- `evaluation_split_train_fraction_by_unique_dates`: Decimal Number
+- `evaluation_split_test_fraction_by_unique_dates`: Decimal Number
+- `dataset_rows`: Whole Number
+- `dataset_unique_products`: Whole Number
+- `dataset_unique_categories`: Whole Number
+- `best_models_regression`: Text
+- `best_models_segmentation`: Text
+- `regression_explanation_permutation_features_exported`: Whole Number
+- `regression_explanation_model_feature_importance_exported`: True/False
+- `segmentation_best_n_clusters`: Whole Number
+- `segmentation_products_segmented`: Whole Number
+- `segmentation_segments_exported`: Whole Number
+
+### `schema_entities.csv`
+
+- `entity_name`: Text
+- `row_count`: Whole Number
+
+### `schema_relationships.csv`
+
+- `relationship_id`: Whole Number
+- `from`: Text
+- `to`: Text
+- `type`: Text
+- `from_table`: Text
+- `from_column`: Text
+- `to_table`: Text
+- `to_column`: Text
+
+## 11. ML table relationship recommendations
+
+Recommended approach:
+- keep most ML/support tables disconnected
+- only connect `product_segments.csv` if you want segment labels to filter product-level visuals
+- do not connect ML tables directly to fact tables
+
+### `product_segments.csv`
+
+Recommended relationship:
+- `dim_product[product_id]` -> `product_segments[product_id]`
+
+Recommended settings:
+- cardinality: One-to-one if Power BI accepts it
+- cross filter direction: Single
+- status: Active
+
+Why:
+- `product_segments` has one row per product
+- this lets you use `segment_id` as a slicer or legend together with product attributes
+- this is the only ML relationship that is usually worth creating
+
+### `segment_profiles.csv`
+
+Recommended relationship:
+- none by default
+
+Why:
+- it is already a segment-level summary table
+- use it for standalone charts, cards, or tables on the segmentation page
+- connecting it is optional, not required
+
+### `segment_centers.csv`
+
+Recommended relationship:
+- none by default
+
+Why:
+- it is also a segment-level summary table
+- use it as a standalone support table for explaining cluster characteristics
+
+### `regression_metrics.csv`
+
+Recommended relationship:
+- none
+
+Why:
+- it is a model-evaluation table, not a transactional table
+- use it for KPI cards, score tables, or model-comparison visuals
+
+### `regression_feature_importance.csv`
+
+Recommended relationship:
+- none
+
+Why:
+- it is an explanatory model-output table
+- use it for bar charts of feature importance
+
+### `regression_permutation_importance.csv`
+
+Recommended relationship:
+- none
+
+Why:
+- it is an explanatory model-output table
+- use it for feature-importance ranking visuals
+
+### `segmentation_metrics.csv`
+
+Recommended relationship:
+- none
+
+Why:
+- it is only used to compare clustering quality
+- use it for a simple comparison table or chart
+
+### `model_summary.csv`
+
+Recommended relationship:
+- none
+
+Why:
+- it is a one-row metadata table
+- use it for cards and text-based model summary visuals
+
+### `schema_entities.csv`
+
+Recommended relationship:
+- none
+
+Why:
+- it is documentation/metadata
+- use it only for dataset overview tables if needed
+
+### `schema_relationships.csv`
+
+Recommended relationship:
+- none
+
+Why:
+- it is documentation/metadata
+- use it only to explain the model design in the report
+
+Important note:
+- if you want a more advanced segmentation model later, create a dedicated `dim_segment` table and connect it to `product_segments`, `segment_profiles`, and `segment_centers`
+- for the current lab, that extra layer is optional and not necessary
+
+## 12. Core DAX measures
 
 Use these measures first:
 
@@ -299,15 +527,25 @@ Latest Snapshot Date =
 MAX('fact_product_snapshot'[snapshot_date])
 
 Latest Snapshot Cumulative Units =
+VAR LatestDate = [Latest Snapshot Date]
+RETURN
 CALCULATE(
     SUM('fact_product_snapshot'[cumulative_units_sold]),
-    'fact_product_snapshot'[snapshot_date] = [Latest Snapshot Date]
+    FILTER(
+        'fact_product_snapshot',
+        'fact_product_snapshot'[snapshot_date] = LatestDate
+    )
 )
 
 Latest Snapshot Review Count =
+VAR LatestDate = [Latest Snapshot Date]
+RETURN
 CALCULATE(
     SUM('fact_product_snapshot'[review_count]),
-    'fact_product_snapshot'[snapshot_date] = [Latest Snapshot Date]
+    FILTER(
+        'fact_product_snapshot',
+        'fact_product_snapshot'[snapshot_date] = LatestDate
+    )
 )
 ```
 
@@ -341,21 +579,96 @@ Use `Analysis Window Flag = 1` for pages based on `daily_units_sold` and `daily_
 
 ## 12. Best dashboard pages by objective
 
+Scatter-chart note for Power BI website:
+- the web visual uses these field wells: `Values`, `X Axis`, `Y Axis`, `Legend`, `Size`, `Play Axis`, and `Tooltips`
+- it does not expose a separate `Details` field in the same way some other Power BI experiences do
+- for this guide, leave `Values` empty for scatter charts unless a specific aggregation is needed
+- use `Legend` for grouping and `Tooltips` for product-level context
+- if one point appears instead of many, the chart is being aggregated too heavily
+
 ### Page 1. Executive Overview
 
-Use:
-- KPI cards: `Total Revenue`, `Total Daily Units Sold`, `Distinct Products`, `Average Rating Score`
-- line chart: revenue over time
-- bar chart: top categories by revenue
-- slicers: date, category, stock status
+Purpose:
+- give a quick summary of overall sales, product coverage, and rating quality
+
+Main tables used:
+- `fact_product_snapshot`
+- `dim_product`
+- `dim_category`
+- `dim_date`
+
+Recommended KPI cards:
+- `Total Revenue`
+  Source: measure based on `fact_product_snapshot[daily_revenue]`
+- `Total Daily Units Sold`
+  Source: measure based on `fact_product_snapshot[daily_units_sold]`
+- `Distinct Products`
+  Source: measure based on `dim_product[product_id]`
+- `Average Rating Score`
+  Source: measure based on `fact_product_snapshot[rating_score]`
+
+Recommended visuals:
+- line chart
+  Axis: `dim_date[date]`
+  Values: `Total Revenue`
+- clustered bar chart
+  Axis: `dim_category[category_name]`
+  Values: `Total Revenue`
+  Visual filter: Top N = 10 by `Total Revenue`
+- donut or stacked column chart
+  Axis/Legend: `fact_product_snapshot[stock_status]`
+  Values: `Distinct Products` or `Products In Stock` / `Products Out of Stock`
+
+Page filters:
+- `fact_product_snapshot[Analysis Window Flag] = 1`
+
+Recommended slicers:
+- `dim_date[date]`
+- `dim_category[category_name]`
+- `fact_product_snapshot[stock_status]`
+
+Notes:
+- use this page for headline KPIs only
+- do not place `Latest Snapshot Cumulative Units` here unless you clearly label it as latest-snapshot only
 
 ### Page 2. Theme 1 - Sales Performance by Category and Time
 
-Use:
-- line chart: revenue trend by category
-- matrix or heatmap: category vs date
-- bar chart: top 3 categories by revenue
-- variability chart by category
+Purpose:
+- answer which categories perform best over time and how stable their sales are
+
+Main tables used:
+- `fact_product_snapshot`
+- `dim_category`
+- `dim_date`
+
+Recommended visuals:
+- line chart
+  Axis: `dim_date[date]`
+  Legend: `dim_category[category_name]`
+  Values: `Total Revenue`
+- matrix
+  Rows: `dim_category[category_name]`
+  Columns: `dim_date[date]` or month-level date grouping
+  Values: `Total Revenue`
+- bar chart
+  Axis: `dim_category[category_name]`
+  Values: `Total Daily Units Sold`
+  Visual filter: Top N = 3 by `Total Daily Units Sold`
+- column chart
+  Axis: `dim_category[category_name]`
+  Values: `Average Selling Price` or `Average Discount Rate`
+
+Page filters:
+- `fact_product_snapshot[Analysis Window Flag] = 1`
+
+Recommended slicers:
+- `dim_date[date]`
+- `dim_category[category_name]`
+- `dim_product[brand_name]`
+
+Notes:
+- this page should stay focused on `fact_product_snapshot`
+- use `dim_date[date]` for the timeline, not `snapshot_date` directly when possible
 
 Targets:
 - Objective 1.1
@@ -363,10 +676,45 @@ Targets:
 
 ### Page 3. Theme 2 - Pricing and Discount Strategy
 
-Use:
-- scatter plot: discount vs daily units sold
-- scatter plot: selling price vs daily revenue
-- clustered bar chart by `Price Band`
+Purpose:
+- explore how price and discount are associated with sales outcomes
+
+Main tables used:
+- `fact_product_snapshot`
+- `dim_product`
+- `dim_category`
+
+Recommended visuals:
+- scatter chart
+  X-axis: `fact_product_snapshot[discount_rate]`
+  Y-axis: `fact_product_snapshot[daily_units_sold]`
+  Legend: `dim_category[category_name]`
+  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[daily_revenue]`
+- scatter chart
+  X-axis: `fact_product_snapshot[selling_price]`
+  Y-axis: `fact_product_snapshot[daily_revenue]`
+  Legend: `dim_category[category_name]`
+  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[daily_units_sold]`
+- clustered column chart
+  Axis: `fact_product_snapshot[Price Band]`
+  Values: `Total Revenue`
+- box-style alternative if needed
+  Axis: `fact_product_snapshot[Price Band]`
+  Values: `Average Selling Price`, `Total Daily Units Sold`
+
+Page filters:
+- `fact_product_snapshot[Analysis Window Flag] = 1`
+
+Recommended slicers:
+- `dim_category[category_name]`
+- `fact_product_snapshot[Price Band]`
+- `fact_product_snapshot[stock_status]`
+
+Notes:
+- keep your wording careful here: this page shows association, not causation
+- in Power BI website, keep `Values` empty for these scatter charts
+- use `Tooltips` instead of `Details` for `dim_product[product_name]`
+- if the scatter is too crowded, keep only `category_name` in `Legend` and move product fields to `Tooltips`
 
 Targets:
 - Objective 2.1
@@ -374,11 +722,50 @@ Targets:
 
 ### Page 4. Theme 3 - Ratings and Reviews
 
-Use:
-- scatter plot: `rating_score` vs `cumulative_units_sold` from `fact_product_snapshot`
-- scatter plot: `review_count` vs `cumulative_units_sold` from `fact_product_snapshot`
-- histogram or column chart of `rating` from `fact_review`
-- line chart of review volume by month from `fact_review`
+Purpose:
+- compare product review signals with sales-related indicators
+
+Main tables used:
+- `fact_product_snapshot`
+- `fact_review`
+- `dim_product`
+- `dim_category`
+- `dim_date`
+
+Recommended visuals:
+- scatter chart
+  X-axis: `fact_product_snapshot[rating_score]`
+  Y-axis: `fact_product_snapshot[cumulative_units_sold]`
+  Legend: `dim_category[category_name]`
+  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[review_count]`
+- scatter chart
+  X-axis: `fact_product_snapshot[review_count]`
+  Y-axis: `fact_product_snapshot[cumulative_units_sold]`
+  Legend: `dim_category[category_name]`
+  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[rating_score]`
+- column chart
+  Axis: `fact_review[rating]`
+  Values: `Total Reviews`
+- line chart
+  Axis: `dim_date[date]`
+  Values: `Total Reviews`
+
+Page filters:
+- choose one of these two approaches and keep it consistent
+- option 1: focus only on the main analysis window
+  Filter `dim_date[date]` from `2026-02-20` to `2026-03-20`
+- option 2: keep full review history
+  No fixed page date filter
+
+Recommended slicers:
+- `dim_date[date]`
+- `dim_category[category_name]`
+- `dim_product[product_name]`
+
+Notes:
+- this page mixes snapshot-based metrics and review-level metrics, so label visuals clearly
+- `rating_score` and `review_count` come from `fact_product_snapshot`
+- `rating` and review volume come from `fact_review`
 
 Targets:
 - Objective 3.1
@@ -386,11 +773,38 @@ Targets:
 
 ### Page 5. Theme 4 - Inventory and Portfolio Structure
 
-Use:
-- stacked bar: in-stock vs out-of-stock by category
-- line chart: product count over time
-- Pareto-style bar: top products by total revenue
-- treemap of revenue concentration
+Purpose:
+- show stock availability, product concentration, and portfolio structure
+
+Main tables used:
+- `fact_product_snapshot`
+- `dim_product`
+- `dim_category`
+- `dim_date`
+
+Recommended visuals:
+- stacked bar chart
+  Axis: `dim_category[category_name]`
+  Values: `Products In Stock`, `Products Out of Stock`
+- line chart
+  Axis: `dim_date[date]`
+  Values: `Distinct Products`
+- bar chart
+  Axis: `dim_product[product_name]`
+  Values: `Total Revenue`
+  Visual filter: Top N = 10 by `Total Revenue`
+- treemap
+  Group: `dim_category[category_name]`
+  Values: `Total Revenue`
+
+Page filters:
+- `fact_product_snapshot[Analysis Window Flag] = 1`
+
+Recommended slicers:
+- `dim_date[date]`
+- `dim_category[category_name]`
+- `fact_product_snapshot[stock_status]`
+- `fact_product_snapshot[warehouse_location]`
 
 Useful measures:
 
@@ -414,12 +828,51 @@ Targets:
 
 ### Page 6. Theme 5 - Machine Learning Insights
 
-Use:
-- model comparison from `regression_metrics`
-- feature importance from `regression_permutation_importance`
-- segmentation quality from `segmentation_metrics`
-- segment summary from `segment_profiles`
-- product scatter by segment from `product_segments`
+Purpose:
+- present model outputs as supporting insights, not as the main fact model
+
+Main tables used:
+- `regression_metrics`
+- `regression_permutation_importance`
+- `segmentation_metrics`
+- `segment_profiles`
+- `product_segments`
+- optionally `dim_product` if `product_segments` is connected
+
+Recommended visuals:
+- table or clustered bar chart
+  Source: `regression_metrics`
+  Axis: `model`
+  Values: `mae`, `rmse`, `r2`
+- bar chart
+  Source: `regression_permutation_importance`
+  Axis: `feature`
+  Values: `importance_mean`
+- table or card
+  Source: `segmentation_metrics`
+  Values: `n_clusters`, `silhouette_score`, `inertia`
+- table
+  Source: `segment_profiles`
+  Columns: `segment_id`, `product_count`, `dominant_category`, `avg_daily_revenue`, `avg_total_period_revenue`
+- scatter chart
+  Source: `product_segments`
+  X-axis: `avg_daily_units_sold`
+  Y-axis: `avg_daily_revenue`
+  Legend: `segment_id`
+  Tooltips: `product_name`, `category`
+    
+Page filters:
+- usually none
+- model outputs are already derived from the prepared dataset
+
+Recommended slicers:
+- `product_segments[segment_id]` if you use that table in visuals
+- `product_segments[category]` if needed
+
+Notes:
+- keep this as a final insight page
+- avoid connecting extra ML tables unless you truly need interaction
+- this page is best used for explanation, not heavy cross-filtering
 
 Targets:
 - Objective 5.1

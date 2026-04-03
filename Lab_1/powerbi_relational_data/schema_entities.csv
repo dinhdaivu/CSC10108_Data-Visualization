@@ -1,0 +1,7 @@
+﻿entity_name,row_count
+dim_shop,1
+dim_category,21
+dim_product,693
+dim_date,554
+fact_product_snapshot,18487
+fact_review,7605

@@ -1,0 +1,7 @@
+﻿relationship_id,from,to,type,from_table,from_column,to_table,to_column
+1,dim_shop.shop_id,dim_product.shop_id,one-to-many,dim_shop,shop_id,dim_product,shop_id
+2,dim_category.category_id,dim_product.category_id,one-to-many,dim_category,category_id,dim_product,category_id
+3,dim_product.product_id,fact_product_snapshot.product_id,one-to-many,dim_product,product_id,fact_product_snapshot,product_id
+4,dim_product.product_id,fact_review.product_id,one-to-many,dim_product,product_id,fact_review,product_id
+5,dim_date.date_key,fact_product_snapshot.date_key,one-to-many,dim_date,date_key,fact_product_snapshot,date_key
+6,dim_date.date_key,fact_review.date_key,one-to-many,dim_date,date_key,fact_review,date_key

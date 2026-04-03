@@ -111,9 +111,13 @@ def build_dim_date(sales_df: pd.DataFrame, review_df: pd.DataFrame) -> pd.DataFr
             review_df["review_date"].dropna().rename("date"),
         ],
         ignore_index=True,
-    ).drop_duplicates().sort_values()
+    ).dropna()
 
-    dim_date = pd.DataFrame({"date": date_series})
+    min_date = date_series.min()
+    max_date = date_series.max()
+    full_date_range = pd.date_range(start=min_date, end=max_date, freq="D")
+
+    dim_date = pd.DataFrame({"date": full_date_range})
     dim_date["date_key"] = dim_date["date"].dt.strftime("%Y%m%d").astype(int)
     dim_date["year"] = dim_date["date"].dt.year
     dim_date["month_number"] = dim_date["date"].dt.month
@@ -186,6 +190,29 @@ def copy_ml_outputs(source_dir: Path, target_dir: Path) -> None:
         shutil.copy2(source_dir / filename, target_dir / filename)
 
 
+def flatten_nested_dict(data: dict, parent_key: str = "", sep: str = "_") -> dict[str, object]:
+    flattened: dict[str, object] = {}
+    for key, value in data.items():
+        new_key = f"{parent_key}{sep}{key}" if parent_key else str(key)
+        if isinstance(value, dict):
+            flattened.update(flatten_nested_dict(value, new_key, sep=sep))
+        else:
+            flattened[new_key] = value
+    return flattened
+
+
+def export_model_summary_csv(model_summary_json_path: Path, output_dir: Path) -> None:
+    with model_summary_json_path.open("r", encoding="utf-8") as f:
+        model_summary = json.load(f)
+
+    flattened_summary = flatten_nested_dict(model_summary)
+    pd.DataFrame([flattened_summary]).to_csv(
+        output_dir / "model_summary.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+
+
 def build_schema_summary(
     dim_shop: pd.DataFrame,
     dim_category: pd.DataFrame,
@@ -193,7 +220,7 @@ def build_schema_summary(
     dim_date: pd.DataFrame,
     fact_snapshot: pd.DataFrame,
     fact_review: pd.DataFrame,
-) -> dict:
+    ) -> dict:
     return {
         "entities": {
             "dim_shop": len(dim_shop),
@@ -212,6 +239,26 @@ def build_schema_summary(
             {"from": "dim_date.date_key", "to": "fact_review.date_key", "type": "one-to-many"},
         ],
     }
+
+
+def export_schema_summary_csvs(summary: dict, output_dir: Path) -> None:
+    entities = summary["entities"]
+    relationships = summary["relationships"]
+
+    entities_df = pd.DataFrame(
+        [{"entity_name": entity_name, "row_count": row_count} for entity_name, row_count in entities.items()]
+    )
+    entities_df.to_csv(output_dir / "schema_entities.csv", index=False, encoding="utf-8-sig")
+
+    relationships_df = pd.DataFrame(relationships)
+    split_from = relationships_df["from"].str.split(".", n=1, expand=True)
+    split_to = relationships_df["to"].str.split(".", n=1, expand=True)
+    relationships_df["from_table"] = split_from[0]
+    relationships_df["from_column"] = split_from[1]
+    relationships_df["to_table"] = split_to[0]
+    relationships_df["to_column"] = split_to[1]
+    relationships_df.insert(0, "relationship_id", range(1, len(relationships_df) + 1))
+    relationships_df.to_csv(output_dir / "schema_relationships.csv", index=False, encoding="utf-8-sig")
 
 
 def main() -> None:
@@ -241,6 +288,7 @@ def main() -> None:
     fact_review.to_csv(output_dir / "fact_review.csv", index=False, encoding="utf-8-sig")
 
     copy_ml_outputs(model_output_dir, output_dir)
+    export_model_summary_csv(output_dir / "model_summary.json", output_dir)
 
     summary = build_schema_summary(
         dim_shop=dim_shop,
@@ -252,6 +300,7 @@ def main() -> None:
     )
     with (output_dir / "schema_summary.json").open("w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
+    export_schema_summary_csvs(summary, output_dir)
 
     print("Recommended export completed: Power BI relational dataset created successfully.")
     print(f"Output folder: {output_dir}")
