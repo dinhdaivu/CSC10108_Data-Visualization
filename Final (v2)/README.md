@@ -16,7 +16,7 @@ README này là hướng dẫn chạy nhanh bộ AI helpers cho đồ án dashbo
 - `viva-checklist.md`: checklist trước vấn đáp + câu hỏi theo từng thành viên.
 - `.github/prompts/*.prompt.md`: slash commands cho từng helper.
 
-## Tổ chức thư mục log (khuyến nghị)
+## Tổ chức thư mục log 
 
 Sử dụng cấu trúc sau để quản lý log/evidence rõ ràng trước khi nộp:
 
@@ -40,10 +40,6 @@ Sử dụng cấu trúc sau để quản lý log/evidence rõ ràng trước khi
 Các prompt slash command của workspace được đọc từ `CSC10080/.github/prompts/` (thư mục gốc workspace).
 Thư mục `Final (v2)/.github/prompts/` chỉ là bản tham chiếu nội bộ.
 
-### Lệnh tổng
-
-- Không dùng lệnh tổng.
-- Chạy theo từng lệnh để kiểm soát chất lượng và bằng chứng tốt hơn.
 
 ### Lệnh theo từng bước
 
