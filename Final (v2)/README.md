@@ -37,7 +37,8 @@ Sử dụng cấu trúc sau để quản lý log/evidence rõ ràng trước khi
 
 ## Chạy bằng Slash Commands (`/`)
 
-Các prompt đã được cấu hình trong `.github/prompts/`.
+Các prompt slash command của workspace được đọc từ `CSC10080/.github/prompts/` (thư mục gốc workspace).
+Thư mục `Final (v2)/.github/prompts/` chỉ là bản tham chiếu nội bộ.
 
 ### Lệnh tổng
 
