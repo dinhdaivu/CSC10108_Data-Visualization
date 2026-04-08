@@ -489,7 +489,7 @@ def export_feature_importance(
 
 def main() -> None:
     root = Path(__file__).resolve().parent
-    sales_root = root / "data" / "sales"
+    sales_root = root / "data" / "processed" / "sales"
     output_dir = root / "model_outputs"
     output_dir.mkdir(parents=True, exist_ok=True)
 

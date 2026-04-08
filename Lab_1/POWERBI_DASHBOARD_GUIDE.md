@@ -160,6 +160,40 @@ Suggested subtitle:
 
 **Category performance, pricing, customer feedback, stock status, and model-based insights from a self-collected product and review dataset**
 
+### 8.1 Rewritten analytical questions (based on the current chart)
+
+For the current page layout (KPI cards + **Top trending** line chart + **Price distribution** pie chart + category/date slicers), keep questions in this format:
+
+- **Question**
+- **Visual evidence**
+- **Primary measures**
+
+Main question:
+
+**Within the selected date range and category filters, how do category-level trend behavior and price-band structure explain the KPI level of revenue, units sold, and average selling price on this page?**
+
+Supporting questions:
+
+1. **Question:** Which categories are the main drivers of total revenue in the selected window?
+  - **Visual evidence:** `Top trending` line chart (category legend) + KPI cards
+  - **Primary measures:** `Total Revenue`, `Total Daily Units Sold`
+
+2. **Question:** Are revenue spikes concentrated in a few dates/categories or distributed more evenly over time?
+  - **Visual evidence:** `Top trending` line chart
+  - **Primary measures:** date-level `Total Revenue` by `category_name`
+
+3. **Question:** Which price band contributes the largest revenue share, and is that share stable under slicer changes?
+  - **Visual evidence:** `Price distribution` pie chart + date/category slicers
+  - **Primary measures:** `Total Revenue` by `Price Band`
+
+4. **Question:** Is there a mismatch between value contribution and volume contribution across price bands?
+  - **Visual evidence:** `Price distribution` pie chart + KPI cards
+  - **Primary measures:** `Total Revenue` by `Price Band` vs `Total Daily Units Sold` by `Price Band`
+
+5. **Question:** When filters change, which KPI is most sensitive (`Revenue`, `Units Sold`, or `Average Selling Price`), and what does that imply for strategy?
+  - **Visual evidence:** KPI cards under interactive slicing
+  - **Primary measures:** `Total Revenue`, `Total Daily Units Sold`, `Average Selling Price`
+
 ## 9. Recommended Power BI model
 
 Recommended approach:
@@ -590,6 +624,12 @@ Scatter-chart note for Power BI website:
 
 Purpose:
 - give a quick summary of overall sales, product coverage, and rating quality
+
+Questions this page should answer:
+- **Q1. Scale:** What is the current scale of performance in the selected window (`Total Revenue`, `Total Daily Units Sold`, `Average Selling Price`)?
+- **Q2. Trend drivers:** Which categories are driving the `Top trending` chart, and where are the most important peaks?
+- **Q3. Price structure:** Is `Price distribution` balanced or concentrated in one/two price bands?
+- **Q4. Sensitivity:** Under date/category slicers, which KPI changes the most and what business implication follows?
 
 Main tables used:
 - `fact_product_snapshot`

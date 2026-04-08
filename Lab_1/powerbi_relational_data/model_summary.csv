@@ -1,2 +1,2 @@
 ﻿date_range_baseline_start,date_range_analysis_start,date_range_end,evaluation_split_type,evaluation_split_train_fraction_by_unique_dates,evaluation_split_test_fraction_by_unique_dates,dataset_rows,dataset_unique_products,dataset_unique_categories,best_models_regression,best_models_segmentation,regression_explanation_permutation_features_exported,regression_explanation_model_feature_importance_exported,segmentation_best_n_clusters,segmentation_products_segmented,segmentation_segments_exported
-2026-02-19,2026-02-20,2026-03-20,time_based,0.8,0.2,18487,693,21,linear_regression,kmeans_3_clusters,12,True,3,693,3
+2026-02-19,2026-02-20,2026-03-20,time_based,0.8,0.2,18523,693,21,gradient_boosting,kmeans_3_clusters,12,True,3,693,3

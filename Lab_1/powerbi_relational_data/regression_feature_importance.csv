@@ -1,36 +1,35 @@
-﻿feature,coefficient,importance
-cat__category_Quần Short thể thao nữ,22.629966811499443,22.629966811499443
-cat__category_Dép xỏ ngón,-1.3306631336896415,1.3306631336896415
-cat__category_Áo lót thể thao nữ,-1.3195198225261282,1.3195198225261282
-cat__category_Giày chạy bộ bé trai,-1.3065316353066283,1.3065316353066283
-cat__category_Áo thun thể thao bé gái,-1.3015552432128463,1.3015552432128463
-cat__category_Giày tập huấn luyện nữ,-1.2831164532273094,1.2831164532273094
-cat__category_Áo thun thể thao nữ,-1.2816715010595203,1.2816715010595203
-cat__category_Giày sneaker nữ,-1.2777150025313073,1.2777150025313073
-cat__category_Giày chạy bộ nữ,-1.263655445782699,1.263655445782699
-cat__category_Giày sneaker nam,-1.262766262811563,1.262766262811563
-cat__category_Túi thể thao,-1.252573871653153,1.252573871653153
-cat__category_Quần dài thể thao nam,-1.2494835723680715,1.2494835723680715
-cat__category_Giày thể thao,-1.2342535860744148,1.2342535860744148
-"cat__category_Tất, Găng tay thể thao và đồ bảo hộ",-1.2262195167160284,1.2262195167160284
-cat__category_Áo thun thể thao nam,-1.2254442529882392,1.2254442529882392
-cat__category_Giày chạy bộ nam,-1.219823377331686,1.219823377331686
-cat__category_Áo phông & Áo ba lỗ,-1.2040066397822613,1.2040066397822613
-cat__category_Quần Short thể thao nam,-1.1753263580057043,1.1753263580057043
-cat__category_Giày thể thao bé trai,-1.1724732185262112,1.1724732185262112
-num__discount_rate,0.42760621004187993,0.42760621004187993
-cat__warehouse_location_Tây Ninh,0.068759515893845,0.068759515893845
-num__is_weekend,-0.05810527975237876,0.05810527975237876
-cat__warehouse_location_Hà Nội,-0.05488555400005569,0.05488555400005569
-cat__category_Quần dài thể thao nữ,-0.043167917910364555,0.043167917910364555
-cat__warehouse_location_Hồ Chí Minh,-0.028338882636680413,0.028338882636680413
-num__rating_score,-0.027715344398690327,0.027715344398690327
-cat__warehouse_location_Thành phố Hồ Chí Minh,0.014464920743065258,0.014464920743065258
-num__review_count,-0.003907971269301282,0.003907971269301282
-num__is_in_stock,0.0025427004375124795,0.0025427004375124795
-cat__stock_status_Còn hàng,0.0025427004373458077,0.0025427004373458077
-cat__stock_status_Hết hàng,-0.002542700437258599,0.002542700437258599
-num__cumulative_units_sold,0.0022141718259775013,0.0022141718259775013
-num__day_of_week,0.0002289770273158007,0.0002289770273158007
-num__selling_price,1.9109010942875238e-07,1.9109010942875238e-07
-num__original_price,-1.874448877173009e-07,1.874448877173009e-07
+﻿feature,importance
+num__day_of_week,0.32263184686260465
+cat__category_Quần Short thể thao nữ,0.29328761430764805
+num__cumulative_units_sold,0.12991140188850095
+num__rating_score,0.1190385052580093
+num__review_count,0.11233687079156501
+cat__category_Quần dài thể thao nữ,0.01875271751134394
+num__selling_price,0.0011977978666849831
+num__original_price,0.000658803751990128
+num__discount_rate,0.0004939253895923499
+cat__warehouse_location_Tây Ninh,0.0004732313954190933
+cat__warehouse_location_Thành phố Hồ Chí Minh,0.0003234310889313434
+cat__category_Giày thể thao bé trai,0.00028037883261025154
+cat__category_Giày chạy bộ nam,0.00027682134781173185
+cat__category_Áo thun thể thao nam,0.0001569850799113518
+cat__category_Quần Short thể thao nam,7.793144297136385e-05
+cat__category_Áo thun thể thao bé gái,7.738297984617043e-05
+num__is_weekend,1.1237977037213414e-05
+cat__category_Áo lót thể thao nữ,7.204846467469043e-06
+cat__category_Giày chạy bộ bé trai,5.911381054470564e-06
+cat__category_Giày tập huấn luyện nữ,0.0
+cat__category_Giày sneaker nữ,0.0
+cat__category_Giày thể thao,0.0
+cat__category_Giày chạy bộ nữ,0.0
+cat__category_Dép xỏ ngón,0.0
+num__is_in_stock,0.0
+cat__category_Giày sneaker nam,0.0
+cat__category_Áo phông & Áo ba lỗ,0.0
+"cat__category_Tất, Găng tay thể thao và đồ bảo hộ",0.0
+cat__category_Túi thể thao,0.0
+cat__category_Quần dài thể thao nam,0.0
+cat__warehouse_location_Hà Nội,0.0
+cat__category_Áo thun thể thao nữ,0.0
+cat__stock_status_Còn hàng,0.0
+cat__stock_status_Hết hàng,0.0

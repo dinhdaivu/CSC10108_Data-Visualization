@@ -56,22 +56,22 @@ This theme focuses on the relationship between pricing, discount level, and sale
 
 **Objective 2.1**
 
-Quantify the relationship between discount rate and sales performance for Nike products from **February 20, 2026** to **March 20, 2026** in order to determine the **discount ranges associated with stronger revenue and higher daily units sold**.
+Measure revenue-share and unit-share differences across predefined `Price Band` groups from **February 20, 2026** to **March 20, 2026** in order to identify the **dominant price band** in the current dashboard design.
 
-- `Specific`: Discount effectiveness in relation to sales outcomes
-- `Measurable`: Uses discount rate, `daily_units_sold`, and `daily_revenue`
-- `Achievable`: `selling_price` and `original_price` support direct discount-rate calculation
-- `Relevant`: Helps evaluate how discount policy relates to product performance
+- `Specific`: Price-band contribution analysis aligned with the `Price distribution` visual
+- `Measurable`: Uses share of `daily_revenue`, share of `daily_units_sold`, and average `selling_price` by `Price Band`
+- `Achievable`: `selling_price` and sales variables are available in the prepared snapshot dataset
+- `Relevant`: Directly supports interpretation of the KPI cards and pie-chart structure on the dashboard
 - `Time-bound`: Evaluated within the analytical window from `20-02-2026` to `20-03-2026`
 
 **Objective 2.2**
 
-Compare revenue contribution and stability across predefined price bands from **February 20, 2026** to **March 20, 2026** in order to identify the **price segment with the best balance between scale and consistency**.
+Build a **chart-based comparison** (line/column with slicers) of KPI changes under date and category filters from **February 20, 2026** to **March 20, 2026** in order to determine whether sales performance is **broad-based or concentrated** by segment.
 
-- `Specific`: Price-segment comparison
-- `Measurable`: Uses total `daily_revenue`, average `daily_units_sold`, and variation measures by band
-- `Achievable`: Price bands can be created from the existing price variables
-- `Relevant`: Supports interpretation of pricing structure and sales performance
+- `Specific`: Chart-based sensitivity analysis of `daily_revenue`, `daily_units_sold`, and `Average Selling Price` under slicer conditions
+- `Measurable`: Uses KPI percentage change shown on the chart across selected date/category states and compares resulting segment composition
+- `Achievable`: The required KPIs, segment dimensions, and filters are available in the current dashboard and source tables
+- `Relevant`: Matches the interactive dashboard workflow and provides visual evidence for report/viva interpretation
 - `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`
 
 #### Theme 3. Customer Ratings and Review Signals

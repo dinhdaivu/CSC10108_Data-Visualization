@@ -43,6 +43,8 @@ def load_reviews(path: Path) -> pd.DataFrame:
     reviews["product_id"] = reviews["product_id"].astype(str)
     reviews["review_date"] = pd.to_datetime(reviews["review_date"], errors="coerce").dt.normalize()
     reviews["review_comment"] = reviews["review_comment"].fillna("")
+    if "sku" not in reviews.columns:
+        reviews["sku"] = ""
     reviews["sku"] = reviews["sku"].fillna("")
     reviews["review_id"] = [f"REV_{i:05d}" for i in range(1, len(reviews) + 1)]
     return reviews[["review_id", "product_id", "rating", "review_comment", "review_date", "sku"]]
@@ -265,7 +267,7 @@ def main() -> None:
     root = Path(__file__).resolve().parent
     model_output_dir = root / "model_outputs"
     sales_path = model_output_dir / "daily_sales_cleaned.csv"
-    reviews_path = root / "data" / "reviews" / "all_reviews.json"
+    reviews_path = root / "data" / "processed" / "reviews" / "all_reviews.json"
     output_dir = root / "powerbi_relational_data"
     output_dir.mkdir(parents=True, exist_ok=True)
 
