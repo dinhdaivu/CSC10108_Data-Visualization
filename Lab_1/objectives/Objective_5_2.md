@@ -1,14 +1,14 @@
-# Objective 5.2 — Segment Performance Driver Interpretation
+# Objective 5.2 - Cluster Revenue Contribution Interpretation
 
-Interpret which variables are most associated with high- and low-performing clusters by combining the segment visuals with feature-importance evidence, in order to explain why some segments outperform others during **February 20, 2026** to **March 20, 2026**.
+Use the **cluster scatter chart** together with the **pie chart of revenue contribution by cluster** to interpret how each product segment contributes to overall Nike sales performance from **February 20, 2026** to **March 20, 2026**, in order to explain which clusters dominate total revenue and which clusters represent smaller but distinct performance groups.
 
-- `Specific`: Driver-focused interpretation across segments using feature relevance and segment-level outcomes.
-- `Measurable`: Uses `importance_mean` ranking, segment differences in `avg_daily_revenue` and `avg_total_period_revenue`, and concentration of `product_count`.
-- `Achievable`: Feature-importance chart and segment summary metrics are already available on the dashboard page.
-- `Relevant`: Strengthens ML storytelling by linking cluster outcomes to interpretable performance drivers.
+- `Specific`: Compare revenue contribution across `segment_id` and relate each cluster's share of revenue to its position in the cluster scatter chart.
+- `Measurable`: Uses `% revenue contribution` by cluster, cluster membership on the scatter chart, and differences in `avg_daily_revenue` or `avg_total_period_revenue`.
+- `Achievable`: The required fields are available from `product_segments.csv` and `segment_profiles.csv`.
+- `Relevant`: Directly supports the analytical problem by linking clustered product characteristics to overall sales performance contribution.
 - `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`.
 
 ## Suggested chart evidence
-- Feature-importance bar chart: ranked `importance_mean` by feature.
-- Segment scatter chart and segment table for outcome comparison.
-- Optional slicers: `segment_id`, `category`, date range.
+- Scatter chart: X = `pca_component_1`, Y = `pca_component_2`, Legend = `segment_id`.
+- Pie or donut chart: Legend = `segment_id`, Values = cluster revenue share based on `avg_total_period_revenue` or aggregated cluster revenue.
+- Optional supporting table: `segment_id`, `product_count`, `product_share`, `avg_daily_revenue`, `avg_total_period_revenue`.

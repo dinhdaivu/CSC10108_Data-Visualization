@@ -1,13 +1,13 @@
-# Objective 5.1 — Clustering Segment Profiling
+# Objective 5.1 - Clustering Quality and Segment Identification
 
-Use the **Clustering Segmentation** scatter chart and segment summary table to identify distinct product groups from **February 20, 2026** to **March 20, 2026** in order to explain how segment-level behavior differs in sales performance.
+Use the **silhouette score comparison bar chart** and the **cluster scatter chart** to evaluate the clustering solution and identify distinct Nike product groups from **February 20, 2026** to **March 20, 2026**, in order to show that the dataset can be meaningfully segmented into different sales-performance patterns.
 
-- `Specific`: Segment-level profiling using `segment_id`, `avg_daily_units_sold`, `avg_daily_revenue`, and `dominant_category`.
-- `Measurable`: Uses separation of segment points on the scatter chart, `product_count` by segment, and differences in `avg_total_period_revenue`.
-- `Achievable`: All required segment variables are available in the clustering visuals and summary table.
-- `Relevant`: Directly supports interpretation of product-performance groups on the new page.
+- `Specific`: Compare clustering quality across candidate cluster settings using `silhouette_score`, then visualize product distribution by `segment_id` on the scatter chart.
+- `Measurable`: Uses differences in `silhouette_score` across cluster options and visible separation of products by `segment_id` on the scatter plot.
+- `Achievable`: All required fields are available in `segmentation_metrics.csv` and `product_segments.csv`.
+- `Relevant`: Supports the analytical problem by showing that products can be grouped into meaningful clusters before interpreting sales behavior.
 - `Time-bound`: Evaluated within the analysis window from `20-02-2026` to `20-03-2026`.
 
 ## Suggested chart evidence
-- Scatter chart: X = `avg_daily_units_sold`, Y = `avg_daily_revenue`, Legend = `segment_id`.
-- Table: `segment_id`, `product_count`, `dominant_category`, `avg_daily_revenue`, `avg_total_period_revenue`.
+- Bar chart: Axis = `n_clusters`, Values = `silhouette_score`.
+- Scatter chart: X = `pca_component_1`, Y = `pca_component_2`, Legend = `segment_id`.

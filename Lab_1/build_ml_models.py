@@ -11,12 +11,15 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.compose import ColumnTransformer
+from sklearn.decomposition import PCA
 from sklearn.dummy import DummyRegressor
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.impute import SimpleImputer
 from sklearn.inspection import permutation_importance
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import (
+    calinski_harabasz_score,
+    davies_bouldin_score,
     mean_absolute_error,
     mean_squared_error,
     r2_score,
@@ -398,12 +401,16 @@ def evaluate_segmentation_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd
         model = KMeans(n_clusters=k, random_state=RANDOM_STATE, n_init=20)
         labels = model.fit_predict(X_scaled)
         score = float(silhouette_score(X_scaled, labels))
+        calinski_harabasz = float(calinski_harabasz_score(X_scaled, labels))
+        davies_bouldin = float(davies_bouldin_score(X_scaled, labels))
         metrics.append(
             {
                 "model": "kmeans",
                 "n_clusters": k,
                 "silhouette_score": score,
                 "inertia": float(model.inertia_),
+                "calinski_harabasz_score": calinski_harabasz,
+                "davies_bouldin_score": davies_bouldin,
             }
         )
 
@@ -416,6 +423,23 @@ def evaluate_segmentation_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd
         raise ValueError("Unable to build a valid clustering model for product segmentation.")
 
     model_df["segment_id"] = best_model.predict(X_scaled)
+
+    # Add 2D coordinates so clusters can be demoed in Power BI without
+    # reproducing the dimensionality reduction step there.
+    pca = PCA(n_components=2, random_state=RANDOM_STATE)
+    pca_coords = pca.fit_transform(X_scaled)
+    model_df["pca_component_1"] = pca_coords[:, 0]
+    model_df["pca_component_2"] = pca_coords[:, 1]
+
+    assigned_centers = best_model.cluster_centers_[model_df["segment_id"].to_numpy()]
+    distances = np.linalg.norm(X_scaled - assigned_centers, axis=1)
+    model_df["distance_to_center"] = distances
+    model_df["representative_rank"] = (
+        model_df.groupby("segment_id")["distance_to_center"]
+        .rank(method="first", ascending=True)
+        .astype(int)
+    )
+    model_df["is_representative_product"] = model_df["representative_rank"] == 1
 
     centers = pd.DataFrame(
         scaler.inverse_transform(best_model.cluster_centers_),
@@ -445,6 +469,7 @@ def evaluate_segmentation_models(df: pd.DataFrame, output_dir: Path) -> Tuple[pd
         )
         .sort_values("avg_total_period_revenue", ascending=False)
     )
+    segment_profiles["product_share"] = segment_profiles["product_count"] / len(model_df)
 
     metrics_df = pd.DataFrame(metrics).sort_values(by="silhouette_score", ascending=False).reset_index(drop=True)
     metrics_df.to_csv(output_dir / "segmentation_metrics.csv", index=False, encoding="utf-8-sig")

@@ -309,6 +309,8 @@ Note:
 - `n_clusters`: Whole Number
 - `silhouette_score`: Decimal Number
 - `inertia`: Decimal Number
+- `calinski_harabasz_score`: Decimal Number
+- `davies_bouldin_score`: Decimal Number
 
 ### `product_segments.csv`
 
@@ -334,6 +336,11 @@ Note:
 - `observation_days`: Whole Number
 - `sales_volatility`: Decimal Number
 - `segment_id`: Whole Number
+- `pca_component_1`: Decimal Number
+- `pca_component_2`: Decimal Number
+- `distance_to_center`: Decimal Number
+- `representative_rank`: Whole Number
+- `is_representative_product`: True/False
 
 ### `segment_profiles.csv`
 
@@ -350,6 +357,7 @@ Note:
 - `avg_total_period_revenue`: Decimal Number or Fixed Decimal Number
 - `avg_stock_availability_rate`: Decimal Number
 - `avg_sales_volatility`: Decimal Number
+- `product_share`: Decimal Number
 
 ### `segment_centers.csv`
 
@@ -890,16 +898,16 @@ Recommended visuals:
   Values: `importance_mean`
 - table or card
   Source: `segmentation_metrics`
-  Values: `n_clusters`, `silhouette_score`, `inertia`
+  Values: `n_clusters`, `silhouette_score`, `calinski_harabasz_score`, `davies_bouldin_score`, `inertia`
 - table
   Source: `segment_profiles`
-  Columns: `segment_id`, `product_count`, `dominant_category`, `avg_daily_revenue`, `avg_total_period_revenue`
+  Columns: `segment_id`, `product_count`, `product_share`, `dominant_category`, `avg_daily_revenue`, `avg_total_period_revenue`
 - scatter chart
   Source: `product_segments`
-  X-axis: `avg_daily_units_sold`
-  Y-axis: `avg_daily_revenue`
+  X-axis: `pca_component_1`
+  Y-axis: `pca_component_2`
   Legend: `segment_id`
-  Tooltips: `product_name`, `category`
+  Tooltips: `product_name`, `category`, `avg_daily_revenue`, `distance_to_center`, `is_representative_product`
     
 Page filters:
 - usually none
