@@ -3,15 +3,15 @@
     \textbf{Note}: The extraction procedures described in this section were programmatically implemented and executed via the \textbf{\textit{products.py}} script.
         \subsubsection{Objectives and Approach}
         \begin{itemize}
-            \item \textbf{Objective}: To systematically collect all product metadata from a specific flagship store on an e-commerce platform (e.g., Lazada). The target data fields include product name, selling price, quantity sold, rating score, and inventory status.
-            \item \textbf{Approach}: The system utilizes a Hybrid Web Scraping methodology. This approach combines browser automation (via Selenium) to bypass initial security mechanisms (like Captchas) with direct HTTP requests to optimize data extraction speed and efficiency by querying hidden internal APIs.
+            \item \textbf{Objective}: To systematically collect all product metadata from the Nike Flagship Store on Lazada. The target data fields include product name, selling price, quantity sold, rating score, and inventory status.
+            \item \textbf{Approach}: The system utilizes a Hybrid Web Scraping methodology. This approach combines browser automation (via Selenium) to bypass initial security mechanisms such as Captchas with direct HTTP requests to optimize extraction speed and efficiency by querying hidden internal APIs.
         \end{itemize}
 
         \subsubsection{Detailed Execution Steps}
         \begin{itemize}
             \item \textbf{Step 1: Session Initialization \& Authentication}
             \begin{itemize}
-                \item The system initializes a automated browser instance (Google Chrome) using \textbf{Selenium} and \textbf{WebDriverManager}.
+                \item The system initializes an automated browser instance (Google Chrome) using \textbf{Selenium} and \textbf{WebDriverManager}.
                 \item It navigates to the target store's homepage. At this point, the execution thread is intentionally paused to allow for manual human intervention. This is necessary to solve complex Captchas or perform account authentication if required by the platform.
                 \item Upon successful manual authentication, the system extracts the session \textbf{Cookies} and the browser's \textbf{User-Agent} string.
                 \item The automated browser is then terminated to free up system memory, and the process transitions to a lightweight HTTP request mode.
@@ -28,21 +28,18 @@
             \begin{itemize}
                 \item \textbf{Automated Pagination}: The system iterates through each discovered category. Within a category, a while loop is employed to navigate through sequential product pages (page 1, page 2, etc.) by dynamically modifying the page parameter in the API URL.
                 \item \textbf{Data Parsing}: For each queried page, the system receives a JSON array of products. The parser extracts core variables: \textit{Item ID}, \textit{Product Name}, \textit{Selling Price}, \textit{Original Price}, \textit{Rating Score}, \textit{Review Count}, \textit{Warehouse Location}, \textit{Stock Status}, \textit{Brand Name}, and \textit{the Product URL}.
-
-                \item \textbf{Data Cleaning}: Unstandardized data formats are processed immediately. For instance, text strings representing sales volume (e.g., "1.5k đã bán") are converted into standard integer formats (1500) using regular expressions to facilitate downstream quantitative analysis.
-
-                \item \textbf{Anti-bot Evasion Mechanism}: The script implements randomized delays (time.sleep between 2 to 3 seconds) between page requests. This simulates organic human browsing behavior, thereby minimizing the risk of IP blocking or rate-limiting by the platform's anti-scraping firewalls
-
+                \item \textbf{Data Cleaning}: Unstandardized data formats are processed immediately. For instance, text strings representing sales volume (e.g., "1.5k sold") are converted into standard integer formats (1500) using regular expressions to facilitate downstream quantitative analysis.
+                \item \textbf{Anti-bot Evasion Mechanism}: The script implements randomized delays using \texttt{time.sleep}. Each pause lasts about 2 to 3 seconds between page requests. This simulates organic human browsing behavior and helps reduce the risk of IP blocking or rate-limiting by the platform's anti-scraping firewalls.
                 \item The pagination loop terminates when the API returns an empty product list, indicating the end of the category.
             \end{itemize}
 
             \item \textbf{Step 4: Data Organization and Storage}
             \begin{itemize}
-                \item The system dynamically generates a hierarchical directory structure based on the current execution date (data/MM-DD-YYYY).
+                \item The system dynamically generates a hierarchical directory structure based on the current execution date (\texttt{data/MM-DD-YYYY}).
                 \item The data is simultaneously exported into two formats:
                 \begin{itemize}
-                    \item \textbf{CSV File} (products.csv): Intended for end-users to easily read, filter, and visualize the data using spreadsheet software like Microsoft Excel.
-                    \item \textbf{JSON File} (products.json): Preserves the raw structured format, acting as the requisite input file for the subsequent phase of the project (Review Collection Process).
+                    \item \textbf{CSV File} (\texttt{products.csv}): Intended for end-users to easily read, filter, and visualize the data using spreadsheet software like Microsoft Excel.
+                    \item \textbf{JSON File} (\texttt{products.json}): Preserves the raw structured format, acting as the requisite input file for the subsequent phase of the project (Review Collection Process).
                 \end{itemize}
             \end{itemize}
         \end{itemize}
@@ -52,17 +49,17 @@
         \subsubsection{Objectives and Approach}
         \begin{itemize}
             \item \textbf{Objective}: To systematically extract comprehensive customer feedback, including text reviews, star ratings, and timestamps, for all previously identified products to facilitate product quality analysis.
-            \item {Approach}: The system employs an API reverse-engineering technique targeting the platform's MTOP architecture. This methodology relies on dynamic cryptographic token generation (MD5 signing), coupled with a local checkpoint system and automated Captcha handling via Selenium, ensuring continuous and resilient data extraction.
+            \item \textbf{Approach}: The system employs an API reverse-engineering technique targeting the platform's MTOP architecture. This methodology relies on dynamic cryptographic token generation (MD5 signing), coupled with a local checkpoint system and automated Captcha handling via Selenium, ensuring continuous and resilient data extraction.
         \end{itemize}
 
-        \subsection{Detailed Execution Steps}
+        \subsubsection{Detailed Execution Steps}
         \begin{itemize}
             \item \textbf{Step 1: Data Initialization and Checkpointing}
             \begin{itemize}
                 \item The system parses the \textit{products.json} file generated in the first phase. To optimize execution time and prevent data duplication in the event of network interruptions, it implements a checkpoint mechanism. It compares the input list against the existing \textit{reviews.json} output file to bypass products that have already been successfully scraped.
             \end{itemize}
 
-            \item \textbf{Step 2: Session Initialization and Token Extraction} 
+            \item \textbf{Step 2: Session Initialization and Token Extraction}
             \begin{itemize}
                 \item A Selenium-driven browser is temporarily launched to navigate to a sample product page. The primary purpose of this action is not to parse the HTML document, but to force the e-commerce server to issue a specific session cookie (\_m\_h5\_tk). This cookie acts as a fundamental security token for authenticating subsequent API requests.
             \end{itemize}
@@ -77,16 +74,55 @@
                 \item The script iterates through the remaining product IDs. For each product, it sends signed HTTP GET requests to the review API, automatically paginating through the results (handling up to a predefined limit, such as 50 pages or 1000 reviews per item). The parser extracts core variables from the server's JSON response, specifically the \textit{Product ID}, \textit{Star Rating}, \textit{Review Content}, and \textit{Timestamp}.
             \end{itemize}
 
-            \item \textbf{Step 5: Real-time Persistence and Anti-bot Evasion:}
+            \item \textbf{Step 5: Real-time Persistence and Anti-bot Evasion}
             \begin{itemize}
-                \item To mitigate the risk of data loss, the extracted reviews are appended to the local storage immediately after processing each individual product. Furthermore, if the system encounters a rate-limit or an anti-bot block signal (e.g., returning a FAIL\_SYS\_USER\_VALIDATE error), it halts the loop, automatically reopens the Selenium browser to allow for manual Captcha resolution, regenerates the security tokens, and seamlessly resumes the crawling process from the exact point of interruption.
+                \item To mitigate the risk of data loss, the extracted reviews are appended to the local storage immediately after processing each individual product. Furthermore, if the system encounters a rate-limit or an anti-bot block signal (e.g., returning a \texttt{FAIL\_SYS\_USER\_VALIDATE} error), it halts the loop, automatically reopens the Selenium browser to allow for manual Captcha resolution, regenerates the security tokens, and seamlessly resumes the crawling process from the exact point of interruption.
             \end{itemize}
         \end{itemize}
-    
+
+    \subsection{Dataset Construction}
+    After the crawling stage, the raw product and review files were transformed into a relational analytical model for Power BI. This construction step is important because the later dashboard pages do not operate directly on the raw crawler outputs. Instead, the project reorganizes the collected data into dimension tables, fact tables, and an auxiliary segmentation table so that the analytical workflow in Sections 1 and 3 can be supported by a consistent data model.
+
+        \subsubsection{Construction Logic}
+        \begin{itemize}
+            \item The raw \textit{products.json} and \textit{products.csv} files provide the source product attributes used to construct the product, category, and shop dimensions.
+            \item Consecutive daily product snapshots are aligned by product ID and date in order to form the \texttt{fact\_product\_snapshot} table, which stores the time-varying sales and pricing fields used throughout the dashboard.
+            \item The review crawler output is reshaped into \texttt{fact\_review}, where each row corresponds to one customer review linked back to the relevant product and date.
+            \item Date attributes are standardized into a dedicated \texttt{dim\_date} table so that both sales and review facts can share the same analytical calendar.
+            \item Product-level clustering results are exported separately into \texttt{product\_segments}, then linked back to the conformed product dimension for the machine learning page.
+        \end{itemize}
+
+        \subsubsection{Relational Model Used in Power BI}
+        Based on the implemented Power BI model shown in the relationship view, the final analytical dataset uses the following main tables:
+
+        \begin{itemize}
+            \item \texttt{dim\_category}: category reference table keyed by \texttt{category\_id}
+            \item \texttt{dim\_shop}: shop reference table keyed by \texttt{shop\_id}
+            \item \texttt{dim\_date}: shared calendar table keyed by \texttt{date\_key}
+            \item \texttt{dim\_product}: conformed product dimension keyed by \texttt{product\_id}
+            \item \texttt{fact\_product\_snapshot}: sales snapshot fact table at the product-date level
+            \item \texttt{fact\_review}: review fact table at the individual-review level
+            \item \texttt{product\_segments}: product-level clustering output table
+        \end{itemize}
+
+        The active relationships visible in the model can be summarized as follows:
+
+        \begin{itemize}
+            \item \texttt{dim\_category(category\_id)} $1 \rightarrow *$ \texttt{dim\_product(category\_id)}
+            \item \texttt{dim\_shop(shop\_id)} $1 \rightarrow *$ \texttt{dim\_product(shop\_id)}
+            \item \texttt{dim\_product(product\_id)} $1 \rightarrow *$ \texttt{fact\_product\_snapshot(product\_id)}
+            \item \texttt{dim\_product(product\_id)} $1 \rightarrow *$ \texttt{fact\_review(product\_id)}
+            \item \texttt{dim\_date(date\_key)} $1 \rightarrow *$ \texttt{fact\_product\_snapshot(date\_key)}
+            \item \texttt{dim\_date(date\_key)} $1 \rightarrow *$ \texttt{fact\_review(date\_key)}
+            \item \texttt{dim\_product(product\_id)} $1 \rightarrow 1$ \texttt{product\_segments(product\_id)}
+        \end{itemize}
+
+        This structure gives the project a star-schema style core for descriptive analysis, while also attaching the clustering output as a product-level extension. As a result, category analysis, finance structure, product influence analysis, review signals, and clustering insights can all be supported from the same integrated analytical model.
+
     \subsection{Data Preparation}
-    This section outlines the data cleaning, and feature engineering procedures. Please note that the subsequent Exploratory Data Analysis (EDA) and its visualizations are documented in a separate supplementary file (\textit{\textbf{eda.ipynb}})
+    This section outlines the data cleaning and feature engineering procedures. Please note that the subsequent Exploratory Data Analysis (EDA) and its visualizations are documented in a separate supplementary file (\textit{\textbf{eda.ipynb}}).
         \subsubsection{Product Metadata Dataset}
-        This dataset captures the overarching catalog details and aggregate performance metrics for each item in the flagship store. Each row represents a unique product.
+        This dataset captures the overarching catalog details and aggregate performance metrics for each item in the flagship store. In the raw product metadata snapshot, each row represents one unique product collected during a crawling run.
         \begin{itemize}
             \item \textbf{id (Primary Key)}: The unique alphanumeric identifier assigned to the product by the e-commerce platform.
             \item \textbf{ten\_san\_pham (Product Name)}: The full, descriptive title of the item as displayed on the storefront.
@@ -97,32 +133,31 @@
             \item \textbf{diem\_danh\_gia (Rating Score)}: The aggregated average star rating for the product, ranging from 1.0 to 5.0.
             \item \textbf{so\_luot\_nhan\_xet (Review Count)}: The total number of customer ratings the product has accumulated.
             \item \textbf{dia\_diem\_kho (Warehouse Location)}: The geographical origin or fulfillment center location for the item.
-            \item \textbf{ton\_kho (Inventory Status)}: A categorical indicator specifying whether the item is currently "Còn hàng" (In-Stock) or "Hết hàng" (Out-of-Stock).
-            \item \textbf{thuong\_hieu (Brand)}: The brand name associated with the item .
+            \item \textbf{ton\_kho (Inventory Status)}: A categorical indicator specifying whether the item is currently In-Stock or Out-of-Stock.
+            \item \textbf{thuong\_hieu (Brand)}: The brand name associated with the item.
             \item \textbf{link\_san\_pham (Product URL)}: The fully qualified hyperlink to the product's detail page.
         \end{itemize}
 
         \subsubsection{Data Cleaning and Standardization For Product Dataset}
         \begin{itemize}
             \item \textbf{Missing Value Imputation}: Null review counts (so\_luot\_nhan\_xet) were filled with 0, while missing rating scores (diem\_danh\_gia) were kept as NaN to prevent skewing the mean during statistical analysis.
-            
+
             \item \textbf{Data Type Casting}: Converted financial and metric columns from text to strict numeric formats (Float/Integer) to enable mathematical calculations.
-    
-            \item \textbf{Geographical Standardization}: Merged naming inconsistencies in the warehouse location (dia\_diem\_kho), specifically mapping "Hồ Chí Minh" to the standardized "Thành phố Hồ Chí Minh".
+
+            \item \textbf{Geographical Standardization}: Merged naming inconsistencies in the warehouse location (dia\_diem\_kho), specifically mapping "Ho Chi Minh" to the standardized "Thanh pho Ho Chi Minh".
 
             \item \textbf{Feature Engineering}:
             \begin{itemize}
                 \item \textbf{Objective}: Transform cumulative static data (total items sold) into dynamic daily metrics, synchronizing the results directly back to the source files (JSON and CSV).
                 \item \textbf{Baseline Initialization (02-19-2026)}: As the starting point with no prior data, daily sales (so\_luong\_ban\_trong\_ngay) for all items are initialized to 0.
-                \item 
-                \textbf{Calculation Logic}: 
+                \item \textbf{Calculation Logic}:
                 \begin{itemize}
                     \item Calculated by subtracting the historical maximum recorded in the tracker from the newly scraped cumulative total.
                     \item Derived by multiplying the newly calculated daily sales by the item's current selling price.
                 \end{itemize}
             \end{itemize}
         \end{itemize}
-    
+
         \subsubsection{Customer Reviews Dataset}
         This dataset contains granular, user-generated feedback for the scraped products. Each row represents an individual customer review.
         \begin{itemize}
@@ -132,4 +167,4 @@
             \item \textbf{time (Timestamp)}: The exact temporal record of when the review was submitted, allowing for time-series sentiment analysis.
         \end{itemize}
         \subsubsection{Data Cleaning and Standardization For Customer Review Dataset}
-        The extracted review texts and numerical ratings were retained in their original state without any additional cleaning or standardization.
+        The extracted review texts and numerical ratings were largely retained in their original state, with only lightweight structural normalization during extraction such as merging multipart review content and trimming text fields where necessary.

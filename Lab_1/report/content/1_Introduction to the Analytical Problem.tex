@@ -1,5 +1,17 @@
 \section{Introduction to the Analytical Problems}
 \subsection{Domain Situation}
+At the beginning of the project, our group considered \textbf{Shopee} because it is a familiar and important platform in Vietnam. However, during the early collection stage, the crawling workflow on Shopee was not stable enough for a reproducible pipeline. The platform structure created practical difficulties for repeated extraction, which would have reduced the consistency of the later analysis. Our group therefore switched to \textbf{Lazada} \cite{lazada}, where product and review collection could be implemented more reliably through a hybrid approach that combines browser automation with API-style requests.
+
+Within Lazada, our group selected the \textbf{Nike Flagship Store} as the case study. This choice gives the project a focused but still information-rich analytical setting. Because the store belongs to a single major brand, the dataset avoids excessive cross-shop noise and makes interpretation more coherent. At the same time, the store still contains a diverse catalog of footwear, apparel, and accessories across multiple categories and price levels, together with substantial review activity. As a result, the final dataset is suitable for our common analytical problem: examining how category structure, pricing, discount policy, stock availability, ratings, and review behavior influence the sales performance of Nike products on Lazada during the observed period.
+
+% Common Analytical Problem
+\subsection{Common Analytical Problem}
+Based on the collected dataset, our group defines the common analytical problem of the project as follows:
+
+\textbf{This study investigates how product category, pricing structure, discount policy, stock availability, consumer ratings, and review behavior are associated with the sales performance of Nike products listed on the Lazada platform over the observational period spanning February 20, 2026 to March 20, 2026.}
+
+This common analytical problem is appropriate for the project for three reasons. First, it is directly built from the variables available in our self-collected dataset, so the analysis can be supported by actual evidence rather than external assumptions. Second, it connects all analytical themes in the report, including category performance, pricing structure, product influence, customer review signals, and the optional machine learning component. Third, it remains closely related to sales activity on an e-commerce platform, which is the central requirement of the lab.
+
 \subsection{Analytical Objectives}
     \subsubsection{Sales Performance by Category and Time}
     \begin{itemize}
@@ -24,12 +36,12 @@
         \end{itemize}
     \end{itemize}
 
-    \subsubsection{Pricing and Discount Strategy}
+    \subsubsection{Finance Structure}
     \begin{itemize}
-        \item \textbf{Objective 1}: Measure revenue-share and unit-share differences across predefined Price Band groups from February 20, 2026 to March 20, 2026 in order to identify the dominant price band in the current dashboard design.
+        \item \textbf{Objective 1}: Measure revenue-share differences across predefined Price Band groups from February 20, 2026 to March 20, 2026 in order to identify the dominant price band in the current dashboard design.
         \begin{itemize}
-            \item \textbf{Specific}: Price-band contribution analysis aligned with the \texttt{Price distribution} visual.
-            \item \textbf{Measurable}: Uses share of \texttt{daily\_revenue}, share of \texttt{daily\_units\_sold}, and \texttt{average selling\_price} by Price Band.
+            \item \textbf{Specific}: Price-band contribution analysis aligned with the \texttt{Price Distribution} visual.
+            \item \textbf{Measurable}: Uses share of \texttt{daily\_revenue} and \texttt{average selling\_price} by Price Band.
             \item \textbf{Achievable}: \texttt{selling\_price} and sales variables are available in the prepared snapshot dataset.
             \item \textbf{Relevant}: Directly supports interpretation of the KPI cards and pie-chart structure on the dashboard.
             \item \textbf{Time-bound}: Evaluated within the analytical window from 20-02-2026 to 20-03-2026.
@@ -37,34 +49,34 @@
     \end{itemize}
 
     \begin{itemize}
-        \item \textbf{Objective 2}: Build a chart-based comparison (line/column with slicers) of KPI changes under date and category filters from February 20, 2026 to March 20, 2026 in order to determine whether sales performance is broad-based or concentrated by segment.
+        \item \textbf{Objective 2}: Use the \texttt{Top Trending} line chart together with KPI cards and dashboard slicers from February 20, 2026 to March 20, 2026 in order to determine whether sales performance is broad-based or concentrated in a small number of dates or product groups.
         \begin{itemize}
-            \item \textbf{Specific}: Chart-based sensitivity analysis of \texttt{daily\_revenue}, \texttt{daily\_units\_sold}, and \texttt{Average Selling Price} under slicer conditions.
-            \item \textbf{Measurable}: Uses KPI percentage change shown on the chart across selected date/category states and compares resulting segment composition.
+            \item \textbf{Specific}: Dashboard-based sensitivity analysis using the \texttt{Top Trending} line chart, KPI cards, and slicers.
+            \item \textbf{Measurable}: Uses changes in \texttt{Total Daily Revenue}, \texttt{Average Daily Units Sold}, and \texttt{Average Price per Product} under selected date and filter states.
             \item \textbf{Achievable}: The required KPIs, segment dimensions, and filters are available in the current dashboard and source tables.
             \item \textbf{Relevant}: Matches the interactive dashboard workflow and provides visual evidence for report/viva interpretation.
             \item \textbf{Time-bound}: Limited to the same analytical period from 20-02-2026 to 20-03-2026.
         \end{itemize}
     \end{itemize}
 
-    \subsection{Product Influence Analysis}
+    \subsubsection{Product Influence Analysis}
     \begin{itemize}
-        \item \textbf{Objective 1}: Identify the top products and categories driving daily unit sales from February 20, 2026 to March 20, 2026 using the current Top products visual and dashboard filters.
+        \item \textbf{Objective 1}: Identify the top Nike products driving unit performance from February 20, 2026 to March 20, 2026 using the \texttt{Top Products by Average Unit Sold} visual and dashboard filters.
         \begin{itemize}
-            \item \textbf{Specific}: Product-level and category-level contribution analysis focused on unit performance.
-            \item \textbf{Measurable}: Uses \texttt{daily\_units\_sold} ranking, top-product share of total units sold, and category composition of top products.
-            \item \textbf{Achievable}: \texttt{Product name}, \texttt{category}, and \texttt{daily unit} fields are available in the current dashboard model.
+            \item \textbf{Specific}: Product-level comparison focused on the leading products by unit performance.
+            \item \textbf{Measurable}: Uses ranking of products by the \texttt{Avg Daily Units Sold} measure shown in the current visual.
+            \item \textbf{Achievable}: \texttt{Product name}, unit measures, and supporting product attributes are available in the current dashboard model.
             \item \textbf{Relevant}: Directly supports the page purpose of understanding product influence on sales outcomes.
             \item \textbf{Time-bound}: Evaluated within the analysis window from 20-02-2026 to 20-03-2026.
         \end{itemize}
     \end{itemize}
 
     \begin{itemize}
-        \item \textbf{Objective 2}: Analyze time-based spikes and concentration risk among top products from February 20, 2026 to March 20, 2026 by combining trend visuals with date/category slicers.
+        \item \textbf{Objective 2}: Analyze time-based spikes and concentration risk among top products from February 20, 2026 to March 20, 2026 by combining the \texttt{Top Unit} trend visual with the dashboard slicers.
         \begin{itemize}
             \item \textbf{Specific}: Temporal sensitivity analysis of top-product unit performance under interactive filters.
-            \item \textbf{Measurable}: Uses peak \texttt{daily\_units\_sold} values by date, spike frequency of top products, and concentration ratio of top products versus total units sold.
-            \item \textbf{Achievable}: \texttt{Date}, \texttt{product}, \texttt{category}, and unit metrics are available in the current dashboard visuals.
+            \item \textbf{Measurable}: Uses peak values of the \texttt{Avg Daily Units Sold} trend by date, spike frequency of top products, and comparison of product-level peaks within the selected period.
+            \item \textbf{Achievable}: \texttt{Date}, \texttt{product}, and unit metrics are available in the current dashboard visuals.
             \item \textbf{Relevant}: Explains whether page-level performance is broad-based or overly dependent on a small number of products.
             \item \textbf{Time-bound}: Limited to the same analytical period from 20-02-2026 to 20-03-2026.
         \end{itemize}
@@ -72,33 +84,33 @@
 
     \subsubsection{Customer Ratings and Review Signals}
     \begin{itemize}
-        \item \textbf{Objective 1}: Use the line chart of review count by year to examine how customer review activity changes across 2024, 2025, and 2026, in order to identify whether engagement with Nike products on Lazada is increasing, decreasing, or remaining stable over time.
+        \item \textbf{Objective 1}: Use the \texttt{Monthly Rating and Review Trends} visual together with the year and category slicers to examine how monthly review count and average rating change within a selected year, in order to identify the periods in which the selected Nike categories receive the strongest customer evaluation.
         \begin{itemize}
-            \item \textbf{Specific}: Year-based review activity analysis using \texttt{reviews\_count} across the three observed periods.
-            \item \textbf{Measurable}: Uses the trend and year-to-year differences in \texttt{reviews\_count} from 2024 to 2026.
-            \item \textbf{Achievable}: The required review \texttt{date} and \texttt{review count} fields are available in the prepared review dataset and dashboard design.
-            \item \textbf{Relevant}: Supports the analytical problem by showing how customer review behavior evolves over time, which may relate to product visibility and sales performance.
-            \item \textbf{Time-bound}: Evaluated across the yearly periods 2024, 2025, and 2026.
+            \item \textbf{Specific}: Monthly analysis of \texttt{review\_count} and \texttt{average\_rating} for the selected year and category context.
+            \item \textbf{Measurable}: Uses monthly values of \texttt{review\_count} and \texttt{average\_rating} shown in the \texttt{Monthly Rating and Review Trends} visual.
+            \item \textbf{Achievable}: The required review date, category, and rating fields are available in the prepared review dataset and current dashboard design.
+            \item \textbf{Relevant}: Supports the analytical problem by showing when customer satisfaction signals are strongest within the observed review period.
+            \item \textbf{Time-bound}: Evaluated within a selected year from the observed review period 2024 to 2026, with month-level comparison inside that year.
         \end{itemize}
     \end{itemize}
 
     \begin{itemize}
-        \item \textbf{Objective 2}: Use the bar chart of ratings by year to compare customer evaluation levels across 2024, 2025, and 2026, in order to determine whether Nike product ratings remain consistent or show meaningful changes over time.
+        \item \textbf{Objective 2}: Use the \texttt{Monthly Comment Trends for Top Products} line chart together with the year and category slicers to compare monthly comment volume among the most-discussed Nike products within a selected year, in order to determine which products consistently attract the most customer attention and whether review activity is concentrated in a small number of products.
         \begin{itemize}
-            \item \textbf{Specific}: Year-based rating comparison using the average rating level for each year.
-            \item \textbf{Measurable}: Uses differences in \texttt{rating} or \texttt{average\_rating} across 2024, 2025, and 2026.
-            \item \textbf{Achievable}: The required \texttt{rating} and \texttt{review-date} fields are available in the prepared review dataset and dashboard visuals.
-            \item \textbf{Relevant}: Supports the analytical problem by showing whether customer satisfaction changes over time and how review behavior may align with perceived product quality.
-            \item \textbf{Time-bound}: Evaluated across the yearly periods 2024, 2025, and 2026.
+            \item \textbf{Specific}: Product-level monthly comparison of comment volume for the most-commented products in the selected year.
+            \item \textbf{Measurable}: Uses monthly \texttt{review\_count} or comment count by \texttt{product\_name} in the \texttt{Monthly Comment Trends for Top Products} visual.
+            \item \textbf{Achievable}: The required product identifiers, review dates, and comment counts are available in the prepared review dataset and dashboard visuals.
+            \item \textbf{Relevant}: Supports the analytical problem by showing which products generate the strongest customer discussion and how that attention is distributed across products.
+            \item \textbf{Time-bound}: Evaluated within a selected year from the observed review period 2024 to 2026, with month-level comparison inside that year.
         \end{itemize}
     \end{itemize}
 
-    \subsubsection{Segment Clustering and Revenue Contribution}
+    \subsubsection{Machine Learning Insights (Clustering)}
     \begin{itemize}
-        \item \textbf{Objective 1: Clustering Quality and Segment Identification} - Use the silhouette score comparison bar chart and the cluster scatter chart to evaluate the clustering solution and identify distinct Nike product groups from February 20, 2026 to March 20, 2026, in order to show that the dataset can be meaningfully segmented into different sales-performance patterns.
+        \item \textbf{Objective 1: Clustering Quality and Segment Identification} - Use the silhouette score comparison bar chart and the \texttt{Product Segments by Units Sold vs Revenue} scatter chart to evaluate the clustering solution and identify distinct Nike product groups from February 20, 2026 to March 20, 2026, in order to show that the dataset can be meaningfully segmented into different sales-performance patterns.
         \begin{itemize}
-            \item \textbf{Specific}: Compare clustering quality across candidate cluster settings using \texttt{silhouette\_score}, then visualize product distribution by \texttt{segment\_id} on the scatter chart.
-            \item \textbf{Measurable}: Uses differences in \texttt{silhouette\_score} across cluster options and visible separation of products by \texttt{segment\_id} on the scatter plot.
+            \item \textbf{Specific}: Compare clustering quality across candidate cluster settings using \texttt{silhouette\_score}, then visualize product distribution by \texttt{segment\_id} on the \texttt{Product Segments by Units Sold vs Revenue} scatter chart.
+            \item \textbf{Measurable}: Uses differences in \texttt{silhouette\_score} across cluster options and visible separation of products by \texttt{segment\_id}, \texttt{avg\_daily\_units\_sold}, and \texttt{avg\_daily\_revenue} on the scatter plot.
             \item \textbf{Achievable}: All required fields are available in \texttt{segmentation\_metrics.csv} and \texttt{product\_segments.csv}.
             \item \textbf{Relevant}: Supports the analytical problem by showing that products can be grouped into meaningful clusters before interpreting sales behavior.
             \item \textbf{Time-bound}: Evaluated within the analysis window from 20-02-2026 to 20-03-2026.
@@ -106,10 +118,10 @@
     \end{itemize}
 
     \begin{itemize}
-        \item \textbf{Objective 2: Cluster Revenue Contribution Interpretation} - Use the cluster scatter chart together with the pie chart of revenue contribution by cluster to interpret how each product segment contributes to overall Nike sales performance from February 20, 2026 to March 20, 2026, in order to explain which clusters dominate total revenue and which clusters represent smaller but distinct performance groups.
+        \item \textbf{Objective 2: Cluster Revenue Contribution Interpretation} - Use the \texttt{Product Segments by Units Sold vs Revenue} scatter chart together with the pie chart of revenue contribution by cluster to interpret how each product segment contributes to overall Nike sales performance from February 20, 2026 to March 20, 2026, in order to explain which clusters dominate total revenue and which clusters represent smaller but distinct performance groups.
         \begin{itemize}
-            \item \textbf{Specific}: Compare revenue contribution across \texttt{segment\_id} and relate each cluster's share of revenue to its position in the cluster scatter chart.
-            \item \textbf{Measurable}: Uses \% revenue contribution by cluster, cluster membership on the scatter chart, and differences in \texttt{avg\_daily\_revenue} or \texttt{avg\_total\_period\_revenue}.
+            \item \textbf{Specific}: Compare revenue contribution across \texttt{segment\_id} and relate each cluster's share of revenue to its position in the \texttt{Product Segments by Units Sold vs Revenue} scatter chart.
+            \item \textbf{Measurable}: Uses \% revenue contribution by cluster, cluster membership on the scatter chart, and differences in \texttt{avg\_daily\_units\_sold} and \texttt{avg\_daily\_revenue}.
             \item \textbf{Achievable}: The required fields are available from \texttt{product\_segments.csv} and \texttt{segment\_profiles.csv}.
             \item \textbf{Relevant}: Directly supports the analytical problem by linking clustered product characteristics to overall sales performance contribution.
             \item \textbf{Time-bound}: Limited to the same analytical period from 20-02-2026 to 20-03-2026.

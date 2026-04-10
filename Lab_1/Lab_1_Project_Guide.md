@@ -50,104 +50,101 @@ Measure day-to-day revenue variability by category from **February 20, 2026** to
 - `Relevant`: Helps identify categories with stable or unstable sales patterns
 - `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`
 
-#### Theme 2. Pricing and Discount Strategy
+#### Theme 2. Finance Structure
 
-This theme focuses on the relationship between pricing, discount level, and sales outcomes.
+This theme focuses on the financial structure of the portfolio through price-band contribution, KPI behavior, and trend changes under the selected filters.
 
 **Objective 2.1**
 
-Measure revenue-share and unit-share differences across predefined `Price Band` groups from **February 20, 2026** to **March 20, 2026** in order to identify the **dominant price band** in the current dashboard design.
+Measure revenue-share differences across predefined `Price Band` groups from **February 20, 2026** to **March 20, 2026** in order to identify the **dominant price band** in the current dashboard design.
 
-- `Specific`: Price-band contribution analysis aligned with the `Price distribution` visual
-- `Measurable`: Uses share of `daily_revenue`, share of `daily_units_sold`, and average `selling_price` by `Price Band`
+- `Specific`: Price-band contribution analysis aligned with the `Price Distribution` visual
+- `Measurable`: Uses share of `daily_revenue` and average `selling_price` by `Price Band`
 - `Achievable`: `selling_price` and sales variables are available in the prepared snapshot dataset
 - `Relevant`: Directly supports interpretation of the KPI cards and pie-chart structure on the dashboard
 - `Time-bound`: Evaluated within the analytical window from `20-02-2026` to `20-03-2026`
 
 **Objective 2.2**
 
-Build a **chart-based comparison** (line/column with slicers) of KPI changes under date and category filters from **February 20, 2026** to **March 20, 2026** in order to determine whether sales performance is **broad-based or concentrated** by segment.
+Use the `Top Trending` line chart together with KPI cards and dashboard slicers from **February 20, 2026** to **March 20, 2026** in order to determine whether sales performance is **broad-based or concentrated** in a small number of dates or product groups.
 
-- `Specific`: Chart-based sensitivity analysis of `daily_revenue`, `daily_units_sold`, and `Average Selling Price` under slicer conditions
-- `Measurable`: Uses KPI percentage change shown on the chart across selected date/category states and compares resulting segment composition
+- `Specific`: Dashboard-based sensitivity analysis using the `Top Trending` line chart, KPI cards, and slicers
+- `Measurable`: Uses changes in `Total Daily Revenue`, `Average Daily Units Sold`, and `Average Price per Product` under selected date and filter states
 - `Achievable`: The required KPIs, segment dimensions, and filters are available in the current dashboard and source tables
 - `Relevant`: Matches the interactive dashboard workflow and provides visual evidence for report/viva interpretation
 - `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`
 
-#### Theme 3. Customer Ratings and Review Signals
+#### Theme 3. Product Influence Analysis
 
-This theme focuses on how customer feedback appears in relation to product performance.
+This theme focuses on how leading products influence unit performance on the dashboard page.
 
 **Objective 3.1**
 
-Analyze the relationship among `rating_score`, `review_count`, and `cumulative_units_sold` in the **March 20, 2026** snapshot in order to determine whether products with stronger social proof tend to achieve better sales performance.
+Identify the top Nike products driving unit performance from **February 20, 2026** to **March 20, 2026** using the `Top Products by Average Unit Sold` visual and dashboard filters.
 
-- `Specific`: Relationship between social proof and product performance
-- `Measurable`: Uses `rating_score`, `review_count`, and `cumulative_units_sold`
-- `Achievable`: All required fields are available in the final snapshot
-- `Relevant`: Customer trust signals are important in e-commerce environments
-- `Time-bound`: Limited to the final snapshot date
+- `Specific`: Product-level comparison focused on the leading products by unit performance
+- `Measurable`: Uses ranking of products by the `Avg Daily Units Sold` measure shown in the current visual
+- `Achievable`: Product name, unit measures, and supporting product attributes are available in the current dashboard model
+- `Relevant`: Directly supports the page purpose of understanding product influence on sales outcomes
+- `Time-bound`: Evaluated within the analysis window from `20-02-2026` to `20-03-2026`
 
 **Objective 3.2**
 
-Analyze review rating distribution and review-time patterns in the collected review dataset in order to identify **dominant sentiment patterns** and **longer-term customer feedback trends**, while explicitly separating these review patterns from the main sales-analysis window that runs from **February 20, 2026** to **March 20, 2026**.
+Analyze time-based spikes and concentration risk among top products from **February 20, 2026** to **March 20, 2026** by combining the `Top Unit` trend visual with the dashboard slicers.
 
-- `Specific`: Rating distribution and temporal review patterns
-- `Measurable`: Uses review `rating`, review frequency over time, and review-period summaries
-- `Achievable`: Review fields are already available in the collected dataset
-- `Relevant`: Adds customer feedback context to the broader sales analysis
-- `Time-bound`: Evaluated using the review records stored in the project dataset
+- `Specific`: Temporal sensitivity analysis of top-product unit performance under interactive filters
+- `Measurable`: Uses peak values of the `Avg Daily Units Sold` trend by date, spike frequency of top products, and comparison of product-level peaks within the selected period
+- `Achievable`: Date, product, and unit metrics are available in the current dashboard visuals
+- `Relevant`: Explains whether page-level performance is broad-based or overly dependent on a small number of products
+- `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`
 
-#### Theme 4. Customer Ratings and Review Signals Across Years
+#### Theme 4. Customer Ratings and Review Signals
 
-This theme focuses on long-term customer review activity and rating patterns in the review dataset.
+This theme focuses on monthly customer review activity and rating patterns within a selected year in the review dataset.
 
 **Objective 4.1**
 
-Analyze yearly changes in review count and average rating across **2024**, **2025**, and **2026** in order to determine whether customer engagement and customer evaluation remain stable or fluctuate over time.
+Analyze monthly changes in review count and average rating within a selected year in order to determine when customer engagement and customer evaluation are strongest for the selected Nike categories.
 
-- `Specific`: Yearly review and rating trend analysis
-- `Measurable`: Uses `review_count` and `average_rating` by year
+- `Specific`: Monthly review and rating trend analysis within a selected year
+- `Measurable`: Uses `review_count` and `average_rating` by month in the `Monthly Rating and Review Trends` visual
 - `Achievable`: Variables are directly available in the review dataset
 - `Relevant`: Customer review behavior helps describe longer-term customer feedback patterns
-- `Time-bound`: Evaluated across the yearly periods `2024`, `2025`, and `2026`
+- `Time-bound`: Evaluated within a selected year from the observed review period `2024` to `2026`
 
 **Objective 4.2**
 
-Identify the Nike products with the highest number of comments in **2024**, **2025**, and **2026** in order to determine whether customer attention is concentrated in a small group of products.
+Identify the Nike products with the highest number of comments within a selected year in order to determine whether customer attention is concentrated in a small group of products.
 
-- `Specific`: Product-level concentration of review attention by year
-- `Measurable`: Uses `review_count` by `product_name` within each year
+- `Specific`: Product-level concentration of review attention by month within the selected year
+- `Measurable`: Uses `review_count` by `product_name` across months in the `Monthly Comment Trends for Top Products` visual
 - `Achievable`: Product identifiers and review counts are available in the review dataset
 - `Relevant`: Shows which products attract the strongest customer discussion
-- `Time-bound`: Evaluated across the yearly periods `2024`, `2025`, and `2026`
-- `Achievable`: Product-level revenue and sales fields are available
-- `Relevant`: Supports interpretation of product portfolio structure
-- `Time-bound`: Includes the final snapshot and the full period summary
+- `Time-bound`: Evaluated within a selected year from the observed review period `2024` to `2026`
 
-#### Theme 5. Machine Learning Support for Sales Performance Drivers
+#### Theme 5. Machine Learning Insights (Clustering)
 
-This theme uses Machine Learning as a supporting analytical method to strengthen the interpretation of the common analytical problem. Instead of presenting ML as a purely technical forecasting task, the theme focuses on how predictive models can help reveal which product characteristics are most consistently associated with stronger sales performance and which combinations of signals are associated with short-term sales weakness.
+This theme uses clustering as a supporting analytical method to strengthen the interpretation of the common analytical problem. Instead of presenting ML as a purely technical forecasting task, the theme focuses on whether the collected products can be grouped into distinct sales-performance profiles and how those profiles contribute to overall revenue.
 
 **Objective 5.1**
 
-Develop and compare interpretable regression models for `daily_units_sold` at the product-day level using category, selling price, discount rate, stock status, rating score, review count, cumulative sales, and time-related features from **February 20, 2026** to **March 20, 2026**, in order to estimate short-term sales performance, assess whether the selected model performs better than a baseline benchmark, and rank the relative influence of the main sales drivers through model interpretation.
+Use the silhouette score comparison bar chart and the `Product Segments by Units Sold vs Revenue` scatter chart to evaluate the clustering solution and identify distinct Nike product groups from **February 20, 2026** to **March 20, 2026**, in order to show that the dataset can be meaningfully segmented into different sales-performance patterns.
 
-- `Specific`: Interpretable regression analysis of short-term sales drivers
-- `Measurable`: Uses `MAE`, `RMSE`, and `R^2`, together with feature-ranking outputs such as coefficients or permutation importance
-- `Achievable`: The required variables are available in the cleaned sales dataset and can be modeled with baseline, linear, and tree-based methods
-- `Relevant`: Directly supports the common analytical problem by quantifying which observed product factors are most strongly associated with better sales performance
-- `Time-bound`: Model trained on earlier dates and evaluated on later dates within the same analytical period from `20-02-2026` to `20-03-2026`, while `19-02-2026` is retained only as the baseline snapshot
+- `Specific`: Compare clustering quality across candidate cluster settings using `silhouette_score`, then visualize product distribution by `segment_id` on the `Product Segments by Units Sold vs Revenue` scatter chart
+- `Measurable`: Uses differences in `silhouette_score` across cluster options and visible separation of products by `segment_id`, `avg_daily_units_sold`, and `avg_daily_revenue` on the scatter plot
+- `Achievable`: All required fields are available in `segmentation_metrics.csv` and `product_segments.csv`
+- `Relevant`: Supports the analytical problem by showing that products can be grouped into meaningful clusters before interpreting sales behavior
+- `Time-bound`: Evaluated within the analysis window from `20-02-2026` to `20-03-2026`
 
 **Objective 5.2**
 
-Develop a product segmentation model using clustering techniques on variables such as selling price, discount rate, rating score, review count, cumulative units sold, average daily units sold, average daily revenue, stock availability, and sales volatility, in order to identify distinct product groups with different sales-performance profiles and to explain how these groups reflect the combined influence of category, pricing, stock status, and customer feedback.
+Use the `Product Segments by Units Sold vs Revenue` scatter chart together with the pie chart of revenue contribution by cluster to interpret how each product segment contributes to overall Nike sales performance from **February 20, 2026** to **March 20, 2026**, in order to explain which clusters dominate total revenue and which clusters represent smaller but distinct performance groups.
 
-- `Specific`: Clustering-based analysis of product performance segments
-- `Measurable`: Uses cluster quality indicators such as silhouette score and interprets segment profiles through average feature values
-- `Achievable`: Product-level aggregated features can be constructed directly from the existing sales dataset
-- `Relevant`: Supports the common analytical problem by revealing meaningful groups of products with stronger or weaker performance characteristics
-- `Time-bound`: Built from the analytical dataset spanning **February 20, 2026** to **March 20, 2026**, with **February 19, 2026** retained only as the baseline snapshot
+- `Specific`: Compare revenue contribution across `segment_id` and relate each cluster's share of revenue to its position in the `Product Segments by Units Sold vs Revenue` scatter chart
+- `Measurable`: Uses `% revenue contribution` by cluster, cluster membership on the scatter chart, and differences in `avg_daily_units_sold` and `avg_daily_revenue`
+- `Achievable`: The required fields are available from `product_segments.csv` and `segment_profiles.csv`
+- `Relevant`: Directly supports the common analytical problem by linking clustered product characteristics to overall sales performance contribution
+- `Time-bound`: Limited to the same analytical period from `20-02-2026` to `20-03-2026`
 
 ### 3.1.4. Why These Objectives Match the Project Requirements
 
@@ -196,73 +193,69 @@ Suggested interpretation sentence:
 
 > Based on the category-level revenue trend and revenue variability charts, the analysis shows that [insert top categories] generated the highest total revenue, while [insert volatile categories] displayed the largest day-to-day fluctuations during the analytical period from February 20, 2026 to March 20, 2026.
 
-#### Theme 2. Pricing and Discount Strategy
+#### Theme 2. Finance Structure
 
-This theme examines how price structure and discount policy relate to sales performance. The main variables are `selling_price`, `original_price`, discount rate, `daily_units_sold`, and `daily_revenue`. Scatter plots are suitable for exploring the relationship between discount and units sold, while boxplots and grouped bar charts can be used to compare price bands and their revenue contribution.
+This theme is presented on the `Finance Structure` dashboard page. The main variables are `selling_price`, `daily_revenue`, `daily_units_sold`, and `Price Band`. The page combines KPI cards, the `Top Trending` line chart, and the `Price Distribution` pie chart to show how the financial structure of the portfolio changes under the selected filter context.
 
-For **Objective 2.1**, the analysis should examine whether products with larger discount rates tend to achieve stronger revenue or daily sales performance. For **Objective 2.2**, the analysis should compare predefined price bands in terms of both scale and stability.
+For **Objective 2.1**, the analysis should identify which price band contributes the largest share of revenue. For **Objective 2.2**, the analysis should use the KPI cards and supporting trend chart to assess whether performance changes are broad-based or concentrated.
 
 Suggested figures:
 
-- Figure X. Discount rate versus daily units sold
-- Figure Y. Revenue by price band
-- Figure Z. Revenue distribution across price segments
+- Figure X. Top Trending
+- Figure Y. Price Distribution
+- Figure Z. KPI cards on the Finance Structure page
 
 Suggested interpretation sentence:
 
-> The price and discount analysis indicates that [insert finding about discount range or price segment]. This suggests that products in the [insert price band] segment contribute [more/less] consistently to revenue compared with other price groups in the dataset.
+> The finance-structure analysis indicates that revenue is concentrated in [insert price band], while the KPI cards and trend line show whether the observed performance is broadly distributed or driven by a narrower part of the portfolio.
 
-#### Theme 3. Customer Ratings and Review Signals
+#### Theme 3. Product Influence Analysis
 
-This theme examines whether customer evaluation signals are associated with stronger product performance. The main variables are `rating_score`, `review_count`, `cumulative_units_sold`, `rating`, and `review_time`. Scatter plots with trendlines can be used to study the relationship between ratings, review count, and sales, while histograms and time-series review charts can be used to describe the distribution and timing of customer feedback.
+This theme is presented on the `Product Influence Analysis` page. The main variables are product name, date, and unit-performance measures. The page combines a ranking chart of leading products with a time-trend chart that shows when product-level spikes occur.
 
-For **Objective 3.1**, the analysis should examine whether higher rating scores and higher review counts are associated with stronger cumulative sales in the final snapshot. For **Objective 3.2**, the analysis should describe broader sentiment patterns in the review dataset and clearly note that review timing extends beyond the main sales-analysis period from **February 20, 2026** to **March 20, 2026**.
-
-The review data is heavily concentrated in positive feedback, with **7,003 five-star reviews** out of **7,605 total reviews**. The lower ratings are much less common, including **340 one-star reviews**, **36 two-star reviews**, **84 three-star reviews**, and **142 four-star reviews**.
+For **Objective 3.1**, the analysis should identify the products with the strongest unit performance in the selected period. For **Objective 3.2**, the analysis should examine whether the strongest products maintain stable performance or depend on short-lived spikes.
 
 Suggested figures:
 
-- Figure X. Rating score versus cumulative units sold
-- Figure Y. Distribution of review ratings
-- Figure Z. Review frequency over time
+- Figure X. Top Products by Average Unit Sold
+- Figure Y. Top Unit
+- Figure Z. KPI cards on the Product Influence Analysis page
 
 Suggested interpretation sentence:
 
-> The review analysis shows that customer feedback is dominated by five-star ratings, indicating an overall positive sentiment pattern in the collected review dataset. However, because review timestamps span a longer period than the sales snapshots, these review trends should be interpreted as broader customer feedback signals rather than direct short-term sales drivers.
+> The product-influence analysis shows that a small group of products contributes disproportionately to visible unit performance, while the trend chart reveals whether those products are consistently strong or driven by a few spikes during the analytical window.
 
-#### Theme 4. Customer Ratings and Review Signals Across Years
+#### Theme 4. Customer Ratings and Review Signals
 
-This theme examines longer-term customer feedback patterns using the review dataset. The main variables are review year, `review_count`, `rating`, and `product_name`. Line charts and bar charts are suitable for showing yearly review trends and identifying the most-commented products.
+This theme examines customer feedback patterns using the review dataset under the selected year and category filters in the dashboard. The main variables are review month, `review_count`, `average_rating`, and `product_name`. Line charts are suitable for showing monthly review trends and identifying the most-commented products within the selected year.
 
-For **Objective 4.1**, the analysis should compare yearly review volume and average rating across `2024`, `2025`, and `2026`. For **Objective 4.2**, the analysis should identify which products receive the most comments within each year and assess whether customer attention is concentrated.
+For **Objective 4.1**, the analysis should use the `Monthly Rating and Review Trends` visual to compare monthly review volume and average rating within the selected year. For **Objective 4.2**, the analysis should use the `Monthly Comment Trends for Top Products` chart to identify which products receive the most comments across months in the selected year and assess whether customer attention is concentrated.
 
 Suggested figures:
 
-- Figure X. Review count and average rating by year
-- Figure Y. Top commented products by year
+- Figure X. Monthly Rating and Review Trends
+- Figure Y. Monthly Comment Trends for Top Products
 - Figure Z. Review count summary or average rating KPI cards
 
 Suggested interpretation sentence:
 
-> The review-signal analysis suggests that customer feedback activity is [increasing / decreasing / fluctuating] across the observed years, while attention is concentrated on [insert product or product group], indicating that customer discussion is not evenly distributed across all Nike products.
+> The review-signal analysis suggests that customer feedback activity varies across months within the selected year, while attention is concentrated on [insert product or product group], indicating that customer discussion is not evenly distributed across all Nike products.
 
-#### Theme 5. Machine Learning Support for the Common Analytical Problem
+#### Theme 5. Machine Learning Insights (Clustering)
 
-The Machine Learning component should be presented as a supporting method for the optional bonus point. Its purpose is not simply to forecast future values, but to strengthen the interpretation of the common analytical problem by testing whether the factors discussed in the earlier themes can also explain or predict stronger and weaker sales outcomes.
+The Machine Learning component should be presented as a supporting method for the optional bonus point. In the current dashboard, this support is represented through clustering rather than regression.
 
-For **Objective 5.1**, regression models may be used to predict `daily_units_sold` from category, price, discount, stock status, rating score, review count, cumulative sales, location, and time-related features. The purpose of this objective is not only to compare model accuracy, but also to identify which variables repeatedly appear as the strongest explanatory signals of short-term sales performance. Accordingly, the report should discuss both model metrics such as `MAE`, `RMSE`, and `R^2` and the feature-level interpretation of the selected model.
-
-For **Objective 5.2**, a clustering model may be used to segment products into groups with distinct performance profiles. This objective should be interpreted as a way to identify meaningful product segments rather than as a purely technical modeling exercise. The report should therefore describe the cluster quality, summarize the profile of each segment, and explain how the segments differ in terms of pricing, discount level, stock availability, customer feedback, and observed sales performance.
+For **Objective 5.1**, the analysis should use the silhouette score chart and cluster scatter plot to justify the selected clustering solution. For **Objective 5.2**, the analysis should use the revenue-contribution pie chart together with the scatter plot to explain how the identified segments differ in business significance.
 
 Suggested figures and tables:
 
-- Table X. Regression model comparison
-- Table Y. Product segmentation metrics and selected number of clusters
-- Figure Z. Cluster profile comparison or segment-center visualization
+- Figure X. Product Segments by Units Sold vs Revenue
+- Figure Y. Silhouette Score by Number of Clusters
+- Figure Z. Cluster Revenue Contribution (%)
 
 Suggested interpretation sentence:
 
-> The Machine Learning component is used as an additional analytical tool to support the group’s common analytical problem. By combining regression-based explanation of sales level with clustering-based product segmentation, the group can examine not only which factors are associated with stronger sales performance, but also how different combinations of those factors form distinct product-performance profiles. Model results should still be interpreted cautiously due to the short observation window and the platform-specific nature of the dataset.
+> The clustering-based Machine Learning component is used as an additional analytical tool to support the group’s common analytical problem. By grouping products into distinct segments and comparing their revenue contribution, the group can show that the Nike catalog contains clearly different product-performance profiles rather than one homogeneous sales pattern.
 
 ### 3.3.4. Overall Analytical Summary
 

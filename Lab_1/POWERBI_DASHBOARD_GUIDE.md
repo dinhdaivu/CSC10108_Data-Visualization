@@ -162,7 +162,7 @@ Suggested subtitle:
 
 ### 8.1 Rewritten analytical questions (based on the current chart)
 
-For the current page layout (KPI cards + **Top trending** line chart + **Price distribution** pie chart + category/date slicers), keep questions in this format:
+For the current page layout (KPI cards + **Top Trending** line chart + **Price Distribution** pie chart + category/date slicers), keep questions in this format:
 
 - **Question**
 - **Visual evidence**
@@ -175,19 +175,19 @@ Main question:
 Supporting questions:
 
 1. **Question:** Which categories are the main drivers of total revenue in the selected window?
-  - **Visual evidence:** `Top trending` line chart (category legend) + KPI cards
+  - **Visual evidence:** `Top Trending` line chart (category legend) + KPI cards
   - **Primary measures:** `Total Revenue`, `Total Daily Units Sold`
 
 2. **Question:** Are revenue spikes concentrated in a few dates/categories or distributed more evenly over time?
-  - **Visual evidence:** `Top trending` line chart
+  - **Visual evidence:** `Top Trending` line chart
   - **Primary measures:** date-level `Total Revenue` by `category_name`
 
 3. **Question:** Which price band contributes the largest revenue share, and is that share stable under slicer changes?
-  - **Visual evidence:** `Price distribution` pie chart + date/category slicers
+  - **Visual evidence:** `Price Distribution` pie chart + date/category slicers
   - **Primary measures:** `Total Revenue` by `Price Band`
 
 4. **Question:** Is there a mismatch between value contribution and volume contribution across price bands?
-  - **Visual evidence:** `Price distribution` pie chart + KPI cards
+  - **Visual evidence:** `Price Distribution` pie chart + KPI cards
   - **Primary measures:** `Total Revenue` by `Price Band` vs `Total Daily Units Sold` by `Price Band`
 
 5. **Question:** When filters change, which KPI is most sensitive (`Revenue`, `Units Sold`, or `Average Selling Price`), and what does that imply for strategy?
@@ -602,9 +602,9 @@ Recommended calculated columns:
 Price Band =
 SWITCH(
     TRUE(),
-    'fact_product_snapshot'[selling_price] < 1000000, "Below 1M VND",
-    'fact_product_snapshot'[selling_price] < 2000000, "1M-2M VND",
-    'fact_product_snapshot'[selling_price] < 3000000, "2M-3M VND",
+    'fact_product_snapshot 1'[selling_price] < 1000000, "Below 1M VND",
+    'fact_product_snapshot 1'[selling_price] < 2000000, "1M-2M VND",
+    'fact_product_snapshot 1'[selling_price] < 3000000, "2M-3M VND",
     "Above 3M VND"
 )
 
@@ -628,56 +628,39 @@ Scatter-chart note for Power BI website:
 - use `Legend` for grouping and `Tooltips` for product-level context
 - if one point appears instead of many, the chart is being aggregated too heavily
 
-### Page 1. Executive Overview
+### Page 1. Theme 2 - Finance Structure
 
 Purpose:
-- give a quick summary of overall sales, product coverage, and rating quality
-
-Questions this page should answer:
-- **Q1. Scale:** What is the current scale of performance in the selected window (`Total Revenue`, `Total Daily Units Sold`, `Average Selling Price`)?
-- **Q2. Trend drivers:** Which categories are driving the `Top trending` chart, and where are the most important peaks?
-- **Q3. Price structure:** Is `Price distribution` balanced or concentrated in one/two price bands?
-- **Q4. Sensitivity:** Under date/category slicers, which KPI changes the most and what business implication follows?
+- show how revenue is distributed across price bands and how KPI performance changes under the selected filter context
 
 Main tables used:
 - `fact_product_snapshot`
-- `dim_product`
 - `dim_category`
 - `dim_date`
 
-Recommended KPI cards:
-- `Total Revenue`
-  Source: measure based on `fact_product_snapshot[daily_revenue]`
-- `Total Daily Units Sold`
-  Source: measure based on `fact_product_snapshot[daily_units_sold]`
-- `Distinct Products`
-  Source: measure based on `dim_product[product_id]`
-- `Average Rating Score`
-  Source: measure based on `fact_product_snapshot[rating_score]`
-
 Recommended visuals:
+- KPI cards
+  Values: `Total Daily Revenue`, `Average Daily Units Sold`, `Average Price per Product`
 - line chart
+  Title: `Top Trending`
   Axis: `dim_date[date]`
+  Legend: `dim_category[category_name]`
   Values: `Total Revenue`
-- clustered bar chart
-  Axis: `dim_category[category_name]`
+- pie or donut chart
+  Title: `Price Distribution`
+  Legend: `fact_product_snapshot[Price Band]`
   Values: `Total Revenue`
-  Visual filter: Top N = 10 by `Total Revenue`
-- donut or stacked column chart
-  Axis/Legend: `fact_product_snapshot[stock_status]`
-  Values: `Distinct Products` or `Products In Stock` / `Products Out of Stock`
 
 Page filters:
 - `fact_product_snapshot[Analysis Window Flag] = 1`
 
 Recommended slicers:
-- `dim_date[date]`
-- `dim_category[category_name]`
-- `fact_product_snapshot[stock_status]`
+- date range
+- category or page filter slicer
 
 Notes:
-- use this page for headline KPIs only
-- do not place `Latest Snapshot Cumulative Units` here unless you clearly label it as latest-snapshot only
+- this page corresponds to Objective 2.1 and Objective 2.2
+- keep the interpretation focused on revenue concentration by price band and KPI sensitivity under filter changes
 
 ### Page 2. Theme 1 - Sales Performance by Category and Time
 
@@ -722,107 +705,48 @@ Targets:
 - Objective 1.1
 - Objective 1.2
 
-### Page 3. Theme 2 - Pricing and Discount Strategy
+### Page 3. Theme 3 - Product Influence Analysis
 
 Purpose:
-- explore how price and discount are associated with sales outcomes
+- identify the products with the strongest unit performance and check whether their strength is stable or spike-driven over time
 
 Main tables used:
 - `fact_product_snapshot`
 - `dim_product`
-- `dim_category`
+- `dim_date`
 
 Recommended visuals:
-- scatter chart
-  X-axis: `fact_product_snapshot[discount_rate]`
-  Y-axis: `fact_product_snapshot[daily_units_sold]`
-  Legend: `dim_category[category_name]`
-  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[daily_revenue]`
-- scatter chart
-  X-axis: `fact_product_snapshot[selling_price]`
-  Y-axis: `fact_product_snapshot[daily_revenue]`
-  Legend: `dim_category[category_name]`
-  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[daily_units_sold]`
-- clustered column chart
-  Axis: `fact_product_snapshot[Price Band]`
-  Values: `Total Revenue`
-- box-style alternative if needed
-  Axis: `fact_product_snapshot[Price Band]`
-  Values: `Average Selling Price`, `Total Daily Units Sold`
+- horizontal bar chart
+  Title: `Top Products by Average Unit Sold`
+  Axis: `dim_product[product_name]`
+  Values: unit-performance measure used on the page
+- line chart
+  Title: `Top Unit`
+  Axis: `dim_date[date]`
+  Legend: `dim_product[product_name]`
+  Values: unit-performance trend for the leading products
+- KPI cards
+  Values: `Average Price`, `Average Daily Units Sold`, `Distinct Products`
 
 Page filters:
 - `fact_product_snapshot[Analysis Window Flag] = 1`
 
 Recommended slicers:
-- `dim_category[category_name]`
-- `fact_product_snapshot[Price Band]`
-- `fact_product_snapshot[stock_status]`
+- date range
+- category or page filter slicer if enabled
 
 Notes:
-- keep your wording careful here: this page shows association, not causation
-- in Power BI website, keep `Values` empty for these scatter charts
-- use `Tooltips` instead of `Details` for `dim_product[product_name]`
-- if the scatter is too crowded, keep only `category_name` in `Legend` and move product fields to `Tooltips`
-
-Targets:
-- Objective 2.1
-- Objective 2.2
-
-### Page 4. Theme 3 - Ratings and Reviews
-
-Purpose:
-- compare product review signals with sales-related indicators
-
-Main tables used:
-- `fact_product_snapshot`
-- `fact_review`
-- `dim_product`
-- `dim_category`
-- `dim_date`
-
-Recommended visuals:
-- scatter chart
-  X-axis: `fact_product_snapshot[rating_score]`
-  Y-axis: `fact_product_snapshot[cumulative_units_sold]`
-  Legend: `dim_category[category_name]`
-  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[review_count]`
-- scatter chart
-  X-axis: `fact_product_snapshot[review_count]`
-  Y-axis: `fact_product_snapshot[cumulative_units_sold]`
-  Legend: `dim_category[category_name]`
-  Tooltips: `dim_product[product_name]`, `fact_product_snapshot[rating_score]`
-- column chart
-  Axis: `fact_review[rating]`
-  Values: `Total Reviews`
-- line chart
-  Axis: `dim_date[date]`
-  Values: `Total Reviews`
-
-Page filters:
-- choose one of these two approaches and keep it consistent
-- option 1: focus only on the main analysis window
-  Filter `dim_date[date]` from `2026-02-20` to `2026-03-20`
-- option 2: keep full review history
-  No fixed page date filter
-
-Recommended slicers:
-- `dim_date[date]`
-- `dim_category[category_name]`
-- `dim_product[product_name]`
-
-Notes:
-- this page mixes snapshot-based metrics and review-level metrics, so label visuals clearly
-- `rating_score` and `review_count` come from `fact_product_snapshot`
-- `rating` and review volume come from `fact_review`
+- this page corresponds to Objective 3.1 and Objective 3.2
+- keep the interpretation focused on product ranking, spike timing, and concentration risk
 
 Targets:
 - Objective 3.1
 - Objective 3.2
 
-### Page 5. Theme 4 - Customer Ratings and Review Signals
+### Page 4. Theme 4 - Customer Ratings and Review Signals
 
 Purpose:
-- show long-term customer review activity and rating patterns across years
+- show monthly customer review activity and rating patterns within the selected year
 
 Main tables used:
 - `fact_review`
@@ -831,82 +755,75 @@ Main tables used:
 
 Recommended visuals:
 - line chart
-  Title: `Review Count and Average Rating by Year`
-  Axis: review year
-  Values: yearly `review_count`, yearly `average_rating`
-- clustered or horizontal bar chart
-  Title: `Top Commented Products by Year`
-  Axis: review year
+  Title: `Monthly Rating and Review Trends`
+  Axis: review month
+  Values: monthly `review_count`, monthly `average_rating`
+- line chart
+  Title: `Monthly Comment Trends for Top Products`
+  Axis: review month
   Values: `review_count`
   Legend: `product_name`
-  Visual filter: Top N products by `review_count` within the selected period
+  Visual filter: Top N products by `review_count` within the selected year
 - KPI cards
   Values: `Total Reviews`, `Average Rating`, `Average Reviews per Product`
 
 Page filters:
 - no fixed sales-window filter
-- keep the full review history so yearly comparisons across `2024`, `2025`, and `2026` remain visible
+- use the `year` slicer to focus the page on one selected year from `2024`, `2025`, or `2026`
 
 Recommended slicers:
-- review date or review year
+- review year
+- review month if needed
 - `dim_product[product_name]`
 - optional product/category filter if your review model supports it
 
 Notes:
-- this page is review-focused and should not mix in revenue across `2024` to `2026`
+- this page is review-focused and should not mix in revenue with the review visuals
 - review history spans beyond the main sales-analysis window from `2026-02-20` to `2026-03-20`
 
 Targets:
 - Objective 4.1
 - Objective 4.2
 
-### Page 6. Theme 5 - Machine Learning Insights
+### Page 5. Theme 5 - Machine Learning Insights (Clustering)
 
 Purpose:
-- present model outputs as supporting insights, not as the main fact model
+- present clustering outputs as supporting insights rather than as the main fact model
 
 Main tables used:
-- `regression_metrics`
-- `regression_permutation_importance`
 - `segmentation_metrics`
 - `segment_profiles`
 - `product_segments`
-- optionally `dim_product` if `product_segments` is connected
 
 Recommended visuals:
-- table or clustered bar chart
-  Source: `regression_metrics`
-  Axis: `model`
-  Values: `mae`, `rmse`, `r2`
-- bar chart
-  Source: `regression_permutation_importance`
-  Axis: `feature`
-  Values: `importance_mean`
-- table or card
-  Source: `segmentation_metrics`
-  Values: `n_clusters`, `silhouette_score`, `calinski_harabasz_score`, `davies_bouldin_score`, `inertia`
-- table
-  Source: `segment_profiles`
-  Columns: `segment_id`, `product_count`, `product_share`, `dominant_category`, `avg_daily_revenue`, `avg_total_period_revenue`
 - scatter chart
+  Title: `Product Segments by Units Sold vs Revenue`
   Source: `product_segments`
-  X-axis: `pca_component_1`
-  Y-axis: `pca_component_2`
+  X-axis: `avg_daily_units_sold`
+  Y-axis: `avg_daily_revenue`
   Legend: `segment_id`
-  Tooltips: `product_name`, `category`, `avg_daily_revenue`, `distance_to_center`, `is_representative_product`
-    
+- bar chart
+  Title: `Silhouette Score by Number of Clusters`
+  Source: `segmentation_metrics`
+  Axis: `n_clusters`
+  Values: `silhouette_score`
+- pie or donut chart
+  Title: `Cluster Revenue Contribution (%)`
+  Source: segment summary
+  Legend: `segment_id`
+  Values: cluster revenue share
+
 Page filters:
 - usually none
 - model outputs are already derived from the prepared dataset
 
 Recommended slicers:
-- `product_segments[segment_id]` if you use that table in visuals
-- `product_segments[category]` if needed
+- `product_segments[segment_id]` if needed
+- optional category filter if your connected model supports it
 
 Notes:
 - keep this as a final insight page
-- avoid connecting extra ML tables unless you truly need interaction
-- this page is best used for explanation, not heavy cross-filtering
+- the clustering page should support Objective 5.1 and Objective 5.2 directly
 
 Targets:
 - Objective 5.1
