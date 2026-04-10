@@ -819,56 +819,42 @@ Targets:
 - Objective 3.1
 - Objective 3.2
 
-### Page 5. Theme 4 - Inventory and Portfolio Structure
+### Page 5. Theme 4 - Customer Ratings and Review Signals
 
 Purpose:
-- show stock availability, product concentration, and portfolio structure
+- show long-term customer review activity and rating patterns across years
 
 Main tables used:
-- `fact_product_snapshot`
+- `fact_review`
 - `dim_product`
-- `dim_category`
 - `dim_date`
 
 Recommended visuals:
-- stacked bar chart
-  Axis: `dim_category[category_name]`
-  Values: `Products In Stock`, `Products Out of Stock`
 - line chart
-  Axis: `dim_date[date]`
-  Values: `Distinct Products`
-- bar chart
-  Axis: `dim_product[product_name]`
-  Values: `Total Revenue`
-  Visual filter: Top N = 10 by `Total Revenue`
-- treemap
-  Group: `dim_category[category_name]`
-  Values: `Total Revenue`
+  Title: `Review Count and Average Rating by Year`
+  Axis: review year
+  Values: yearly `review_count`, yearly `average_rating`
+- clustered or horizontal bar chart
+  Title: `Top Commented Products by Year`
+  Axis: review year
+  Values: `review_count`
+  Legend: `product_name`
+  Visual filter: Top N products by `review_count` within the selected period
+- KPI cards
+  Values: `Total Reviews`, `Average Rating`, `Average Reviews per Product`
 
 Page filters:
-- `fact_product_snapshot[Analysis Window Flag] = 1`
+- no fixed sales-window filter
+- keep the full review history so yearly comparisons across `2024`, `2025`, and `2026` remain visible
 
 Recommended slicers:
-- `dim_date[date]`
-- `dim_category[category_name]`
-- `fact_product_snapshot[stock_status]`
-- `fact_product_snapshot[warehouse_location]`
+- review date or review year
+- `dim_product[product_name]`
+- optional product/category filter if your review model supports it
 
-Useful measures:
-
-```DAX
-Products Out of Stock =
-CALCULATE(
-    DISTINCTCOUNT('fact_product_snapshot'[product_id]),
-    'fact_product_snapshot'[is_in_stock] = 0
-)
-
-Products In Stock =
-CALCULATE(
-    DISTINCTCOUNT('fact_product_snapshot'[product_id]),
-    'fact_product_snapshot'[is_in_stock] = 1
-)
-```
+Notes:
+- this page is review-focused and should not mix in revenue across `2024` to `2026`
+- review history spans beyond the main sales-analysis window from `2026-02-20` to `2026-03-20`
 
 Targets:
 - Objective 4.1

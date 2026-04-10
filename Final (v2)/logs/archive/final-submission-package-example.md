@@ -15,5 +15,5 @@
 - [ ] Có tối thiểu 2 câu hỏi vấn đáp cho mỗi thành viên.
 - [ ] Báo cáo tiếng Việt và nội dung nhất quán.
 
-## Notes
+## Notes 
 - Đây là file ví dụ để nhóm thay bằng danh sách thật khi chốt nộp.

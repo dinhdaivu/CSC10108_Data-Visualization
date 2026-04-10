@@ -98,26 +98,29 @@ Analyze review rating distribution and review-time patterns in the collected rev
 - `Relevant`: Adds customer feedback context to the broader sales analysis
 - `Time-bound`: Evaluated using the review records stored in the project dataset
 
-#### Theme 4. Inventory and Product Portfolio Structure
+#### Theme 4. Customer Ratings and Review Signals Across Years
 
-This theme focuses on stock availability and the structure of the product portfolio.
+This theme focuses on long-term customer review activity and rating patterns in the review dataset.
 
 **Objective 4.1**
 
-Track in-stock ratio and product listing count by category from **February 20, 2026** to **March 20, 2026** in order to identify categories with the **highest stockout pressure** and estimate potential sales opportunity loss.
+Analyze yearly changes in review count and average rating across **2024**, **2025**, and **2026** in order to determine whether customer engagement and customer evaluation remain stable or fluctuate over time.
 
-- `Specific`: Stock availability and listing dynamics by category
-- `Measurable`: Uses in-stock counts, out-of-stock counts, in-stock ratio, and category-level sales
-- `Achievable`: Variables are directly available in the daily snapshots
-- `Relevant`: Stock availability may affect sales performance and product visibility
-- `Time-bound`: Limited to the analytical period from `20-02-2026` to `20-03-2026`
+- `Specific`: Yearly review and rating trend analysis
+- `Measurable`: Uses `review_count` and `average_rating` by year
+- `Achievable`: Variables are directly available in the review dataset
+- `Relevant`: Customer review behavior helps describe longer-term customer feedback patterns
+- `Time-bound`: Evaluated across the yearly periods `2024`, `2025`, and `2026`
 
 **Objective 4.2**
 
-Measure revenue concentration from top products in the **March 20, 2026** snapshot and over the full analytical period in order to determine whether sales are diversified or highly dependent on a relatively small number of products.
+Identify the Nike products with the highest number of comments in **2024**, **2025**, and **2026** in order to determine whether customer attention is concentrated in a small group of products.
 
-- `Specific`: Product concentration and portfolio risk
-- `Measurable`: Uses top-product revenue share and concentration indicators
+- `Specific`: Product-level concentration of review attention by year
+- `Measurable`: Uses `review_count` by `product_name` within each year
+- `Achievable`: Product identifiers and review counts are available in the review dataset
+- `Relevant`: Shows which products attract the strongest customer discussion
+- `Time-bound`: Evaluated across the yearly periods `2024`, `2025`, and `2026`
 - `Achievable`: Product-level revenue and sales fields are available
 - `Relevant`: Supports interpretation of product portfolio structure
 - `Time-bound`: Includes the final snapshot and the full period summary
@@ -227,21 +230,21 @@ Suggested interpretation sentence:
 
 > The review analysis shows that customer feedback is dominated by five-star ratings, indicating an overall positive sentiment pattern in the collected review dataset. However, because review timestamps span a longer period than the sales snapshots, these review trends should be interpreted as broader customer feedback signals rather than direct short-term sales drivers.
 
-#### Theme 4. Inventory and Product Portfolio Structure
+#### Theme 4. Customer Ratings and Review Signals Across Years
 
-This theme examines stock availability and the concentration of performance within the product portfolio. The main variables are `category`, `stock_status`, listing count, and revenue-related indicators. Bar charts, line charts, and treemaps are suitable for showing inventory structure and portfolio concentration.
+This theme examines longer-term customer feedback patterns using the review dataset. The main variables are review year, `review_count`, `rating`, and `product_name`. Line charts and bar charts are suitable for showing yearly review trends and identifying the most-commented products.
 
-For **Objective 4.1**, the analysis should compare in-stock and out-of-stock proportions across categories and track how listing counts change over time. For **Objective 4.2**, the analysis should evaluate whether the observed revenue is broadly distributed or concentrated in a relatively small number of top-performing products.
+For **Objective 4.1**, the analysis should compare yearly review volume and average rating across `2024`, `2025`, and `2026`. For **Objective 4.2**, the analysis should identify which products receive the most comments within each year and assess whether customer attention is concentrated.
 
 Suggested figures:
 
-- Figure X. In-stock versus out-of-stock products by category
-- Figure Y. Listing count trend over time
-- Figure Z. Revenue share by category or top-product concentration
+- Figure X. Review count and average rating by year
+- Figure Y. Top commented products by year
+- Figure Z. Review count summary or average rating KPI cards
 
 Suggested interpretation sentence:
 
-> The inventory and portfolio analysis suggests that [insert category or product concentration finding]. This implies that sales performance in the dataset is [well distributed / concentrated] across the product portfolio.
+> The review-signal analysis suggests that customer feedback activity is [increasing / decreasing / fluctuating] across the observed years, while attention is concentrated on [insert product or product group], indicating that customer discussion is not evenly distributed across all Nike products.
 
 #### Theme 5. Machine Learning Support for the Common Analytical Problem
 
