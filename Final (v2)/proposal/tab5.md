@@ -47,6 +47,29 @@ Dumbbell Chart (Biểu đồ tạ đơn) hoặc Grouped Bar Chart.
 ### Biện luận:
 Với Dumbbell Chart, mỗi "thanh tạ" đại diện cho một môn học. Hai đầu quả tạ là Hà Nội và TP.HCM. Khoảng cách giữa hai đầu quả tạ chính là "khoảng cách năng lực" ở môn đó. Đây là cách so sánh đối đầu trực quan và mạnh mẽ nhất.
 
+## 4. Tổ hợp nào đang có sự lệch pha giữa mức độ phổ biến và hiệu suất điểm số?
+
+### What (Data)
+- Tổ hợp thi (Categorical)
+- Tỷ lệ thí sinh lựa chọn tổ hợp (Quantitative)
+- Điểm trung bình tổng tổ hợp hoặc điểm trung bình 3 môn thành phần (Quantitative)
+- Bộ lọc: Năm
+
+### Why (Task)
+- **Compare**: Đối chiếu giữa "độ hot" và chất lượng đầu ra của từng tổ hợp  
+- **Identify Outliers**: Phát hiện các tổ hợp được chọn nhiều nhưng hiệu suất không cao, hoặc ngược lại  
+
+Mục tiêu là giúp người dùng trả lời một câu hỏi thực tế hơn: liệu thí sinh đang chọn tổ hợp vì xu hướng, vì định hướng ngành học, hay vì đó thực sự là tổ hợp có lợi thế về điểm số?
+
+### How (Visual)
+- **Scatter Plot / Bubble Chart (Biểu đồ phân tán)**
+
+### Biện luận
+Biểu đồ phân tán rất phù hợp để thể hiện hai biến định lượng cùng lúc: một trục là mức độ phổ biến, trục còn lại là hiệu suất điểm số. Cách thể hiện này giúp phát hiện nhanh các vùng đáng chú ý:
+- Tổ hợp phổ biến và điểm cao: nhóm "an toàn - hấp dẫn"
+- Tổ hợp phổ biến nhưng điểm thấp: nhóm "cạnh tranh/rủi ro"
+- Tổ hợp ít người chọn nhưng điểm tốt: nhóm "tiềm năng bị bỏ quên"
+
 
 # Tổng kết Tab 5
 
