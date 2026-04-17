@@ -1,0 +1,32 @@
+{
+  "purpose": "Sample relational dataset for introducing Power BI features in Lab 03.",
+  "why_this_matches_requirements": [
+    "It is a sample dataset unrelated to the main Olist analysis dataset.",
+    "It remains relational with multiple linked tables.",
+    "It is intentionally simplified for demonstrating Power BI features."
+  ],
+  "selected_leagues": [
+    "England Premier League",
+    "Spain LIGA BBVA"
+  ],
+  "selected_seasons": [
+    "2014/2015",
+    "2015/2016"
+  ],
+  "generated_tables": {
+    "dim_country_demo": 2,
+    "dim_league_demo": 2,
+    "dim_team_demo": 46,
+    "dim_date_demo": 297,
+    "team_attributes_demo": 46,
+    "fact_match_demo": 1520,
+    "fact_team_match_demo": 3040
+  },
+  "metrics": {
+    "match_count": 1520,
+    "team_count": 46,
+    "league_count": 2,
+    "country_count": 2,
+    "average_goals_per_match": 2.6664473684210526
+  }
+}

@@ -18,6 +18,12 @@ env/
 Thumbs.db
 .DS_Store
 
+# Lab 3 generated and raw datasets
+Lab_3/data/raw/
+Lab_3/data/processed/
+Lab_3/football/raw/
+Lab_3/football/processed/
+
 # LaTeX build artifacts
 *.aux
 *.bbl

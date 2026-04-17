@@ -1,0 +1,8 @@
+﻿table_name,row_count,grain
+dim_country_demo,2,one row per country
+dim_league_demo,2,one row per league
+dim_team_demo,46,one row per team
+dim_date_demo,297,one row per date actually used
+team_attributes_demo,46,latest row per selected team
+fact_match_demo,1520,one row per match
+fact_team_match_demo,3040,one row per team per match

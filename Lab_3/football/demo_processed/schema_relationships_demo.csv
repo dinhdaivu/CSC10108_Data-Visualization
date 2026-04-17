@@ -1,0 +1,8 @@
+﻿from_table,from_column,to_table,to_column,cardinality
+dim_country_demo,country_key,dim_league_demo,country_key,one-to-many
+dim_league_demo,league_key,fact_match_demo,league_key,one-to-many
+dim_league_demo,league_key,fact_team_match_demo,league_key,one-to-many
+dim_team_demo,team_key,team_attributes_demo,team_key,one-to-many
+dim_team_demo,team_key,fact_team_match_demo,team_key,one-to-many
+dim_date_demo,date_key,fact_match_demo,match_date_key,one-to-many
+dim_date_demo,date_key,fact_team_match_demo,match_date_key,one-to-many

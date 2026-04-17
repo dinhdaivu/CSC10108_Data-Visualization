@@ -1,0 +1,47 @@
+﻿id,team_fifa_api_id,team_key,attribute_date,buildUpPlaySpeed,buildUpPlaySpeedClass,buildUpPlayDribbling,buildUpPlayDribblingClass,buildUpPlayPassing,buildUpPlayPassingClass,buildUpPlayPositioningClass,chanceCreationPassing,chanceCreationPassingClass,chanceCreationCrossing,chanceCreationCrossingClass,chanceCreationShooting,chanceCreationShootingClass,chanceCreationPositioningClass,defencePressure,defencePressureClass,defenceAggression,defenceAggressionClass,defenceTeamWidth,defenceTeamWidthClass,defenceDefenderLineClass,attribute_date_key
+330,1867,7869,2015-09-10,53,Balanced,40.0,Normal,48,Mixed,Organised,55,Normal,59,Normal,57,Normal,Organised,38,Medium,39,Press,52,Normal,Cover,20150910
+529,110832,7878,2015-09-10,57,Balanced,50.0,Normal,59,Mixed,Organised,61,Normal,63,Normal,51,Normal,Organised,48,Medium,45,Press,62,Normal,Cover,20150910
+254,1796,8191,2015-09-10,54,Balanced,32.0,Little,67,Long,Organised,72,Risky,57,Normal,47,Normal,Organised,63,Medium,62,Press,58,Normal,Cover,20150910
+718,95,8197,2015-09-10,63,Balanced,41.0,Normal,60,Mixed,Organised,47,Normal,64,Normal,46,Normal,Organised,58,Medium,65,Press,55,Normal,Cover,20150910
+1162,481,8302,2015-09-10,53,Balanced,53.0,Normal,53,Mixed,Organised,53,Normal,52,Normal,60,Normal,Organised,42,Medium,48,Press,59,Normal,Cover,20150910
+508,1860,8305,2015-09-10,34,Balanced,41.0,Normal,38,Mixed,Organised,55,Normal,39,Normal,49,Normal,Organised,43,Medium,42,Press,49,Normal,Cover,20150910
+671,472,8306,2015-09-10,48,Balanced,55.0,Normal,44,Mixed,Organised,53,Normal,42,Normal,53,Normal,Organised,53,Medium,39,Press,57,Normal,Cover,20150910
+94,448,8315,2015-09-10,46,Balanced,46.0,Normal,39,Mixed,Organised,50,Normal,60,Normal,36,Normal,Free Form,49,Medium,57,Press,50,Normal,Cover,20150910
+1036,480,8370,2015-09-10,29,Slow,52.0,Normal,44,Mixed,Organised,44,Normal,44,Normal,47,Normal,Organised,54,Medium,52,Press,63,Normal,Cover,20150910
+367,467,8372,2015-09-10,62,Balanced,51.0,Normal,52,Mixed,Organised,59,Normal,55,Normal,52,Normal,Organised,37,Medium,56,Press,49,Normal,Cover,20150910
+312,5,8455,2015-09-10,67,Fast,41.0,Normal,36,Mixed,Organised,41,Normal,34,Normal,44,Normal,Organised,39,Medium,41,Press,46,Normal,Cover,20150910
+806,10,8456,2015-09-10,59,Balanced,35.0,Normal,29,Short,Free Form,38,Normal,36,Normal,24,Little,Free Form,48,Medium,47,Press,54,Normal,Cover,20150910
+1186,17,8466,2015-09-10,52,Balanced,31.0,Little,46,Mixed,Organised,42,Normal,54,Normal,30,Little,Organised,50,Medium,65,Press,44,Normal,Cover,20150910
+1254,106,8472,2015-09-10,43,Balanced,43.0,Normal,51,Mixed,Organised,59,Normal,50,Normal,55,Normal,Organised,47,Medium,45,Press,49,Normal,Cover,20150910
+400,452,8558,2015-09-10,50,Balanced,52.0,Normal,44,Mixed,Organised,52,Normal,60,Normal,40,Normal,Free Form,37,Medium,40,Press,45,Normal,Cover,20150910
+1060,457,8560,2015-09-10,60,Balanced,52.0,Normal,50,Mixed,Organised,54,Normal,60,Normal,52,Normal,Organised,49,Medium,53,Press,53,Normal,Cover,20150910
+731,1853,8581,2015-09-10,62,Balanced,36.0,Normal,65,Mixed,Organised,71,Risky,42,Normal,65,Normal,Organised,36,Medium,33,Contain,42,Normal,Cover,20150910
+1281,18,8586,2015-09-10,47,Balanced,46.0,Normal,40,Mixed,Organised,41,Normal,41,Normal,63,Normal,Organised,63,Medium,54,Press,56,Normal,Cover,20150910
+1048,449,8603,2015-09-10,59,Balanced,49.0,Normal,37,Mixed,Organised,59,Normal,43,Normal,53,Normal,Organised,58,Medium,49,Press,58,Normal,Cover,20150910
+1054,243,8633,2015-09-10,50,Balanced,57.0,Normal,46,Mixed,Free Form,61,Normal,41,Normal,63,Normal,Free Form,52,Medium,60,Press,63,Normal,Cover,20150910
+124,241,8634,2015-09-10,36,Balanced,35.0,Normal,51,Mixed,Free Form,36,Normal,49,Normal,56,Normal,Free Form,61,Medium,65,Press,65,Normal,Cover,20150910
+748,9,8650,2015-09-10,66,Balanced,60.0,Normal,45,Mixed,Organised,34,Normal,34,Normal,46,Normal,Organised,51,Medium,52,Press,61,Normal,Cover,20150910
+1390,19,8654,2015-09-10,77,Fast,37.0,Normal,57,Mixed,Organised,68,Risky,73,Lots,29,Little,Organised,30,Deep,37,Press,41,Normal,Cover,20150910
+1384,109,8659,2015-09-10,62,Balanced,32.0,Little,51,Mixed,Organised,53,Normal,50,Normal,60,Normal,Organised,41,Medium,40,Press,49,Normal,Cover,20150910
+602,1952,8667,2015-09-10,56,Balanced,40.0,Normal,55,Mixed,Organised,54,Normal,49,Normal,56,Normal,Organised,38,Medium,37,Press,46,Normal,Cover,20150910
+410,7,8668,2015-09-10,43,Balanced,45.0,Normal,40,Mixed,Organised,39,Normal,33,Little,63,Normal,Organised,52,Medium,58,Press,59,Normal,Cover,20150910
+230,1943,8678,2015-09-10,47,Balanced,36.0,Normal,47,Mixed,Organised,49,Normal,45,Normal,47,Normal,Organised,48,Medium,50,Press,62,Normal,Cover,20150910
+350,242,9783,2015-09-10,53,Balanced,55.0,Normal,47,Mixed,Organised,38,Normal,52,Normal,55,Normal,Organised,45,Medium,50,Press,59,Normal,Offside Trap,20150910
+1372,1795,9817,2015-09-10,61,Balanced,32.0,Little,52,Mixed,Organised,54,Normal,42,Normal,45,Normal,Free Form,38,Medium,52,Press,45,Normal,Cover,20150910
+76,1,9825,2015-09-10,59,Balanced,51.0,Normal,30,Short,Organised,28,Safe,44,Normal,46,Normal,Free Form,51,Medium,44,Press,52,Normal,Cover,20150910
+341,1799,9826,2015-09-10,61,Balanced,45.0,Normal,67,Long,Organised,67,Risky,69,Lots,50,Normal,Organised,36,Medium,34,Press,41,Normal,Cover,20150910
+910,1792,9850,2015-09-10,45,Balanced,38.0,Normal,55,Mixed,Organised,46,Normal,54,Normal,47,Normal,Organised,38,Medium,39,Press,51,Normal,Cover,20150910
+794,573,9864,2015-09-10,42,Balanced,51.0,Normal,36,Mixed,Organised,41,Normal,40,Normal,50,Normal,Organised,47,Medium,37,Press,52,Normal,Offside Trap,20150910
+45,1861,9865,2015-09-10,46,Balanced,41.0,Normal,65,Mixed,Organised,57,Normal,54,Normal,40,Normal,Organised,37,Medium,53,Press,45,Normal,Cover,20150910
+1204,459,9869,2015-09-10,55,Balanced,48.0,Normal,50,Mixed,Organised,62,Normal,59,Normal,38,Normal,Organised,45,Medium,54,Press,41,Normal,Cover,20150910
+100,240,9906,2015-09-10,57,Balanced,50.0,Normal,50,Mixed,Organised,61,Normal,62,Normal,49,Normal,Organised,49,Medium,42,Press,52,Normal,Cover,20150910
+288,450,9910,2015-09-10,55,Balanced,59.0,Normal,38,Mixed,Organised,41,Normal,48,Normal,50,Normal,Free Form,55,Medium,55,Press,59,Normal,Cover,20150910
+1260,1960,10003,2015-09-10,45,Balanced,44.0,Normal,42,Mixed,Organised,34,Normal,36,Normal,55,Normal,Free Form,31,Deep,47,Press,42,Normal,Cover,20150910
+1019,15,10172,2015-09-10,30,Slow,39.0,Normal,61,Mixed,Organised,53,Normal,53,Normal,60,Normal,Organised,50,Medium,44,Press,54,Normal,Cover,20150910
+1248,1806,10194,2015-09-10,48,Balanced,41.0,Normal,49,Mixed,Organised,51,Normal,59,Normal,49,Normal,Organised,44,Medium,37,Press,51,Normal,Cover,20150910
+1341,483,10205,2015-09-10,48,Balanced,42.0,Normal,36,Mixed,Free Form,36,Normal,52,Normal,55,Normal,Free Form,47,Medium,48,Press,44,Normal,Cover,20150910
+82,2,10252,2015-09-10,63,Balanced,37.0,Normal,54,Mixed,Organised,60,Normal,48,Normal,38,Normal,Organised,35,Medium,44,Press,54,Normal,Cover,20150910
+812,11,10260,2015-09-10,38,Balanced,42.0,Normal,44,Mixed,Organised,49,Normal,44,Normal,40,Normal,Organised,54,Medium,53,Press,56,Normal,Cover,20150910
+898,13,10261,2015-09-10,58,Balanced,45.0,Normal,49,Mixed,Organised,47,Normal,54,Normal,46,Normal,Organised,41,Medium,39,Press,51,Normal,Cover,20150910
+1313,461,10267,2015-09-10,35,Balanced,46.0,Normal,35,Mixed,Organised,37,Normal,51,Normal,58,Normal,Organised,49,Medium,45,Press,53,Normal,Cover,20150910
+383,468,10268,2015-09-10,51,Balanced,52.0,Normal,48,Mixed,Organised,53,Normal,54,Normal,57,Normal,Organised,49,Medium,51,Press,58,Normal,Cover,20150910
