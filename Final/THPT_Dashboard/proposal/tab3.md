@@ -38,14 +38,16 @@
 ## 3. Đóng góp của các môn trong từng khối thi
 
 ### What (Dữ liệu)
-- Điểm trung bình từng môn trong mỗi tổ hợp xét tuyển
-- Các môn cấu thành khối thi (ví dụ: Toán – Lý – Hóa, Văn – Sử – Địa, …)
+- Điểm trung bình từng môn của nhóm Top 5% thí sinh (theo tổng điểm khối)
+- Các môn cấu thành trong mỗi tổ hợp xét tuyển (ví dụ: Toán – Lý – Hóa, Văn – Sử – Địa, …)
 
 ### Why (Mục đích)
-- Xác định môn học nào đóng vai trò quyết định trong từng khối
-- Hiểu “profile học tập” đặc trưng của từng tổ hợp
-- So sánh sự cân bằng giữa các môn trong cùng một khối
-- Hỗ trợ định hướng ôn tập theo trọng số môn học
+- Xác định môn có xu hướng đạt điểm cao/thấp trong nhóm top
+- Nhận diện môn ảnh hưởng lớn đến khả năng đạt điểm cao
+- Phân tích “profile điểm số” của thí sinh xuất sắc trong từng khối
+- Hỗ trợ định hướng ôn tập:
+    - Môn cần duy trì mức cao
+    - Môn có nguy cơ trở thành điểm hạn chế
 
 ### How (Trực quan hóa)
 - Biểu đồ Radar (Spider chart)

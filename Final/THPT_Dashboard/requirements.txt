@@ -1,12 +1,5 @@
-scikit-learn
-scipy
-matplotlib
-seaborn
 streamlit
 pandas
 plotly
-numpy
-statsmodels
 Pillow
-kaleido
 google-genai
