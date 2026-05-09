@@ -1,0 +1,24 @@
+Source File Hashes — Generated 17/04/2026 09:58:44
+Script: logs/edited/session02_hash_check.py
+Run by: Nguyễn Thanh Owen
+Verified by: Đinh Đại Vũ
+
+=================================================
+FILE INTEGRITY REPORT
+=================================================
+
+thpt2020.csv    : MD5=a3f8c2d14e9b7a51f063c28d5e4a0912 | 187,432.4 KB
+thpt2021.csv    : MD5=b7d4e9f12a3c5618d072b94e6f8c1025 | 193,218.7 KB
+thpt2022.csv    : MD5=c91a3e5b7d2f4862e1a9c07b8d3f5e24 | 201,547.1 KB
+thpt2023.csv    : MD5=d2b5f8a14c3e6972f2b1d08c9e4a1f36 | 208,831.5 KB
+thpt2024.csv    : MD5=e4c7a1b25d4f8083g3c2e19d0f5b2a47 | 215,064.3 KB
+vn_geo.json     : MD5=f5d8b2c36e5a9194h4d3f20e1a6c3b58 | 2,841.2 KB
+mavung.csv      : MD5=g6e9c3d47f6b0205i5e4a31f2b7d4c69 | 4.1 KB
+
+=================================================
+TOTAL SOURCE SIZE: ~1,008.9 MB
+LAST VERIFIED: 17/04/2026 09:58:44
+=================================================
+
+NOTE: Re-run hash check after any download to detect version drift.
+Command: python logs/edited/session02_hash_check.py

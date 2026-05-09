@@ -1,0 +1,19 @@
+Session 04 — 26/04/2026 14:22:07
+Helper: cleaning-script
+Sent by: Nguyễn Thanh Owen
+
+---
+Hãy sinh script Python hoàn chỉnh để tiền xử lý dataset THPT 2020–2024. Pipeline cần thực hiện theo thứ tự:
+1. Chuẩn hóa tên cột về lowercase, thay khoảng trắng bằng dấu gạch dưới
+2. Ghép 5 file CSV (thpt2020–thpt2024) theo trục dọc, thêm cột nam từ tên file
+3. Trích 2 ký tự đầu của sbd làm ma_vung
+4. Merge với mavung.csv để lấy tên tỉnh (ten_tinh)
+5. Loại bỏ dòng có toàn bộ cột điểm là NaN
+6. Ép kiểu tất cả cột điểm về float64
+7. Chuẩn hóa ten_tinh khớp với key trong vn_geo.json
+Xuất file cleaned_thpt.parquet.
+---
+
+Response time: ~12 seconds
+Output file: logs/generated/session04_cleaning_v1.py
+Human-edited: THPT_Dashboard/data/clean_pipeline.py

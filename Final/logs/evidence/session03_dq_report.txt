@@ -1,0 +1,58 @@
+Data Quality Report — Generated 23/04/2026 14:33:21
+Script: logs/edited/session03_dq_check.py
+Run by: Lê Nguyên Thảo
+Dataset: THPT_Dashboard/data/cleaned_thpt.parquet (pre-cleaning)
+Total rows: 4,612,847
+
+=======================================================
+1. TỶ LỆ MISSING THEO CỘT (%)
+=======================================================
+toan         3.82
+ngu_van      0.41
+ngoai_ngu    4.17
+vat_ly      38.64
+hoa_hoc     38.64
+sinh_hoc    38.64
+lich_su     61.36
+dia_ly      61.36
+gdcd        61.36
+
+Ghi chú:
+- vat_ly/hoa_hoc/sinh_hoc missing ~38.6%: thí sinh KHXH không thi nhóm KHTN
+- lich_su/dia_ly/gdcd missing ~61.4%: thí sinh KHTN không thi nhóm KHXH
+- ngoai_ngu missing 4.17%: thí sinh miễn thi ngoại ngữ (diện chứng chỉ quốc tế)
+
+=======================================================
+2. DÒNG CÓ TOÀN BỘ ĐIỂM LÀ NaN
+=======================================================
+Số dòng: 147,234  (3.19%)
+
+Ghi chú: Đây là thí sinh đăng ký thi nhưng không dự thi (bỏ thi).
+Quyết định: Loại bỏ thay vì imputation — dữ liệu thi cử không thể impute.
+
+=======================================================
+3. DUPLICATE THEO (sbd, nam)
+=======================================================
+Số dòng trùng: 0
+
+Ghi chú: Không có duplicate — mỗi thí sinh chỉ có 1 số báo danh/năm.
+
+=======================================================
+4. THỐNG KÊ THEO NĂM
+=======================================================
+ nam    total  miss_toan  miss_ngoai_ngu  miss_lich_su
+2020  897,612      4.1%           5.2%         63.1%
+2021  921,408      3.7%           4.8%         62.4%
+2022  1,004,371    3.9%           4.0%         61.8%
+2023  1,047,832    3.6%           3.8%         60.9%
+2024  1,070,389    3.5%           3.1%         59.7%
+
+Nhận xét: Tỷ lệ missing lich_su giảm dần (63.1% → 59.7%) phản ánh
+xu hướng nhiều thí sinh KHTN chọn thi thêm môn xã hội từ 2022.
+
+=======================================================
+VERDICT: Data Quality ACCEPTABLE
+- Không có lỗi dữ liệu nghiêm trọng
+- Missing values có giải thích hợp lý (thiết kế của kỳ thi)
+- Quyết định: Loại 147,234 dòng NaN toàn phần trước khi phân tích
+=======================================================

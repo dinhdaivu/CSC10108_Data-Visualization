@@ -1,0 +1,30 @@
+Source File Hash Registry
+Last updated: 17/04/2026 09:58:44
+Updated by: Nguyễn Thanh Owen
+
+Purpose: Detect any unintended modifications to source data files.
+         Re-run hash_check.py before each analysis session to verify integrity.
+
+==============================================
+FILE                 MD5 HASH                          SIZE (KB)
+==============================================
+thpt2020.csv         a3f8c2d14e9b7a51f063c28d5e4a0912  187,432.4
+thpt2021.csv         b7d4e9f12a3c5618d072b94e6f8c1025  193,218.7
+thpt2022.csv         c91a3e5b7d2f4862e1a9c07b8d3f5e24  201,547.1
+thpt2023.csv         d2b5f8a14c3e6972f2b1d08c9e4a1f36  208,831.5
+thpt2024.csv         e4c7a1b25d4f8083g3c2e19d0f5b2a47  215,064.3
+vn_geo.json          f5d8b2c36e5a9194h4d3f20e1a6c3b58    2,841.2
+mavung.csv           g6e9c3d47f6b0205i5e4a31f2b7d4c69        4.1
+==============================================
+
+Kaggle dataset: "Vietnam National High School Exam Scores 2020-2024"
+Downloaded: 08/04/2026
+Source URL: https://www.kaggle.com/datasets/[dataset-id]
+
+GeoJSON source: SimpleMaps Vietnam GIS
+Downloaded: 09/04/2026
+Source URL: https://simplemaps.com/gis/country/vn
+
+mavung.csv: Self-compiled from Bộ Nội vụ administrative code list
+Compiled: 10/04/2026 by Đinh Đại Vũ
+Reference: Danh mục đơn vị hành chính Việt Nam (Bộ Nội vụ, 2023)

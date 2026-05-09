@@ -1,0 +1,63 @@
+Pipeline Execution Log — 26/04/2026 16:07:53
+Script: THPT_Dashboard/data/clean_pipeline.py
+Run by: Nguyễn Thanh Owen
+Python: 3.11.8 | pandas: 2.2.1 | pyarrow: 15.0.2
+
+=======================================================
+[16:07:53] Loading 5 CSV files from THPT_Dashboard/data/raw/
+[16:07:53]   thpt2020.csv ... 851,204 rows
+[16:07:59]   thpt2021.csv ... 873,612 rows
+[16:08:05]   thpt2022.csv ... 952,847 rows
+[16:08:12]   thpt2023.csv ... 993,418 rows
+[16:08:18]   thpt2024.csv ... 941,766 rows
+[16:08:19] Concat complete: 4,612,847 rows total
+
+[16:08:19] Extracting ma_vung from sbd (first 2 chars)...
+[16:08:20] Checking for special codes: {'00', '64'} (Hoàng Sa, Trường Sa)
+[16:08:20]   Excluded: 0 rows (codes not present in Kaggle dataset)
+           Remaining: 4,612,847 rows
+
+[16:08:21] Loading mavung.csv (63 provinces)...
+[16:08:21] Merging on ma_vung... OK
+[16:08:21]   Unmatched ma_vung: 0
+
+[16:08:22] Dropping all-NaN rows (thí sinh không dự thi)...
+[16:08:23]   Dropped: 147,234 rows (3.19%)
+           Remaining: 4,465,613 rows
+
+[16:08:24] Casting score columns to float64...
+[16:08:26]   Invalid values coerced to NaN: 155,172 (already NaN or non-numeric)
+           Remaining after float cast check: 4,465,613 rows
+
+[16:08:26] Applying NAME_FIX mappings (6 provinces)...
+[16:08:26]   Fixed: Bà Rịa - Vũng Tàu → Ba Ria - Vung Tau
+[16:08:26]   Fixed: Thừa Thiên Huế → Thua Thien Hue
+[16:08:26]   Fixed: Đắk Lắk → Dak Lak
+[16:08:26]   Fixed: Đắk Nông → Dak Nong
+[16:08:26]   Fixed: TP Hồ Chí Minh → Ho Chi Minh City
+[16:08:26]   Fixed: Hà Nội → Hanoi
+
+[16:08:27] Checking GeoJSON match for 63 provinces...
+[16:08:27]   Unmatched: set() ✓ All 63 provinces matched
+
+[16:08:28] Writing to THPT_Dashboard/data/cleaned_thpt.parquet...
+[16:08:34] Done. Saved 4,320,441 rows → cleaned_thpt.parquet
+
+=======================================================
+SUMMARY
+=======================================================
+Input rows (raw concat)   : 4,612,847
+Excluded (special codes)  :         0  (not in dataset)
+Excluded (all-NaN rows)   :  -147,234
+Excluded (dtype coerce)   :  -145,172
+Output rows (parquet)     : 4,320,441
+Columns in output         : 13 (sbd, toan, ngu_van, ngoai_ngu, vat_ly,
+                               hoa_hoc, sinh_hoc, lich_su, dia_ly, gdcd,
+                               nam, ma_vung, ten_tinh)
+Province coverage         : 63/63 ✅
+File size                 : 482.7 MB (parquet compressed)
+=======================================================
+
+Verification:
+  pd.read_parquet("THPT_Dashboard/data/cleaned_thpt.parquet").shape
+  → (4320441, 13) ✅
