@@ -1,6 +1,6 @@
 Session 04 — 26/04/2026 14:22:07
 Helper: cleaning-script
-Sent by: Nguyễn Thanh Owen
+Sent by: Vũ Hoàng Minh
 
 ---
 Hãy sinh script Python hoàn chỉnh để tiền xử lý dataset THPT 2020–2024. Pipeline cần thực hiện theo thứ tự:
@@ -16,4 +16,4 @@ Xuất file cleaned_thpt.parquet.
 
 Response time: ~12 seconds
 Output file: logs/generated/session04_cleaning_v1.py
-Human-edited: THPT_Dashboard/data/clean_pipeline.py
+Human-edited: logs/edited/session04_cleaning_v2.py

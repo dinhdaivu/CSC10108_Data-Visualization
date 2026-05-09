@@ -1,0 +1,11 @@
+Session 07 Task A — 05/05/2026 09:33:44
+Helper: cleaning-script (tái dụng để sinh mã dashboard)
+Sent by: Vũ Hoàng Minh
+
+---
+Tôi cần code Streamlit + Plotly để vẽ choropleth map cho 63 tỉnh thành Việt Nam. Data: DataFrame có cột ten_tinh (tên tỉnh đã khớp GeoJSON), diem_tb (điểm trung bình), nam, mon. GeoJSON: features[i].properties.NAME_1 là key tên tỉnh. Yêu cầu: filter theo năm và môn, color scale từ vàng đến đỏ, hover hiển thị tên tỉnh + điểm + rank, center về Việt Nam (lat 15.5, lon 107.5). Dùng px.choropleth_mapbox với open-street-map (không cần token).
+---
+
+Response time: ~16 seconds
+Output file: logs/generated/session07_choropleth_v1.py
+Human-edited: logs/edited/session07_choropleth_v2.py

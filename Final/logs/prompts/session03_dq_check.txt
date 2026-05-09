@@ -1,0 +1,16 @@
+Session 03 Task A — 23/04/2026 09:47:52
+Helper: data-quality
+Sent by: Lê Nguyên Thảo
+
+---
+Tôi cần script Python để rà soát chất lượng dữ liệu cho DataFrame điểm THPT (~4,6 triệu dòng) với các cột điểm: toan, ngu_van, ngoai_ngu, vat_ly, hoa_hoc, sinh_hoc, lich_su, dia_ly, gdcd. Cụ thể cần:
+1. Tỷ lệ missing theo từng cột
+2. Số dòng có toàn bộ cột điểm là NaN (thí sinh không thi)
+3. Số dòng trùng lặp theo (sbd, nam)
+4. Thống kê phân phối theo từng năm (số dòng, % missing môn Toán)
+Xuất kết quả dạng bảng rõ ràng.
+---
+
+Response time: ~11 seconds
+Output file: logs/generated/session03_dq_script.py
+Human-edited: logs/edited/session03_dq_check.py

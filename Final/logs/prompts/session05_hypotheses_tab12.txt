@@ -1,0 +1,10 @@
+Session 05 Task A — 29/04/2026 10:08:33
+Helper: insight-hypothesis
+Sent by: Cả nhóm (điều phối: Đinh Đại Vũ)
+
+---
+Tôi đang phân tích dataset điểm thi THPT Quốc gia Việt Nam 2020–2024 (~4,3 triệu thí sinh, 9 môn thi). Dashboard gồm 5 tab. Với Tab 1 (Tổng quan: quy mô thí sinh qua năm, cơ cấu khối thi, điểm trung bình từng môn) và Tab 2 (Phổ điểm: histogram từng môn, boxplot so sánh năm, multi-year line chart): Hãy đề xuất 4 giả thuyết phân tích có tính phân hóa cao cho mỗi tab, kèm biểu đồ phù hợp và dữ liệu cần thu thập để kiểm chứng. Ưu tiên giả thuyết thú vị, có thể bác bỏ được (falsifiable).
+---
+
+Response time: ~18 seconds
+Output file: logs/generated/session05_hypotheses_tab12.md

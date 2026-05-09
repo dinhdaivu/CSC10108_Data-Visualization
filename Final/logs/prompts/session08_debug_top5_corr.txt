@@ -1,0 +1,19 @@
+Session 08 Task A — 08/05/2026 10:22:51
+Helper: (không dùng helper chuẩn, mô tả lỗi trực tiếp)
+Sent by: Nguyễn Đỗ Bảo
+
+---
+Tôi có 2 lỗi logic trong Python:
+
+Lỗi 1: Code tính Top 5% ngưỡng điểm theo khối thi và năm:
+  df_top5 = df.groupby('khoi')['tong_diem'].quantile(0.95)
+Kết quả trả ra giá trị giống nhau cho mọi năm dù dữ liệu khác nhau.
+
+Lỗi 2: df[SCORE_COLS].corr() trả NaN ở một số cặp KHTN-KHXH.
+
+Chẩn đoán nguyên nhân và đề xuất cách sửa.
+---
+
+Response time: ~13 seconds
+Output file: logs/generated/session08_debug_analysis.md
+Human-edited: logs/edited/session08_debug_top5_corr_v2.py

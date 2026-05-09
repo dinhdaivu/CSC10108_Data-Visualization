@@ -1,0 +1,12 @@
+Session 01 Task B — 10/04/2026 10:03:41
+Helper: gatekeeper
+Sent by: Đinh Đại Vũ
+
+---
+Sau khi ghép 5 file CSV THPT, tôi có thông tin dtypes như sau:
+sbd: object, toan: object, ngu_van: object, ngoai_ngu: object, vat_ly: object, hoa_hoc: object, sinh_hoc: object, lich_su: object, dia_ly: object, gdcd: object, nam: int64.
+Tất cả các cột điểm đang là object do có giá trị rỗng và các ký tự lạ. Hãy đề xuất pipeline ép kiểu và xử lý giá trị không hợp lệ.
+---
+
+Response time: ~6 seconds
+Output file: logs/generated/session01_dtype_fix.md

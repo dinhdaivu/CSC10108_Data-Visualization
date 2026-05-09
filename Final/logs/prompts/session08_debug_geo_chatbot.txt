@@ -1,0 +1,15 @@
+Session 08 Task B — 08/05/2026 14:38:17
+Helper: (không dùng helper chuẩn)
+Sent by: Nguyễn Đỗ Bảo
+
+---
+Lỗi 3: Choropleth Map thiếu màu 4 tỉnh: "Bà Rịa - Vũng Tàu", "Thừa Thiên Huế", "Đắk Lắk", "Đắk Nông". GeoJSON dùng properties.NAME_1. DataFrame dùng cột ten_tinh.
+
+Lỗi 4: Chatbot gửi ảnh biểu đồ Plotly lên Gemini API bị lỗi "Invalid image data". Code hiện tại dùng st.pyplot() để lấy buffer rồi encode base64.
+
+Chẩn đoán và sửa cả 2 lỗi.
+---
+
+Response time: ~17 seconds
+Output file: logs/generated/session08_debug_geo_chatbot.md
+Human-edited: logs/edited/session08_debug_geo_chatbot_v2.py

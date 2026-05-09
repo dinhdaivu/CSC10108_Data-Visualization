@@ -1,0 +1,11 @@
+Session 07 Task B — 05/05/2026 11:07:28
+Helper: cleaning-script (tái dụng để sinh mã dashboard)
+Sent by: Đinh Đại Vũ
+
+---
+Cần code Plotly vẽ correlation heatmap 9x9 cho 9 môn thi THPT. Yêu cầu: (1) chỉ hiển thị tam giác dưới kể cả đường chéo, (2) annotation số Pearson r trong mỗi ô, (3) color scale RdBu từ -1 đến 1 với midpoint 0, (4) hỗ trợ filter theo năm để so sánh. Dùng go.Heatmap.
+---
+
+Response time: ~10 seconds
+Output file: logs/generated/session07_heatmap_v1.py
+Human-edited: logs/edited/session07_heatmap_v2.py

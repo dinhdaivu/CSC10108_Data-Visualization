@@ -1,0 +1,18 @@
+Session 06 — 02/05/2026 14:11:05
+Helper: dashboard-critic
+Sent by: Vũ Hoàng Minh
+
+---
+Tab 1 (Tổng quan) của dashboard THPT 2020–2024 gồm các thành phần:
+- 3 KPI cards: Tổng thí sinh, Điểm TB toàn quốc, Tỷ lệ thí sinh thi đủ tổ hợp
+- Area chart: quy mô thí sinh qua 5 năm
+- Pie chart: cơ cấu khối thi (A00, A01, B00, C00, D01,...)
+- Horizontal bar chart: điểm TB từng môn theo năm (grouped)
+- Filter: năm (2020–2024) và tỉnh/thành
+
+Màu sắc: navy blue và cam/vàng. Công cụ: Streamlit + Plotly.
+Đánh giá Tab 1 theo 6 tiêu chí: rõ ràng, phù hợp biểu đồ, liên kết logic, tương tác/điều hướng, màu sắc, chiều sâu phân tích. Đề xuất 5 cải tiến ưu tiên.
+---
+
+Response time: ~20 seconds
+Output file: logs/generated/session06_critic_tab1.md

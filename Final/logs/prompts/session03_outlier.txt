@@ -1,0 +1,10 @@
+Session 03 Task B — 23/04/2026 11:15:09
+Helper: data-quality
+Sent by: Lê Nguyên Thảo
+
+---
+Cần script Python kiểm tra outlier cho cột điểm thi THPT. Outlier bao gồm: (1) điểm < 0 hoặc > 10 là lỗi dữ liệu, (2) outlier thống kê theo IQR (Q1 - 1.5*IQR, Q3 + 1.5*IQR) nhưng vẫn trong [0,10]. Xuất bảng tổng hợp cho cả 9 môn.
+---
+
+Response time: ~9 seconds
+Output file: logs/generated/session03_outlier_script.py

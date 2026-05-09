@@ -10,7 +10,7 @@
 - **Thành viên:** Đinh Đại Vũ · Nguyễn Thanh Owen · Lê Nguyên Thảo · Vũ Hoàng Minh · Nguyễn Đỗ Bảo
 - **Công cụ dashboard:** Streamlit + Plotly Express/Graph Objects + Pandas
 - **Dataset chính:** Điểm thi THPT 2020–2024 (nguồn: Kaggle) + vn_geo.json (SimpleMaps)
-- **Ngày bắt đầu:** 10/03/2026
+- **Ngày bắt đầu:** 10/04/2026
 - **Thư mục log chính:** `logs/`
 - **Session hiện tại:** `logs/sessions/`
 - **Prompt lưu tại:** `logs/prompts/`
@@ -712,7 +712,7 @@ fig.update_layout(barmode="relative", height=420, showlegend=True)
 ```
 
 - Cách kiểm chứng:
-  - [x] Xu hướng giảm A00 hiển thị rõ trong stacked bar ✅
+  - [x] Xu hướng cơ cấu KHTN/KHXH/Không đầy đủ tổ hợp hiển thị rõ trong stacked bar ✅
   - [x] Hover tooltip hiển thị số thí sinh và % đúng ✅
   - [x] Màu sắc nhất quán giữa Donut và Stacked Bar ✅
 - Bằng chứng: `logs/evidence/session06_tab1_dual_chart.png`
@@ -1057,7 +1057,7 @@ Ghi chú kiểm chứng:
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | GDCD có điểm TB cao nhất 5/5 năm | gdcd, nam | Bar chart + KPI | session05_h1.png | AI gợi ý → nhóm xác nhận | Verified |
 | 2 | Ngoại ngữ bimodal distribution rõ nhất năm 2021 | ngoai_ngu, nam | Histogram | session05_h5_bimodal.png | Nhóm quan sát + AI diễn giải | Verified |
-| 3 | Tỷ lệ khối A00 giảm từ 45% (2020) xuống 38% (2024) | khoi, nam | 100% Stacked Bar | session06_tab1_dual_chart.png | AI gợi ý → nhóm xác nhận | Verified |
+| 3 | KHXH duy trì tỷ trọng ~55% qua 5 năm; tỷ lệ 'Thi không đầy đủ tổ hợp' tăng từ 11,7% (2020) lên 13,1% (2024) | khoi, nam | Donut + 100% Stacked Bar | session06_tab1_dual_chart.png | AI gợi ý → nhóm xác nhận | Verified |
 | 4 | Nam Định dẫn đầu Toán 4/5 năm (2021–2024) | toan, ten_tinh, nam | Choropleth + Dumbbell | session07_choropleth_63tinh.png | Nhóm tự tìm | Verified |
 | 5 | Lý–Hóa (r=0,724) cao hơn Toán–Lý (r=0,681) | vat_ly, hoa_hoc, toan | Correlation Heatmap | session05_corr_matrix.png | AI gợi ý nhưng nhóm bác bỏ H16 → tự kiểm chứng lại | Verified |
 | 6 | GDCD "đội điểm" Top 5% KHXH so với KHTN | gdcd, tong_diem | Radar + Line Chart | session05_h10.png | AI gợi ý → nhóm xác nhận | Verified |

@@ -1,0 +1,15 @@
+Session 02 — 17/04/2026 11:24:18
+Helper: source-reliability
+Sent by: Nguyễn Thanh Owen
+
+---
+Nhóm tôi đang dùng 3 nguồn dữ liệu cho dashboard phân tích điểm thi THPT Quốc gia Việt Nam:
+1. Dataset điểm thi 2020–2024 từ Kaggle, được cộng đồng tổng hợp từ dữ liệu Bộ GD&ĐT công bố mỗi năm.
+2. File GeoJSON ranh giới 63 tỉnh thành từ SimpleMaps (simplemaps.com/gis/vietnam).
+3. Bảng mã vùng (mavung.csv) tự tổng hợp từ danh mục hành chính Bộ Nội vụ.
+Hãy đánh giá độ tin cậy của từng nguồn và chỉ ra những rủi ro cần lưu ý trong báo cáo.
+---
+
+Response time: ~14 seconds
+Output file: logs/generated/session02_source_reliability.md
+Human-edited: logs/edited/session02_hash_check.py

@@ -1,0 +1,10 @@
+Session 05 Task B — 29/04/2026 11:42:17
+Helper: insight-hypothesis
+Sent by: Cả nhóm (điều phối: Đinh Đại Vũ)
+
+---
+Tiếp tục với Tab 3 (Tổ hợp xét tuyển: histogram tổng điểm theo khối A00/A01/B00/C00/D01, line chart Top 5% theo thời gian, radar chart đóng góp môn), Tab 4 (Địa lý: choropleth điểm trung bình theo tỉnh, dumbbell HN vs. HCM, quadrant bubble chart), Tab 5 (Tương quan: correlation heatmap 9x9, scatter matrix). Đề xuất 3–4 giả thuyết phân hóa cao cho mỗi tab, kèm bằng chứng cần thu thập.
+---
+
+Response time: ~22 seconds
+Output file: logs/generated/session05_hypotheses_tab345.md
